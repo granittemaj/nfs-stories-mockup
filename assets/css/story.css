@@ -5,9 +5,12 @@
   --st-orange:#F5821F;--st-rust:#C46F49;--st-green:#5B7747;--st-teal:#4F8E92;--st-ink:#141210;
   --st-disp:"Playfair Display",Georgia,serif;--st-body:"Source Serif 4",Georgia,serif;
   --st-ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--st-sans:var(--st-ui);
-  --st-stageh:calc(100vh - var(--navh));
+  --st-top:0px;--st-stageh:calc(100vh - var(--st-top));
 }
-@supports (height:100svh){:root{--st-stageh:calc(100svh - var(--navh))}}
+@supports (height:100svh){:root{--st-stageh:calc(100svh - var(--st-top))}}
+/* Story pages: the site header scrolls away with the page, as on a Reuters graphic, so every
+   scene gets the whole screen. (--st-top is where stages stick.) */
+body[data-page="story"] header.wp-block-template-part{position:relative}
 .st-sprite{position:absolute;width:0;height:0;overflow:hidden}
 .st-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -22,7 +25,7 @@
 #signs .st-art{background:#1c2a30}
 #dignita .st-art{background:#F3EDE3}
 .st-step{padding:8vh 0}
-.st-js .st-stage{position:sticky;top:var(--navh);height:var(--st-stageh);z-index:1}
+.st-js .st-stage{position:sticky;top:var(--st-top);height:var(--st-stageh);z-index:1}
 .st-js .st-steps{position:relative;z-index:45;margin-top:calc(-1 * var(--st-stageh))}
 .st-js .st-step{min-height:var(--st-stageh);display:flex;align-items:center;padding:12vh 0;pointer-events:none}
 .st-js .st-step.is-blank{min-height:70vh}
@@ -195,7 +198,7 @@
 .st-mock{margin-top:18px;font-size:14.5px;color:#6b6358}
 
 /* ------------------------------------------------------------- chapter rail and progress */
-.st-progress{position:fixed;left:0;right:0;top:var(--navh);height:3px;z-index:59;pointer-events:none}
+.st-progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:59;pointer-events:none}
 .st-progress i{display:block;height:100%;background:var(--st-orange);transform-origin:0 50%;transform:scaleX(var(--sp,0))}
 .st-rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:none}
 .st-js .st-rail{display:block;transition:opacity .3s}

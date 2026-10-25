@@ -12,7 +12,7 @@
      data-ledger="n"    the kitchen ledger: show rows up to n
 
    Guide values a step leaves out are carried over from the step before. Positions are in % of
-   the stage (below the site header), or follow an element with a:#id. */
+   the stage, or follow an element with a:#id. */
 (function () {
   'use strict';
   var d = document, w = window, root = d.documentElement;
@@ -22,7 +22,7 @@
   var main = d.getElementById('st');
   if (!main) return;
 
-  var vw = 0, vh = 0, navh = 64, narrow = false, pw = 0, ph = 0, docTop = 0, mainTop = 0, mainH = 0;
+  var vw = 0, vh = 0, stTop = 0, narrow = false, pw = 0, ph = 0, docTop = 0, mainTop = 0, mainH = 0;
   var sections = [], chain = [], chainM = [], rail = [], keepUntil = 0, ticking = false;
 
   var clamp = function (v, a, b) { return v < (a || 0) ? (a || 0) : v > (b === undefined ? 1 : b) ? (b === undefined ? 1 : b) : v; };
@@ -173,7 +173,7 @@
   }
 
   /* ---------------------------------------------------------------- steps */
-  function centre() { return navh + (vh - navh) / 2; }
+  function centre() { return stTop + (vh - stTop) / 2; }
 
   function camFor(S, n) {
     var c = null, any = false;
@@ -236,7 +236,7 @@
       var el = K.anchor || (K.anchor = d.querySelector(K.v.a));
       if (el) { var r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
     }
-    return { x: K.v.x / 100 * vw, y: navh + K.v.y / 100 * (vh - navh) };
+    return { x: K.v.x / 100 * vw, y: stTop + K.v.y / 100 * (vh - stTop) };
   }
   function guide(y) {
     var k = narrow ? chainM : chain;
@@ -272,7 +272,7 @@
   /* ---------------------------------------------------------------- layout and frames */
   function layout() {
     vw = w.innerWidth; vh = w.innerHeight; narrow = vw < 760;
-    navh = parseFloat(getComputedStyle(root).getPropertyValue('--navh')) || (narrow ? 64 : 80);
+    stTop = parseFloat(getComputedStyle(root).getPropertyValue('--st-top')) || 0;
     var y = w.scrollY || w.pageYOffset;
     sections.forEach(function (S) {
       var r = S.el.getBoundingClientRect();
@@ -290,13 +290,13 @@
 
   function frame() {
     ticking = false;
-    var y = w.scrollY || w.pageYOffset, line = y + navh + (vh - navh) * .62;
+    var y = w.scrollY || w.pageYOffset, line = y + stTop + (vh - stTop) * .62;
     sections.forEach(function (S) {
       var n = 0;
       for (var j = 0; j < S.steps.length; j++) if (S.steps[j].c <= line) n = j + 1;
       if (n !== S.active) { S.active = n; onStep(S, n); }
       if (S.progress) {
-        var p = clamp((y + navh - S.top) / Math.max(1, S.h - (vh - navh)));
+        var p = clamp((y + stTop - S.top) / Math.max(1, S.h - (vh - stTop)));
         S.stage.style.setProperty('--p', p.toFixed(4));
       }
       if (S.map && y + vh > S.top - vh && y < S.top + S.h + vh) mapFrame(S, y);

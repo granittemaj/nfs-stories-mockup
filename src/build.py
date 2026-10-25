@@ -28,7 +28,7 @@ def scene(name):
     return s
 
 
-def page(path, title, desc, body, extra_js=True):
+def page(path, title, desc, body, extra_js=True, kind='story'):
     p = '../' * path.count('/')
     css = ['assets/css/chrome.css', 'assets/fonts/fonts.css', 'assets/css/styles.css', 'assets/css/story.css']
     js = ['assets/js/config.js', 'assets/js/app.js'] + (['assets/js/story.js'] if extra_js else [])
@@ -49,7 +49,7 @@ def page(path, title, desc, body, extra_js=True):
 {links}
 {scripts}
 </head>
-<body data-page="story">
+<body data-page="{kind}">
 <div class="wp-site-blocks">
 <header class="wp-block-template-part"><a class="skip-link" href="#st">Skip to content</a><div id="bar"></div><div id="site-header"></div></header>
 {body}
@@ -141,4 +141,4 @@ if __name__ == '__main__':
     story('the-offer', 'The Offer &#183; Not For Sale stories (mockup)',
           'How a job offer becomes a trap, and how the way out begins. A scroll-driven story mockup for Not For Sale.')
     page('index.html', 'Not For Sale stories (mockup)',
-         'Concept mockups for scroll-driven visual stories on wearenotforsale.org.', HUB, extra_js=False)
+         'Concept mockups for scroll-driven visual stories on wearenotforsale.org.', HUB, extra_js=False, kind='stories')
