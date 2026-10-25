@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the static mockup: the stories hub (index.html, from src/hub.html) and each story page.
+"""Builds the static site: the stories hub (index.html, from src/hub.html) and each story page.
 
     python3 src/build.py
 
@@ -72,7 +72,6 @@ def page(path, title, desc, body, kind='story'):
 {body}
 <footer class="wp-block-template-part"><div id="site-newsletter"></div><div id="site-footer"></div></footer>
 </div>
-{'' if hub else '<p class="st-mockflag" role="note">Mockup for review<span>. Not the live site.</span></p>'}
 </body>
 </html>
 '''
@@ -98,21 +97,21 @@ def story(slug, title, desc):
 
 
 if __name__ == '__main__':
-    story('the-offer', 'The Offer &#183; Not For Sale stories (mockup)',
-          'How a job offer becomes a trap, and how the way out begins. A scroll-driven story mockup for Not For Sale.')
-    story('upstream', 'Upstream &#183; Not For Sale stories (mockup)',
-          'Social innovation in one river: why Not For Sale works on the causes of trafficking, not only on rescue. A scroll-driven story mockup.')
-    story('when-the-land-breaks', 'When the Land Breaks &#183; Not For Sale stories (mockup)',
-          'One mangrove coast, over time: how ecocide pushes people toward traffickers, and how to stop it upstream. A scroll-driven story mockup.')
+    story('the-offer', 'The Offer | Not For Sale',
+          'How a job offer becomes a trap, and how the way out begins.')
+    story('upstream', 'Upstream | Not For Sale',
+          'Social innovation in one river: why Not For Sale works on the causes of trafficking, not only on rescue.')
+    story('when-the-land-breaks', 'When the Land Breaks | Not For Sale',
+          'One mangrove coast, over time: how ecocide pushes people toward traffickers, and how to stop it upstream.')
     # the two retired versions of story 06 point to the one that was kept
     redirect('when-the-land-breaks-coast/index.html', '../when-the-land-breaks/')
     redirect('when-the-land-breaks-from-space/index.html', '../when-the-land-breaks/')
-    story('slavery-changes-shape', 'Slavery Changes Shape &#183; Not For Sale stories (mockup)',
-          'From the first civilizations to the scam compounds of today: the history of slavery and the fight against it. A scroll-driven story mockup for Not For Sale.')
-    story('a-bowl-of-soup', 'A Bowl of Soup &#183; Not For Sale stories (mockup)',
-          'How a soup program in an Amsterdam safe house grew into Dignita. A scroll-driven story mockup for Not For Sale.')
-    story('the-forest-line', 'The Forest Line &#183; Not For Sale stories (mockup)',
-          'A flight over Madre de Dios, Peru, from the gold mines to the forest people keep standing. A scroll-driven story mockup for Not For Sale.')
+    story('slavery-changes-shape', 'Slavery Changes Shape | Not For Sale',
+          'From the first civilizations to the scam compounds of today: the history of slavery and the fight against it.')
+    story('a-bowl-of-soup', 'A Bowl of Soup | Not For Sale',
+          'How a soup program in an Amsterdam safe house grew into Dignita.')
+    story('the-forest-line', 'The Forest Line | Not For Sale',
+          'A flight over Madre de Dios, Peru, from the gold mines to the forest people keep standing.')
     page('index.html', 'Stories | Not For Sale', 'Visual stories from Not For Sale: each one follows one thing through the places '
          'where our work happens, to show how exploitation begins and how we stop it.',
          open(os.path.join(HERE, 'hub.html')).read(), kind='stories')

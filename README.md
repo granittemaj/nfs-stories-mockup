@@ -18,13 +18,15 @@ theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 
 ## The hub
 
-Written to be published as it is (no review notes, no mockup flag), with the site header sticky as
-on the rest of the site; on the story pages it scrolls away. `src/hub.html`, styled by `assets/css/hub.css`, with a small `assets/js/hub.js`. The lead story's
-picture plays when it comes into view: the route draws itself, the minibus rides it, and Mihai's
-messages land on Ana's phone (which tilts toward the pointer). The five other cards have small
-pictures that move while they are on screen: the plane over the forest line, the steam off the
-soup, the thread through the eras, the paper boat, the fishing boat. Everything holds still with
-reduced motion.
+Written to be published as it is. It uses the theme's own page head, grid and cards, the same as
+/news/ (`.pagehead`, `.wrap`, `.feed`, `a.art`), so its columns line up with the header and every
+other page; the site header stays sticky, as on the rest of the site (on the story pages it scrolls
+away). The lead story takes three columns beside the first card: its picture plays when it comes
+into view (the route draws itself, the minibus rides it, Mihai's messages land on Ana's phone,
+which tilts toward the pointer). The card pictures move while they are on screen: the plane over
+the forest line, the steam off the soup, the thread through the eras, the paper boat, the fishing
+boat. Everything holds still with reduced motion. `src/hub.html`, `assets/css/hub.css`,
+`assets/js/hub.js`.
 
 ## 01 · The Offer
 

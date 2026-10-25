@@ -1,22 +1,20 @@
-/* Not For Sale stories hub: cards rise in as they come into view, and the pictures move only while
-   they are on screen. The lead story's phone tilts toward the pointer. */
+/* Not For Sale stories hub: the pictures move only while they are on screen (the theme's app.js
+   does the fade-in reveals). The lead story's phone tilts toward the pointer. */
 (function () {
   'use strict';
   document.documentElement.classList.add('hub-js');
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
-      var el = e.target, on = e.isIntersecting;
+      var el = e.target, on = e.isIntersecting, svg = el.querySelector(':scope > svg');
       if (on) el.classList.add('is-in');
-      if (!el.classList.contains('hub-art')) { if (on) io.unobserve(el); return; }
       el.classList.toggle('is-live', on);
-      var svg = el.querySelector('svg');
       if (svg && svg.pauseAnimations && !reduce) { if (on) svg.unpauseAnimations(); else svg.pauseAnimations(); }
     });
   }, { threshold: .2 });
-  Array.prototype.forEach.call(document.querySelectorAll('.rv, .hub-art'), function (el) {
+  Array.prototype.forEach.call(document.querySelectorAll('.hub-art'), function (el) {
     var svg = el.querySelector(':scope > svg');
-    // the route and the minibus (SMIL): still, at the end of the ride, until on screen or with reduced motion
+    // the route and the minibus (SMIL) wait until on screen; with reduced motion they hold at the end of the ride
     if (svg && svg.pauseAnimations) { svg.pauseAnimations(); svg.setCurrentTime(reduce ? 8.5 : 0); }
     io.observe(el);
   });

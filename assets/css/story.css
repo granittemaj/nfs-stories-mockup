@@ -197,7 +197,6 @@ body[data-page="story"] .wp-site-blocks > header.wp-block-template-part,body[dat
 .st-notes ul{padding-left:18px;font-size:15.5px;line-height:1.55;color:#403a33}
 .st-notes li + li{margin-top:6px}
 .st-notes a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-.st-mock{margin-top:18px;font-size:14.5px;color:#6b6358}
 
 /* ------------------------------------------------------------- chapter rail and progress */
 .st-progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:59;pointer-events:none}
@@ -217,7 +216,6 @@ body[data-page="story"] .wp-site-blocks > header.wp-block-template-part,body[dat
 .st-rail[data-tone="light"] button span{background:rgba(252,250,246,.9)}
 .st-rail button:focus-visible{outline:2px solid var(--st-orange);outline-offset:3px;border-radius:4px}
 
-.st-mockflag{position:fixed;left:16px;bottom:16px;z-index:70;padding:7px 12px;border-radius:99px;background:var(--st-ink);color:#fff;font-family:var(--st-ui);font-size:12px;letter-spacing:.04em;box-shadow:0 8px 20px -8px rgba(0,0,0,.4)}
 
 /* ------------------------------------------------------------- phones and tablets */
 @media (max-width:900px){.st-rail{display:none!important}}
@@ -239,7 +237,6 @@ body[data-page="story"] .wp-site-blocks > header.wp-block-template-part,body[dat
   .st-ledger-stamp{right:auto;left:14px;bottom:-18px}
   .st-ledger-p{padding-bottom:6px}
   .st-figs{grid-template-columns:1fr 1fr}
-  .st-mockflag span{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .cam,.st-card,.st-ledger,.st-ledger li,.scr,.ph-note,.ph-banner{transition:none!important}
