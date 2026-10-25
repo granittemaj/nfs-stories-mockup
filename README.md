@@ -8,9 +8,7 @@ inspired by Reuters Graphics, in particular
 **Not the live site.** Pages are `noindex`. Built in the site's own design system: the papingu
 theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 
-- Stories hub, in three directions to choose from: B · The reel [`index.html`](index.html),
-  A · Front page [`options/front-page/`](options/front-page/), C · Contents
-  [`options/contents/`](options/contents/). A switcher at the bottom of each moves between them.
+- Stories hub: [`index.html`](index.html) (from `src/hub.html`)
 - Story 01, The Offer: [`the-offer/`](the-offer/)
 - Story 02, The Forest Line: [`the-forest-line/`](the-forest-line/)
 - Story 03, A Bowl of Soup: [`a-bowl-of-soup/`](a-bowl-of-soup/)
@@ -20,19 +18,12 @@ theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 
 ## The hub
 
-Built by `src/hubs.py` from one list of the six stories; styles in `assets/css/hub.css`, script in
-`assets/js/hub.js`. All three directions use real frames from the stories, captured by
-`tools/posters` (five or six frames per story, desktop and phone sizes):
-
-- **B · The reel** (the index): a dark trailer. Each story takes the whole screen and plays its
-  frames as you scroll through it, with a progress bar per story and a jump list.
-- **A · Front page**: a broadsheet on paper. A lead story, two, then three, with column rules;
-  hovering a picture scrubs through the story's frames.
-- **C · Contents**: a typographic index. Pointing at a title plays a small trailer of the story
-  next to the pointer and dims the others.
-
-Each ends with the toolkit: the seventeen building blocks, each with a small animated glyph (SVG
-with SMIL, played only while on screen, held still with reduced motion).
+`src/hub.html`, styled by `assets/css/hub.css`, with a small `assets/js/hub.js`. The lead story's
+picture plays when it comes into view: the route draws itself, the minibus rides it, and Mihai's
+messages land on Ana's phone (which tilts toward the pointer). The five other cards have small
+pictures that move while they are on screen: the plane over the forest line, the steam off the
+soup, the thread through the eras, the paper boat, the fishing boat. Everything holds still with
+reduced motion.
 
 ## 01 · The Offer
 
@@ -168,11 +159,7 @@ python3 src/build.py
   `build-amsterdam.py` (the query is in `query.overpass`), then `python3 build-amsterdam.py`.
 - The Forest Line landscapes: `node tools/forest/build-flyover.mjs` (no dependencies) writes
   `assets/img/forest-flyover.svg`, `assets/img/forest-canopy.svg` and `src/scenes/flyedge.svg`.
-- The hub's frames: with the local preview running, `node tools/posters/capture.mjs` (Google
-  Chrome, nothing to install) captures the frames listed in `tools/posters/shots.mjs` into
-  `assets/img/posters/`; then `tools/posters/thumbs.sh` makes the small copies (needs `cwebp`).
-  Re-run both after a story's art changes.
-- The hub: `src/hubs.py` (stories, building blocks and the three layouts).
+- The hub: `src/hub.html`.
 - Local preview: `node tools/serve.js`, then open http://localhost:8774/
 
 Asset URLs carry content hashes, so GitHub Pages never serves stale CSS or JS after a push.

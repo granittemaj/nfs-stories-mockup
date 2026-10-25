@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the static mockup: the stories hub (index.html, plus two other directions in options/) and each story page.
+"""Builds the static mockup: the stories hub (index.html, from src/hub.html) and each story page.
 
     python3 src/build.py
 
@@ -7,7 +7,6 @@ Story pages are src/<slug>.html with <!--scene:name--> markers, filled from src/
 Both pages get the site shell: the papingu theme's styles.css and app.js (header, footer,
 newsletter, search), with content-hashed asset URLs so GitHub Pages never serves stale CSS/JS."""
 import hashlib, os, re
-import hubs
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.dirname(HERE)
@@ -73,7 +72,7 @@ def page(path, title, desc, body, kind='story'):
 {body}
 <footer class="wp-block-template-part"><div id="site-newsletter"></div><div id="site-footer"></div></footer>
 </div>
-{'' if hub else '<p class="st-mockflag" role="note">Mockup for review<span>. Not the live site.</span></p>'}
+<p class="st-mockflag" role="note">Mockup for review<span>. Not the live site.</span></p>
 </body>
 </html>
 '''
@@ -114,8 +113,5 @@ if __name__ == '__main__':
           'How a soup program in an Amsterdam safe house grew into Dignita. A scroll-driven story mockup for Not For Sale.')
     story('the-forest-line', 'The Forest Line &#183; Not For Sale stories (mockup)',
           'A flight over Madre de Dios, Peru, from the gold mines to the forest people keep standing. A scroll-driven story mockup for Not For Sale.')
-    # the hub, in three directions to choose from (see hubs.py)
-    desc = 'Concept mockups for scroll-driven visual stories on wearenotforsale.org.'
-    page('index.html', 'Not For Sale stories (mockup)', desc, hubs.hub_reel(''), kind='stories')
-    page('options/front-page/index.html', 'Front page &#183; Not For Sale stories (mockup)', desc, hubs.hub_front('../../'), kind='stories')
-    page('options/contents/index.html', 'Contents &#183; Not For Sale stories (mockup)', desc, hubs.hub_contents('../../'), kind='stories')
+    page('index.html', 'Not For Sale stories (mockup)', 'Concept mockups for scroll-driven visual stories on wearenotforsale.org.',
+         open(os.path.join(HERE, 'hub.html')).read(), kind='stories')
