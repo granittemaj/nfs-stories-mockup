@@ -110,11 +110,11 @@ body[data-page="story"] .wp-site-blocks > header.wp-block-template-part,body[dat
 .ph-head i{flex:0 0 auto;width:2.1em;height:2.1em;border-radius:50%;background:var(--st-rust);color:#fff;font-style:normal;font-weight:600;display:grid;place-items:center;font-size:.86em}
 .ph-head i.is-teal{background:var(--st-teal)}
 .ph-msgs{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:.42em;padding:5% 5% 7%;overflow:hidden}
-.b{display:none;max-width:84%;padding:.52em .78em;border-radius:1.05em;font-size:.95em}
-.b.on{display:block;animation:st-pop .42s cubic-bezier(.2,.9,.3,1.3)}
+.ph-msgs .b{display:none;max-width:84%;padding:.52em .78em;border-radius:1.05em;font-size:.95em}
+.ph-msgs .b.on{display:block;animation:st-pop .42s cubic-bezier(.2,.9,.3,1.3)}
 @keyframes st-pop{from{opacity:0;transform:translateY(.7em) scale(.94)}to{opacity:1;transform:none}}
-.b.in{background:#fff;align-self:flex-start;border-bottom-left-radius:.3em}
-.b.out{background:var(--st-orange);color:#fff;align-self:flex-end;border-bottom-right-radius:.3em}
+.ph-msgs .b.in{background:#fff;align-self:flex-start;border-bottom-left-radius:.3em}
+.ph-msgs .b.out{background:var(--st-orange);color:#fff;align-self:flex-end;border-bottom-right-radius:.3em}
 .ph-photo{display:block;width:8.6em;height:5.6em;border-radius:.7em;margin:-.15em -.3em .4em;background:linear-gradient(transparent 52%,#1d1512 52%),linear-gradient(#24323b,#b8673f 92%);position:relative;overflow:hidden}
 .ph-photo::before{content:"";position:absolute;left:10%;right:10%;bottom:48%;height:28%;background:#1d1512;clip-path:polygon(0 100%,0 60%,8% 60%,8% 40%,14% 40%,14% 62%,22% 62%,22% 30%,25% 0,28% 30%,28% 64%,40% 64%,40% 48%,52% 48%,52% 70%,62% 70%,62% 20%,66% 20%,66% 70%,78% 70%,78% 50%,90% 50%,90% 72%,100% 72%,100% 100%)}
 .ph-file{display:inline-block;width:1.3em;height:1.6em;border-radius:.2em;background:var(--st-rust);margin-right:.45em;vertical-align:-.35em}
@@ -240,7 +240,7 @@ body[data-page="story"] .wp-site-blocks > header.wp-block-template-part,body[dat
 }
 @media (prefers-reduced-motion:reduce){
   .cam,.st-card,.st-ledger,.st-ledger li,.scr,.ph-note,.ph-banner{transition:none!important}
-  .st-ring circle,.st-spot .r,.st-steam,.st-cue i,.st-phone.buzz .ph-body,.b.on,.m-stop .m-ring{animation:none!important}
+  .st-ring circle,.st-spot .r,.st-steam,.st-cue i,.st-phone.buzz .ph-body,.ph-msgs .b.on,.m-stop .m-ring{animation:none!important}
 }
 
 /* the "Read the story" link, shared with story pages (Upstream's cards); the hub itself is hub.css */
@@ -316,6 +316,8 @@ body[data-page="story"] .wp-site-blocks > header.wp-block-template-part,body[dat
 .lp-node.on .ic{fill:var(--st-orange)}
 .lp-node.on .ics{stroke:var(--st-orange)}
 .lp-node.on text{fill:var(--st-ink)}
+.lp-node text[text-anchor="start"]{text-anchor:start}
+.lp-node text[text-anchor="end"]{text-anchor:end}
 .lp-center g{opacity:0;transition:opacity .45s}
 .lp-center text{text-anchor:middle}
 .lp-center .b{font-family:var(--st-disp);font-weight:800;font-size:66px;fill:var(--st-ink)}
