@@ -124,7 +124,7 @@ block later. The engine is `assets/js/story.js` (vanilla, no dependencies, about
 | `data-g="x:50;y:40;s:1;r:0;rx:0;o:1;screen:lock;msgs:0"` | Where the phone is when this step is centred (x, y in % of the stage), its scale, tilt, opacity, screen and how many chat messages show. Leftover values carry over from the step before. |
 | `data-g="a:#id"` | The phone follows an element in the scene (it lands on the table, goes into the manager's hand). |
 | `data-gm="..."` | The same for phones and narrow screens. |
-| `data-cam="x y s"` / `data-camm` | Move the scene's camera to x, y (SVG units) at scale s. |
+| `data-cam="x y s"` / `data-camm` | Move the scene's camera to x, y (SVG units) at scale s. The engine keeps the camera inside the scene, at every screen size, so no bare stage ever shows at an edge (a scene drawn larger than its frame can be panned across in full). |
 | `data-ring="n"` | Pulse the highlight ring `n` in the scene. |
 | `data-stop="vienna"` | The map: the minibus reaches this stop when the step is centred. |
 | `data-ledger="n"` | The kitchen ledger: show rows up to `n`, with counting numbers. |

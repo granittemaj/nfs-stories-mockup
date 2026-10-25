@@ -58,6 +58,7 @@
     S.cam = S.stage && S.stage.querySelector('.cam');
     if (S.cam) {
       var vb = (S.cam.ownerSVGElement.getAttribute('viewBox') || '0 0 1600 1000').split(/\s+/).map(parseFloat);
+      S.vb = vb;
       S.camC = [vb[0] + vb[2] / 2, vb[1] + vb[3] / 2];
     }
     S.rings = [].slice.call(el.querySelectorAll('.st-ring'));
@@ -238,11 +239,32 @@
     return c;
   }
 
+  /* The camera never shows past the edge of the scene (that would open a strip of bare stage).
+     The edge is the scene as drawn; a drawing that only pokes out of its frame a little (a lamp
+     cord, a head) keeps the frame as its edge. Scenes drawn much larger (a map, a tall tree) can be
+     panned across in full. */
+  function camBounds(S) {
+    if (S.bounds) return S.bounds;
+    var v = S.vb, b = S.cam.getBBox(), tx = v[2] * .1, ty = v[3] * .1;
+    S.bounds = [b.x < v[0] - tx ? b.x : v[0], b.y < v[1] - ty ? b.y : v[1],
+      b.x + b.width > v[0] + v[2] + tx ? b.x + b.width : v[0] + v[2], b.y + b.height > v[1] + v[3] + ty ? b.y + b.height : v[1] + v[3]];
+    return S.bounds;
+  }
+  function camClamp(S, c) {
+    var svg = S.cam.ownerSVGElement, r = svg.getBoundingClientRect(), v = S.vb;
+    if (!r.width || !r.height || !/slice/.test(svg.getAttribute('preserveAspectRatio') || '')) return c;
+    var k = Math.max(r.width / v[2], r.height / v[3]), hw = r.width / k / 2 / c[2], hh = r.height / k / 2 / c[2], B = camBounds(S);
+    var x = B[2] - B[0] <= 2 * hw ? (B[0] + B[2]) / 2 : Math.min(Math.max(c[0], B[0] + hw), B[2] - hw);
+    var y = B[3] - B[1] <= 2 * hh ? (B[1] + B[3]) / 2 : Math.min(Math.max(c[1], B[1] + hh), B[3] - hh);
+    return [x, y, c[2]];
+  }
+
   function onStep(S, n) {
     S.stage && S.stage.setAttribute('data-step', n);
     S.steps.forEach(function (st, i) { st.el.classList.toggle('is-active', i === n - 1); });
     if (S.cam) {
       var c = camFor(S, n);
+      if (c) c = camClamp(S, c);
       if (c) S.cam.style.transform = 'translate(' + S.camC[0] + 'px,' + S.camC[1] + 'px) scale(' + c[2] + ') translate(' + (-c[0]) + 'px,' + (-c[1]) + 'px)';
     }
     var ring = n ? +(S.steps[n - 1].el.getAttribute('data-ring') || 0) : 0, reached = 0;
