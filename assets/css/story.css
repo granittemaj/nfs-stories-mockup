@@ -47,6 +47,7 @@
 
 /* ------------------------------------------------------------- text cards */
 .st-card{position:relative;max-width:410px;margin-left:max(24px,calc(50vw - 620px));padding:22px 26px;border-radius:14px;font-family:var(--st-body);font-size:19px;line-height:1.55;background:rgba(14,12,11,.9);color:var(--st-cream);border:1px solid rgba(255,255,255,.09);box-shadow:0 24px 48px -24px rgba(0,0,0,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:opacity .5s,transform .5s}
+.st-steps[data-side="right"] .st-card{margin-left:auto;margin-right:max(150px,calc(50vw - 560px))}
 .st-light .st-card{background:rgba(252,250,246,.96);color:var(--st-ink);border-color:rgba(20,18,16,.08);box-shadow:0 24px 48px -28px rgba(20,18,16,.35)}
 .st-card p + p{margin-top:12px}
 .st-js .st-step:not(.is-active) .st-card{opacity:.55}
@@ -223,6 +224,7 @@
 @media (max-width:760px){
   .st-js .st-step{align-items:flex-end;padding:0 0 9vh}
   .st-card{margin:0 16px;max-width:none;font-size:17px;padding:18px 20px}
+  .st-steps[data-side="right"] .st-card{margin:0 16px}
   .st-title{margin:0 20px;padding-bottom:6vh}
   .st-js .st-title-step{align-items:flex-end}
   .st-title h1{font-size:clamp(60px,19vw,92px)}
@@ -585,4 +587,113 @@ html:not(.st-js) .ns-ic[data-seen="1"]{opacity:1}
 @media (prefers-reduced-motion:reduce){
   .hx-line{animation:none}
   .at-route,.lw-doc,.ns-ic{transition:none!important}
+}
+
+/* ============================================================= 05 · Upstream */
+.st-paperboat{display:none;position:fixed;left:0;top:0;width:clamp(110px,10vw,150px);height:clamp(77px,7vw,105px);z-index:40;pointer-events:none;opacity:0;will-change:transform,opacity}
+.st-js .st-paperboat{display:block}
+.st-paperboat svg{width:100%;height:100%;overflow:visible}
+.pb-bob{animation:pb-bob 3s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes pb-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+.up-open{background:#16262c}
+.up-ripples{animation:up-flow 6s linear infinite}
+@keyframes up-flow{from{transform:translateX(0)}to{transform:translateX(-120px)}}
+.st-upstream .st-title h1{font-size:clamp(72px,12vw,160px)}
+
+/* the panorama: one wide picture that pans sideways as you scroll down */
+.pn-stage{--pp:clamp(0,calc((var(--p,0) - .02) / .8),1);background:#28323b}
+.pn-track{position:absolute;top:0;left:0;height:100%;aspect-ratio:6 / 1;transform:translateX(calc(var(--pp) * (100vw - 100%)));will-change:transform}
+.pn-art{display:block;width:100%;height:100%;max-width:none}
+.rv-flow{animation:rv-flow 5s linear infinite}
+@keyframes rv-flow{from{transform:translateX(0)}to{transform:translateX(-160px)}}
+.rv-boat{animation:rv-bob 3.2s ease-in-out infinite var(--d,0s)}
+@keyframes rv-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.rv-moored{animation-duration:4.5s}
+.rv-tag{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+.rv-tag.seen,html:not(.st-js) .rv-tag{opacity:1;transform:none}
+.rv-tag rect{fill:#fbf8f2}
+.rv-tag circle{fill:var(--st-orange)}
+.rv-tag text{font-family:var(--st-ui);font-weight:600;font-size:22px;fill:var(--st-ink)}
+.pn-dir{position:absolute;z-index:3;left:50%;top:18px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:8px 16px;border-radius:99px;background:rgba(14,12,11,.72);font-family:var(--st-ui);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,237,227,.82)}
+.pn-dir i{position:relative;width:140px;height:3px;border-radius:2px;background:rgba(243,237,227,.25)}
+.pn-dir i::after{content:"";position:absolute;top:-4px;left:calc(var(--pp) * 100%);width:11px;height:11px;margin-left:-5px;border-radius:50%;background:var(--st-orange)}
+
+/* eight words: a dictionary page that turns with each card */
+.gl-stage{background:#f6f1e7}
+.gl-book{position:absolute;top:50%;right:max(24px,calc(50vw - 600px));width:min(46vw,560px);height:min(70vh,560px);transform:translateY(-50%)}
+.gl-entry{position:absolute;inset:0;display:flex;flex-direction:column;padding:clamp(28px,4vw,48px);border-radius:18px;background:#fffdf8;border:1px solid #e8e1d4;box-shadow:0 30px 60px -36px rgba(20,18,16,.45);opacity:0;transform:translateY(18px) rotate(1deg);transition:opacity .45s,transform .55s}
+.gl-entry.is-current{opacity:1;transform:none}
+html:not(.st-js) .gl-entry[data-seen="1"]{opacity:1;transform:none}
+.gl-n{font-family:var(--st-ui);font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--st-orange)}
+.gl-word{margin-top:10px;font-family:var(--st-disp);font-weight:800;font-size:clamp(36px,4.2vw,58px);line-height:1;color:var(--st-ink)}
+.gl-pos{margin-top:8px;font-family:var(--st-body);font-style:italic;color:#6b6358}
+.gl-def{margin-top:18px;font-family:var(--st-body);font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#403a33}
+.gl-ic{margin-top:auto;width:96px;height:96px}
+
+/* in practice: three cards that link onward */
+.up-practice{max-width:1120px;margin:clamp(40px,6vw,64px) auto 0;padding:0 var(--pad);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px)}
+.up-card{display:block;padding:26px;border-radius:16px;background:#fff;border:1px solid #e8e1d4;color:inherit;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.up-card:hover{transform:translateY(-4px);box-shadow:0 30px 50px -34px rgba(20,18,16,.5)}
+.up-card:focus-visible{outline:3px solid var(--st-orange);outline-offset:4px}
+.up-card .st-kicker{margin-bottom:14px}
+.up-card h3{margin:0 0 10px;font-family:var(--st-disp);font-weight:700;font-size:26px;line-height:1.1}
+.up-card p:not(.st-kicker){font-size:16.5px;line-height:1.55;color:#403a33}
+.up-card .hub-more{margin:16px 0 0}
+
+/* ============================================================= 06 · When the Land Breaks */
+.ec-open{background:#1a130e}
+.st-ecocide .st-title h1{font-size:clamp(56px,8.6vw,120px)}
+
+/* a definition, highlighted phrase by phrase */
+.df-stage{background:#f6f1e7}
+.df-quote{position:absolute;top:50%;right:max(24px,calc(50vw - 600px));width:min(52vw,640px);margin:0;transform:translateY(-50%)}
+.df-quote p{font-family:var(--st-disp);font-weight:600;font-size:clamp(28px,3vw,42px);line-height:1.32;color:#9a9083}
+.df-quote footer{margin-top:22px;font-family:var(--st-ui);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6b6358}
+.hl{color:#9a9083;background:linear-gradient(transparent 58%,rgba(245,130,31,.5) 58%) no-repeat 0 0 / 0% 100%;transition:background-size .9s cubic-bezier(.3,.6,.2,1),color .4s}
+.hl.seen,html:not(.st-js) .hl{background-size:100% 100%;color:var(--st-ink)}
+
+/* the chain: dominoes */
+.dm-stage{background:#141210}
+.dm-stage .dm-svg{left:auto;right:max(24px,calc(50vw - 640px));width:min(60vw,820px)}
+.dm:not(.dm-1):not(.dm-6) rect{fill:#f3ede3}
+.dm:not(.dm-1):not(.dm-6) path{stroke:var(--st-ink);stroke-width:3}
+.dm:not(.dm-1):not(.dm-6) g{fill:var(--st-ink)}
+.dm{transform-box:fill-box;transform-origin:100% 100%;transition:transform .7s cubic-bezier(.55,0,.8,.3)}
+.dm.seen{transform:rotate(40deg)}
+.dm-6.seen{transform:rotate(84deg)}
+.dm-stage[data-step="7"] .dm{transform:none;transition:transform .8s cubic-bezier(.2,.9,.3,1.2)}
+.dm-stage[data-step="7"] .dm-1{transform:rotate(9deg)}
+.dm-stopper{opacity:0;transform:translateY(-280px);transition:transform .7s cubic-bezier(.3,1.3,.5,1),opacity .3s}
+.dm-stage[data-step="7"] .dm-stopper{opacity:1;transform:none}
+.dm-stopper text{font-family:var(--st-ui);font-size:17px;font-weight:700;fill:var(--st-orange)}
+.dm-l{font-family:var(--st-ui);font-weight:600;font-size:22px;fill:rgba(243,237,227,.88);text-anchor:middle;opacity:0;transition:opacity .4s .35s}
+.dm-l.seen{opacity:1}
+.dm-stage[data-step="7"] .dm-l:not([data-seen="1"]){opacity:.3}
+
+/* around the world */
+.wm-stage{background:#0b1416}
+.wm-stage .wm-map{left:0;right:auto;width:72%}
+.wm-map .wm-land{fill:#2a2520}
+.wm-region{opacity:0;transition:opacity .6s}
+.wm-region.seen{opacity:.5}
+.wm-region.is-current,html:not(.st-js) .wm-region{opacity:1}
+.wm-glow{fill:var(--st-orange);opacity:.2}
+.wm-ring{fill:none;stroke:var(--st-orange);stroke-width:3}
+.wm-region text{font-family:var(--st-disp);font-style:italic;font-weight:600;font-size:30px;fill:#f3ede3;paint-order:stroke;stroke:#0b1416;stroke-width:6px}
+
+@media (max-width:760px){
+  .st-paperboat{width:96px;height:67px}
+  .gl-book{top:12px;left:16px;right:16px;width:auto;height:min(54vh,440px);transform:none}
+  .gl-entry{padding:22px}
+  .gl-word{font-size:34px}
+  .gl-def{font-size:17px;margin-top:12px}
+  .gl-ic{width:64px;height:64px}
+  .up-practice{grid-template-columns:1fr}
+  .df-quote{top:7%;left:16px;right:16px;width:auto;transform:none}
+  .df-quote p{font-size:23px}
+  .dm-stage .dm-svg,.wm-stage .wm-map{left:0;right:0;width:100%;height:60%}
+}
+@media (prefers-reduced-motion:reduce){
+  .pb-bob,.up-ripples,.rv-flow,.rv-boat{animation:none!important}
+  .dm,.dm-stopper,.hl,.gl-entry{transition:none!important}
 }
