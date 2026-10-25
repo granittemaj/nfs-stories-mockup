@@ -14,6 +14,9 @@
      data-year="2015"   a .st-year counter in the stage counts to this year (or shows the text)
      data-units="n"     a .st-units chart (canvas, one square per person) shows layer n
 
+   A .th-wrap in a section is a thread: a line drawn through its .th-node markers that reveals
+   itself down to the middle of the screen, with a glowing tip.
+
    Section attributes: data-progress sets --p (0 to 1) on the section as it scrolls past;
    data-cam0 / data-cam0m give the camera before the first card (default: the whole scene).
    Elements with data-seen="n" get .seen once a step with data-ring >= n has been reached.
@@ -70,6 +73,8 @@
     S.year = S.stage && S.stage.querySelector('.st-year');
     var units = S.stage && S.stage.querySelector('.st-units');
     if (units) S.units = unitsInit(units);
+    var thread = el.querySelector('.th-wrap');
+    if (thread) S.thread = { wrap: thread, path: thread.querySelector('.th-path'), ghost: thread.querySelector('.th-ghost'), clip: thread.querySelector('.th-clip'), tip: thread.querySelector('.th-tip'), svg: thread.querySelector('.th-svg'), nodes: [].slice.call(thread.querySelectorAll('.th-node')), pts: [] };
     sections.push(S);
   });
 
@@ -360,6 +365,52 @@
     })(performance.now());
   }
 
+  /* ---------------------------------------------------------------- threads */
+  function smoothPath(p) {
+    var d = 'M' + p[0][0].toFixed(1) + ' ' + p[0][1].toFixed(1);
+    for (var i = 0; i < p.length - 1; i++) {
+      var p0 = p[i - 1] || p[i], p1 = p[i], p2 = p[i + 1], p3 = p[i + 2] || p2;
+      d += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' +
+        (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    }
+    return d;
+  }
+  // the line runs through the node column (the middle, or the left edge on phones), swinging out
+  // between nodes
+  function threadLayout(T) {
+    var r = T.wrap.getBoundingClientRect(), Wd = r.width, Hd = T.wrap.offsetHeight, y0 = w.scrollY || w.pageYOffset;
+    T.svg.setAttribute('viewBox', '0 0 ' + Wd.toFixed(0) + ' ' + Hd.toFixed(0));
+    var n0 = T.nodes[0] && T.nodes[0].getBoundingClientRect();
+    var cx = n0 ? n0.left - r.left + n0.width / 2 : Wd / 2, sway = narrow ? 10 : Math.min(90, Wd * .06), p = [[cx, 0]];
+    T.ny = [];
+    T.nodes.forEach(function (n, i) {
+      var q = n.getBoundingClientRect(), y = q.top - r.top + q.height / 2, prev = p[p.length - 1];
+      p.push([cx + (i % 2 ? sway : -sway), (prev[1] + y) / 2]);
+      p.push([cx, y]);
+      T.ny.push(y);
+    });
+    p.push([cx, Hd]);
+    var d = smoothPath(p);
+    T.path.setAttribute('d', d); T.ghost.setAttribute('d', d);
+    T.clip.setAttribute('width', (Wd + 40).toFixed(0));
+    T.top = r.top + y0; T.h = Hd;
+    var L = T.path.getTotalLength();
+    T.pts = [];
+    for (var i = 0; i <= 500; i++) { var pt = T.path.getPointAtLength(L * i / 500); T.pts.push([pt.x, pt.y]); }
+    T.last = -1;
+  }
+  function threadFrame(T, y) {
+    var local = Math.max(0, Math.min(T.h, y + vh * .5 - T.top));
+    if (Math.abs(local - T.last) < .5) return;
+    T.last = local;
+    T.clip.setAttribute('height', local.toFixed(1));
+    var pt = T.pts[T.pts.length - 1];
+    for (var i = 0; i < T.pts.length; i++) if (T.pts[i][1] >= local) { pt = T.pts[i]; break; }
+    T.tip.style.transform = 'translate(' + pt[0].toFixed(1) + 'px,' + pt[1].toFixed(1) + 'px)';
+    T.tip.style.opacity = local > 2 && local < T.h - 2 ? 1 : 0;
+    T.nodes.forEach(function (n, k) { n.classList.toggle('on', T.ny[k] <= local + 1); });
+  }
+
   /* ---------------------------------------------------------------- the guide */
   var shown = { screen: '', msgs: -1 };
   function pos(K) {
@@ -416,7 +467,7 @@
       k.forEach(function (K) { var q = K.el.getBoundingClientRect(); K.at = q.top + y + q.height / 2 - centre(); K.anchor = null; });
     });
     if (phone) { pw = phone.offsetWidth; ph = phone.offsetHeight; }
-    sections.forEach(function (S) { if (S.units) unitsLayout(S.units); });
+    sections.forEach(function (S) { if (S.units) unitsLayout(S.units); if (S.thread) threadLayout(S.thread); });
     kick();
   }
 
@@ -436,6 +487,7 @@
       var near = y + vh > S.top - vh && y < S.top + S.h + vh;
       if (S.map && near) mapFrame(S, y);
       if (S.track && near) trackFrame(S, y);
+      if (S.thread && near) threadFrame(S.thread, y);
     });
     guide(y);
     // chapter rail and reading progress

@@ -271,7 +271,7 @@
 .hub-go{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin-top:28px;min-height:46px;padding:0 26px;border-radius:40px;background:var(--st-orange);color:#fff;font-family:var(--st-disp);font-style:italic;font-weight:600;font-size:16px}
 .hub-go svg{width:18px;height:18px;transition:transform .25s}
 .hub-feature:hover .hub-go svg{transform:translateX(4px)}
-.hub-next{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px);margin-top:clamp(16px,2.4vw,28px)}
+.hub-next{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px);margin-top:clamp(16px,2.4vw,28px)}
 .hub-card{border-radius:16px;background:#fff;border:1px solid #e8e1d4;overflow:hidden;padding-bottom:24px;color:inherit;text-decoration:none;display:block}
 a.hub-card{transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s}
 a.hub-card:hover{transform:translateY(-4px);box-shadow:0 30px 50px -34px rgba(20,18,16,.5)}
@@ -505,4 +505,84 @@ html:not(.st-js) .wp-b{clip-path:inset(0 0 0 50%)}
 }
 @media (prefers-reduced-motion:reduce){
   .bw-steam,.eu-arc.seen{animation:none!important}
+}
+
+/* ============================================================= 04 · Slavery Changes Shape */
+.hx-open{background:radial-gradient(60% 50% at 50% 42%,rgba(245,130,31,.09),transparent 70%),#0e0c0b}
+.hx-line{position:absolute;left:50%;top:0;width:3px;height:54%;margin-left:-1.5px;background:linear-gradient(rgba(245,130,31,0),var(--st-orange));transform-origin:top;animation:hx-draw 2.6s cubic-bezier(.3,.6,.2,1) both}
+.hx-line::after{content:"";position:absolute;left:50%;bottom:-8px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--st-orange);box-shadow:0 0 0 7px rgba(245,130,31,.2),0 0 26px rgba(245,130,31,.85)}
+@keyframes hx-draw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.st-title .st-meta a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* the thread: a line that draws itself down the page, eras along it */
+.st-threadsc{background:var(--st-paper);padding:14vh 0 18vh}
+.th-wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+.th-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.th-ghost{fill:none;stroke:#d8ccb8;stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.th-path{fill:none;stroke:var(--st-orange);stroke-width:4;stroke-linecap:round}
+.th-tip{position:absolute;z-index:2;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--st-orange);box-shadow:0 0 0 6px rgba(245,130,31,.2),0 0 24px rgba(245,130,31,.75);opacity:0;pointer-events:none;transition:opacity .3s}
+.th-list{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(64px,12vh,140px)}
+.st-threadsc .st-step,.st-js .st-threadsc .st-step{min-height:0;padding:0;display:grid;grid-template-columns:1fr 120px 1fr;align-items:center;pointer-events:auto}
+.th-node{grid-column:2;grid-row:1;justify-self:center;position:relative;z-index:1;width:18px;height:18px;border-radius:50%;background:var(--st-paper);border:3px solid #d8ccb8;transition:border-color .3s,background .3s,transform .3s}
+.th-node.on{border-color:var(--st-orange);background:var(--st-orange);transform:scale(1.15)}
+.th-item.is-left .st-card{grid-column:1;grid-row:1;justify-self:end}
+.th-item.is-left .th-art{grid-column:3;grid-row:1}
+.th-item.is-right .th-art{grid-column:1;grid-row:1;justify-self:end}
+.th-item.is-right .st-card{grid-column:3;grid-row:1}
+.th-item.is-wide .st-card{grid-column:1 / -1;grid-row:2;justify-self:center;max-width:620px;margin-top:28px;text-align:center}
+.th-art{margin:0;width:min(100%,300px);aspect-ratio:4 / 3;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -28px rgba(20,18,16,.55);opacity:.45;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.th-art svg{width:100%;height:100%;display:block}
+.th-item:has(.th-node.on) .th-art,html:not(.st-js) .th-art{opacity:1;transform:none}
+.st-threadsc .st-card{margin:0;max-width:430px}
+
+/* the Atlantic, 1500 to 1866 */
+.at-stage{background:#0b1416}
+.at-stage .at-map{left:auto;right:0;width:76%}
+.at-map .at-sea{fill:#0b1416}
+.at-map .at-land{fill:#2a2520}
+.at-map .at-borders{fill:none;stroke:#3d3630;stroke-width:1}
+.at-route{fill:none;stroke:var(--st-orange);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.92;transition:stroke-dashoffset 2.4s cubic-bezier(.4,.1,.2,1)}
+.at-route.seen,html:not(.st-js) .at-route{stroke-dashoffset:0}
+.at-trade{fill:none;stroke:#cfc6b6;stroke-width:1.8;stroke-dasharray:.008 .01;opacity:0;transition:opacity .9s}
+.at-trade.seen,html:not(.st-js) .at-trade{opacity:.75}
+.at-dots circle{fill:#f3ede3}
+.at-label{font-family:var(--st-disp);font-style:italic;font-weight:600;font-size:22px;fill:#cfc6b6;text-anchor:middle}
+.at-label.big{font-size:30px;fill:#f3ede3}
+.at-label.sea{font-family:var(--st-ui);font-style:normal;font-weight:500;font-size:20px;letter-spacing:.3em;fill:#4f7376}
+
+/* a century of laws: a pile of paper */
+.lw-stage{background:#efe7da}
+.lw-doc rect{fill:#fbf8f2;stroke:#d8ccb8;stroke-width:2}
+.lw-doc.is-teal rect{fill:#e2eeec}
+.lw-doc.is-rust rect{fill:#f4e2d8}
+.lw-doc.is-orange rect{fill:#fde6cf;stroke:#F5821F}
+.lw-doc text{font-family:var(--st-disp);font-weight:700;font-size:22px;fill:var(--st-ink)}
+.lw-doc{opacity:0;transform:translateY(-460px);transition:transform .85s cubic-bezier(.3,1.2,.5,1) calc(var(--i) * .16s),opacity .3s calc(var(--i) * .16s)}
+.lw-doc.seen,html:not(.st-js) .lw-doc{opacity:1;transform:none}
+
+/* new shapes: one icon at a time */
+.ns-stage{background:#141210}
+.ns-stage .ns-svg{left:auto;right:max(24px,calc(50vw - 640px));width:min(56vw,760px)}
+.ns-ic{opacity:0;transform:scale(.92);transform-box:fill-box;transform-origin:center;transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.3,1.1)}
+.ns-ic.is-current{opacity:1;transform:none}
+.ns-stage[data-step="4"] .ns-ic{opacity:.22;transform:scale(.8)}
+.ns-all{opacity:0;transition:opacity .6s}
+.ns-all.seen{opacity:1}
+html:not(.st-js) .ns-ic[data-seen="1"]{opacity:1}
+
+@media (max-width:760px){
+  .st-threadsc{padding:10vh 0 14vh}
+  .st-threadsc .st-step,.st-js .st-threadsc .st-step{grid-template-columns:44px 1fr;row-gap:14px;align-items:start}
+  .th-node{grid-column:1;grid-row:1;margin-top:14px}
+  .th-item.is-left .th-art,.th-item.is-right .th-art{grid-column:2;grid-row:1;justify-self:start;width:min(100%,260px)}
+  .th-item.is-left .st-card,.th-item.is-right .st-card{grid-column:2;grid-row:2;justify-self:stretch}
+  .th-item.is-wide .st-card{grid-column:2;grid-row:1;margin-top:0;text-align:left}
+  .st-threadsc .st-card{margin:0;max-width:none}
+  .at-stage .at-map{left:0;width:100%;top:6%;height:58%}
+  .lw-svg{transform:translateY(-24%)}
+  .ns-stage .ns-svg{left:0;right:0;width:100%;height:58%}
+}
+@media (prefers-reduced-motion:reduce){
+  .hx-line{animation:none}
+  .at-route,.lw-doc,.ns-ic{transition:none!important}
 }

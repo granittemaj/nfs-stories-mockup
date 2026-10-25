@@ -12,6 +12,7 @@ theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 - Story 01, The Offer: [`the-offer/`](the-offer/)
 - Story 02, The Forest Line: [`the-forest-line/`](the-forest-line/)
 - Story 03, A Bowl of Soup: [`a-bowl-of-soup/`](a-bowl-of-soup/)
+- Story 04, Slavery Changes Shape: [`slavery-changes-shape/`](slavery-changes-shape/)
 
 ## 01 · The Offer
 
@@ -63,6 +64,22 @@ soup is the guide: it lands on a kitchen counter, then travels a real map of Ams
 | Then and now | Scrolling wipes from the 2012 kitchen to the restaurant today. |
 | What's next | The night map of Europe: the recipe may travel back east. Links to The Offer. |
 
+## 04 · Slavery Changes Shape
+
+Mark Wexler's article [The History of Modern-Day Slavery and Human
+Trafficking](https://wearenotforsale.org/human-trafficking/history-of-modern-day-slavery/) as a
+scroll. No guide object this time: an orange thread draws itself down the page instead.
+
+| Chapter | What happens on screen |
+| --- | --- |
+| Older than history | A line starts down a dark page, then the title. |
+| Before 1500 | The thread swings through six eras (the ancient world, the Islamic world, Africa, Asia, the Americas, medieval Europe), each with an illustration. |
+| 1500 to 1866 | A map of the Atlantic: the routes of the slave trade draw in by region, a year card goes from 1500 to 1807 to 1866. |
+| After the trade | The thread again: Wilberforce, then Chinese immigrants trafficked into the United States in the 1800s. |
+| A century of laws | Laws and treaties drop onto a pile, 1904 to 2024, while the year counts. |
+| Today | 500 squares, one per 100,000 people: 28 million in forced labour, 22 million in forced marriage. |
+| New shapes | Online recruitment (linking to The Offer), scam compounds, climate change (linking to The Forest Line). |
+
 ## The building blocks
 
 Everything is driven by data attributes on the text steps, so each block can become a WordPress
@@ -81,6 +98,7 @@ block later. The engine is `assets/js/story.js` (vanilla, no dependencies, about
 | `data-seen="n"` | On any element: it gets `.seen` once a step with `data-ring` of `n` or more has been reached (close-up circles, the forest line). |
 | `data-year="2015"` | A `.st-year` counter in the stage counts to this year, or shows a word such as "Today". |
 | `data-units="n"` | A `.st-units` canvas (one square per person) shows layer `n`: all squares, then each group, then the highlight. |
+| `.th-wrap` | A thread: a line drawn through the `.th-node` markers of a section, revealed down to the middle of the screen, with a glowing tip. Built from the page layout, so it fits any screen. |
 | `data-progress` | On a section: sets `--p` (0 to 1) as it scrolls past, for scroll-linked effects (the door, the zone bar, clouds). |
 
 The guide is whatever element has the class `st-guide`: a phone with screens in The Offer, a
@@ -99,7 +117,8 @@ python3 src/build.py
 
 - Story text: `src/the-offer.html` (scenes are pulled in from `src/scenes/*.svg`).
 - Styles: `assets/css/story.css`. Engine: `assets/js/story.js`.
-- The map: `cd tools/map && npm install && npm run build` writes `src/scenes/map.svg`.
+- The maps: `cd tools/map && npm install && npm run build` writes `src/scenes/map.svg`;
+  `node build-atlantic.mjs` writes `src/scenes/atlantic.svg`.
 - The Amsterdam map: `cd tools/amsterdam`, fetch `osm.json` with the curl line at the top of
   `build-amsterdam.py` (the query is in `query.overpass`), then `python3 build-amsterdam.py`.
 - The Forest Line landscapes: `node tools/forest/build-flyover.mjs` (no dependencies) writes
@@ -123,6 +142,9 @@ Asset URLs carry content hashes, so GitHub Pages never serves stale CSS or JS af
 - **A Bowl of Soup:** Toos Heemskerk-Schep is named as on Not For Sale's site; ask before
   publishing. The opening hours (09:30 to 16:30) are as listed on the Dignita page. Map pins are
   approximate, and the safe house is deliberately not shown.
+- **Slavery Changes Shape:** the text follows Mark Wexler's article. The SlaveVoyages figures
+  (12.5 million forced onto ships, about 10.7 million survived) were added for the story and are
+  not in the article. The map's routes are drawn by region, not from voyage data.
 - Donate and the other calls to action link to the live site.
 
 ## Credits

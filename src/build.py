@@ -134,12 +134,21 @@ HUB = '''
         <p>How a soup programme in an Amsterdam safe house became Dignita: a year that counts across a real map of Amsterdam, a recipe card, 4,561 squares for 4,561 people, and a wipe from 2012 to today.</p>
         <span class="hub-more">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+      <a class="hub-card" href="slavery-changes-shape/">
+        <div class="hub-card-art" aria-hidden="true">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#0e0c0b"/><path d="M200 0C200 40 150 50 150 80s50 40 50 70-40 40-40 70" fill="none" stroke="#F5821F" stroke-width="4" stroke-linecap="round"/><circle cx="160" cy="220" r="0"/><circle cx="150" cy="80" r="8" fill="#F5821F"/><circle cx="200" cy="150" r="8" fill="#F5821F"/><g fill="#3a342e"><rect x="250" y="40" width="110" height="20" rx="2"/><rect x="256" y="62" width="104" height="20" rx="2"/><rect x="246" y="84" width="114" height="20" rx="2"/></g><g fill="#C46F49"><rect x="40" y="120" width="12" height="12"/><rect x="56" y="120" width="12" height="12"/><rect x="72" y="120" width="12" height="12"/><rect x="88" y="120" width="12" height="12"/></g><g fill="#4F8E92"><rect x="40" y="136" width="12" height="12"/><rect x="56" y="136" width="12" height="12"/><rect x="72" y="136" width="12" height="12"/></g></svg>
+        </div>
+        <p class="hub-num">04 &#183; Ready to review</p>
+        <h3>Slavery Changes Shape</h3>
+        <p>Mark Wexler&#8217;s history of modern-day slavery as a scroll: a thread through the ancient world, the Atlantic trade on a map, a century of laws piling up, and the new shapes slavery takes today.</p>
+        <span class="hub-more">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
   </section>
 
   <section class="hub-wrap hub-blocks">
     <p class="st-kicker">What the stories are built from</p>
-    <h2>Twelve building blocks, ready to become WordPress blocks</h2>
+    <h2>Fourteen building blocks, ready to become WordPress blocks</h2>
     <ol>
       <li><b>The guide</b><span>One object that travels the whole story and lands on things: Ana&#8217;s phone, the plane over Madre de Dios.</span></li>
       <li><b>Sticky scenes</b><span>An illustration holds still while the text scrolls over it, and the camera moves to what each line is about.</span></li>
@@ -153,6 +162,8 @@ HUB = '''
       <li><b>The year counter</b><span>A date that counts up as the story moves through time, over a real map.</span></li>
       <li><b>One square, one person</b><span>A unit chart that colours itself in, group by group, as you read.</span></li>
       <li><b>Then and now</b><span>Two pictures of the same place; scrolling wipes from one year to the other.</span></li>
+      <li><b>The thread</b><span>A line that draws itself down the page, linking the eras of a long history.</span></li>
+      <li><b>The paper trail</b><span>Things that pile up as you read: here, a century of laws and treaties.</span></li>
     </ol>
   </section>
 </main>
@@ -161,6 +172,8 @@ HUB = '''
 if __name__ == '__main__':
     story('the-offer', 'The Offer &#183; Not For Sale stories (mockup)',
           'How a job offer becomes a trap, and how the way out begins. A scroll-driven story mockup for Not For Sale.')
+    story('slavery-changes-shape', 'Slavery Changes Shape &#183; Not For Sale stories (mockup)',
+          'From the first civilisations to the scam compounds of today: the history of slavery and the fight against it. A scroll-driven story mockup for Not For Sale.')
     story('a-bowl-of-soup', 'A Bowl of Soup &#183; Not For Sale stories (mockup)',
           'How a soup programme in an Amsterdam safe house grew into Dignita. A scroll-driven story mockup for Not For Sale.')
     story('the-forest-line', 'The Forest Line &#183; Not For Sale stories (mockup)',
