@@ -204,11 +204,13 @@
 .st-rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:none}
 .st-js .st-rail{display:block;transition:opacity .3s}
 .st-rail[data-off]{opacity:0;pointer-events:none}
-.st-rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.st-rail button{display:flex;align-items:center;justify-content:flex-end;gap:10px;background:none;border:0;padding:4px 0;cursor:pointer;font-family:var(--st-ui);font-size:12px;letter-spacing:.04em;color:rgba(243,237,227,.86)}
-.st-rail button span{opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s;white-space:nowrap;padding:3px 8px;border-radius:99px;background:rgba(14,12,11,.7)}
+.st-rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:4px}
+/* every button is the same size and holds only the dot, so the dots form one column; the label
+   floats to the left of its dot */
+.st-rail button{position:relative;display:grid;place-items:center;width:24px;height:24px;background:none;border:0;padding:0;cursor:pointer;font-family:var(--st-ui);font-size:12px;letter-spacing:.04em;color:rgba(243,237,227,.86)}
+.st-rail button span{position:absolute;right:calc(100% + 6px);top:50%;opacity:0;transform:translate(6px,-50%);pointer-events:none;transition:opacity .25s,transform .25s;white-space:nowrap;padding:3px 8px;border-radius:99px;background:rgba(14,12,11,.7)}
 .st-rail button i{width:8px;height:8px;border-radius:50%;border:1.5px solid currentColor;transition:background .25s,transform .25s}
-.st-rail button:hover span,.st-rail button:focus-visible span,.st-rail button[aria-current="step"] span{opacity:1;transform:none}
+.st-rail button:hover span,.st-rail button:focus-visible span,.st-rail button[aria-current="step"] span{opacity:1;transform:translate(0,-50%)}
 .st-rail button[aria-current="step"] i{background:var(--st-orange);border-color:var(--st-orange);transform:scale(1.25)}
 .st-rail[data-tone="light"] button{color:#403a33}
 .st-rail[data-tone="light"] button span{background:rgba(252,250,246,.9)}
