@@ -6,8 +6,6 @@
 .st-hub .pagehead h1 em{white-space:nowrap}
 /* the lead story across the top, then three to a row */
 .hub-feed{grid-template-columns:repeat(3,minmax(0,1fr))}
-.hub-feed .art{display:flex;flex-direction:column}
-.hub-feed .art .b{flex:1;height:auto}
 /* story titles are short and the summaries are few: no room kept for a second title line, summaries in full */
 .hub-feed .art .t{min-height:0}
 .hub-feed .art .dek{-webkit-line-clamp:4;min-height:0}
@@ -18,6 +16,8 @@
 .hub-feature:focus-visible{outline:3px solid var(--st-orange);outline-offset:4px}
 .hub-feature-art{position:relative;min-height:460px;perspective:900px}
 .hub-feature-art svg{position:absolute;inset:0;width:100%;height:100%}
+/* the date on the picture, as on the news cards (theme .art .ph .dt) */
+.hub-feature-art .dt{position:absolute;left:14px;bottom:14px;z-index:3;padding:5px 11px;border-radius:30px;background:rgba(243,237,227,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:12px;letter-spacing:.04em;font-weight:600;line-height:1.3}
 .hub-phone{position:absolute;left:50%;top:50%;width:184px;height:380px;margin:-190px 0 0 -92px;border-radius:32px;padding:7px;background:linear-gradient(150deg,#3a3631,#0c0b0a 38%,#1d1b18);box-shadow:0 40px 70px -28px rgba(0,0,0,.8),inset 0 0 0 1.5px rgba(255,255,255,.14);transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) rotate(-6deg) scale(var(--ps,1));transition:transform .5s cubic-bezier(.2,.8,.3,1)}
 .hub-feature:hover .hub-phone{transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) rotate(-2deg) translateY(-6px) scale(var(--ps,1));transition-duration:.25s}
 .hub-phone > div{height:100%;border-radius:26px;overflow:hidden;background:radial-gradient(120% 70% at 28% 18%,#4a3326,#120e0c 62%);font-family:var(--st-ui);color:#fff;text-align:center;padding-top:40px}
