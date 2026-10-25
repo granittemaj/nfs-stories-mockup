@@ -14,7 +14,7 @@ theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 - Story 03, A Bowl of Soup: [`a-bowl-of-soup/`](a-bowl-of-soup/)
 - Story 04, Slavery Changes Shape: [`slavery-changes-shape/`](slavery-changes-shape/)
 - Story 05, Upstream: [`upstream/`](upstream/)
-- Story 06, When the Land Breaks: [`when-the-land-breaks/`](when-the-land-breaks/)
+- Story 06, When the Land Breaks, two versions: [`when-the-land-breaks/`](when-the-land-breaks/)
 
 ## 01 · The Offer
 
@@ -92,13 +92,25 @@ root causes on the banks, upstream intervention, systems change at the source. T
 from the glossary, one dictionary page at a time, and three cards linking to Dignita, The Forest
 Line and the Peru project.
 
-## 06 · When the Land Breaks
+## 06 · When the Land Breaks (two versions)
 
 Not For Sale's [Ecocide Meaning: How It Fuels Human
 Trafficking](https://wearenotforsale.org/human-trafficking/ecocide-meaning-how-it-fuels-human-trafficking/).
-The 2021 legal definition of ecocide, highlighted phrase by phrase; a chain of dominoes from
-collapsing ecosystems to exploitation, stopped by an "Upstream" block; and a world map
-(`tools/map/build-world.mjs`) with the article's three regions plus Madre de Dios.
+The first version (diagrams: a highlighted definition, dominoes, a world map) was rejected and
+removed. Two replacements are up for a choice at [`when-the-land-breaks/`](when-the-land-breaks/):
+
+- **A · One coast, over time** ([`when-the-land-breaks-coast/`](when-the-land-breaks-coast/)):
+  one illustrated mangrove fishing village (`src/scenes/coast.svg`) that changes state with each
+  card: the coast, the shrimp ponds, the storm, the empty sea, the road out. Then the fishing
+  boats where some end up (`sea.svg`), and the same coast replanted. A small fishing boat is the
+  guide.
+- **B · From space** ([`when-the-land-breaks-from-space/`](when-the-land-breaks-from-space/)):
+  real satellite images of one 54 by 33 km frame of Madre de Dios, Peru (13.15° to 12.85° S,
+  70.35° to 69.85° W), from NASA GIBS: Landsat annual composites for 1985 and 2000, and
+  Harmonized Landsat and Sentinel-2 for 16 August 2025, which wipes in as you scroll. Then a
+  close-up of the mining zone, and what a satellite cannot see. River and highway labels are
+  placed from OpenStreetMap; the outline of the mining area is drawn by hand. Images are in
+  `assets/img/space/` (WebP, about 1.1 MB in all).
 
 ## The building blocks
 
@@ -120,7 +132,8 @@ block later. The engine is `assets/js/story.js` (vanilla, no dependencies, about
 | `data-units="n"` | A `.st-units` canvas (one square per person) shows layer `n`: all squares, then each group, then the highlight. |
 | `data-side="right"` | On `.st-steps`: cards on the right, for scenes whose subject sits on the left. |
 | Panorama | `.pn-track` in a `data-progress` section: a wide picture that pans sideways with `--p`. |
-| Glossary, highlighter, dominoes | Elements with `data-seen` styled by `.seen` and `.is-current`: dictionary pages, highlighted phrases, falling dominoes. No extra script. |
+| Glossary, time-lapse, satellite wipe | Elements with `data-seen` styled by `.seen` and `.is-current`, or stage states keyed on `data-step`, plus `--p` for the wipe. No extra script. |
+| `.is-right` | On a single `.st-step`: that card sits on the right. |
 | `.th-wrap` | A thread: a line drawn through the `.th-node` markers of a section, revealed down to the middle of the screen, with a glowing tip. Built from the page layout, so it fits any screen. |
 | `data-progress` | On a section: sets `--p` (0 to 1) as it scrolls past, for scroll-linked effects (the door, the zone bar, clouds). |
 
@@ -141,8 +154,7 @@ python3 src/build.py
 - Story text: `src/the-offer.html` (scenes are pulled in from `src/scenes/*.svg`).
 - Styles: `assets/css/story.css`. Engine: `assets/js/story.js`.
 - The maps: `cd tools/map && npm install && npm run build` writes `src/scenes/map.svg`;
-  `node build-atlantic.mjs` writes `src/scenes/atlantic.svg`, `node build-world.mjs` writes
-  `src/scenes/world.svg`.
+  `node build-atlantic.mjs` writes `src/scenes/atlantic.svg`.
 - The river: `node tools/river/build-river.mjs` writes `src/scenes/river.svg`.
 - The Amsterdam map: `cd tools/amsterdam`, fetch `osm.json` with the curl line at the top of
   `build-amsterdam.py` (the query is in `query.overpass`), then `python3 build-amsterdam.py`.
@@ -170,6 +182,8 @@ Asset URLs carry content hashes, so GitHub Pages never serves stale CSS or JS af
 - **Slavery Changes Shape:** the text follows Mark Wexler's article. The SlaveVoyages figures
   (12.5 million forced onto ships, about 10.7 million survived) were added for the story and are
   not in the article. The map's routes are drawn by region, not from voyage data.
+- **When the Land Breaks, B:** NASA imagery is public domain; the 2025 image contains modified
+  Copernicus Sentinel data processed by NASA (HLS). Credit both if it is published.
 - **When the Land Breaks:** the source article quotes figures without specific sources (80% of
   displaced people at risk, "up to 60%", 120,000 people, 7,888 km²). They are left out of the
   story; check them before they are used anywhere. The legal definition comes from Not For Sale's

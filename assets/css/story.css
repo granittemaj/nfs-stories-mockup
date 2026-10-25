@@ -47,7 +47,7 @@
 
 /* ------------------------------------------------------------- text cards */
 .st-card{position:relative;max-width:410px;margin-left:max(24px,calc(50vw - 620px));padding:22px 26px;border-radius:14px;font-family:var(--st-body);font-size:19px;line-height:1.55;background:rgba(14,12,11,.9);color:var(--st-cream);border:1px solid rgba(255,255,255,.09);box-shadow:0 24px 48px -24px rgba(0,0,0,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:opacity .5s,transform .5s}
-.st-steps[data-side="right"] .st-card{margin-left:auto;margin-right:max(150px,calc(50vw - 560px))}
+.st-steps[data-side="right"] .st-card,.st-step.is-right .st-card{margin-left:auto;margin-right:max(150px,calc(50vw - 560px))}
 .st-light .st-card{background:rgba(252,250,246,.96);color:var(--st-ink);border-color:rgba(20,18,16,.08);box-shadow:0 24px 48px -28px rgba(20,18,16,.35)}
 .st-card p + p{margin-top:12px}
 .st-js .st-step:not(.is-active) .st-card{opacity:.55}
@@ -224,7 +224,7 @@
 @media (max-width:760px){
   .st-js .st-step{align-items:flex-end;padding:0 0 9vh}
   .st-card{margin:0 16px;max-width:none;font-size:17px;padding:18px 20px}
-  .st-steps[data-side="right"] .st-card{margin:0 16px}
+  .st-steps[data-side="right"] .st-card,.st-step.is-right .st-card{margin:0 16px}
   .st-title{margin:0 20px;padding-bottom:6vh}
   .st-js .st-title-step{align-items:flex-end}
   .st-title h1{font-size:clamp(60px,19vw,92px)}
@@ -640,47 +640,6 @@ html:not(.st-js) .gl-entry[data-seen="1"]{opacity:1;transform:none}
 .up-card p:not(.st-kicker){font-size:16.5px;line-height:1.55;color:#403a33}
 .up-card .hub-more{margin:16px 0 0}
 
-/* ============================================================= 06 · When the Land Breaks */
-.ec-open{background:#1a130e}
-.st-ecocide .st-title h1{font-size:clamp(56px,8.6vw,120px)}
-
-/* a definition, highlighted phrase by phrase */
-.df-stage{background:#f6f1e7}
-.df-quote{position:absolute;top:50%;right:max(24px,calc(50vw - 600px));width:min(52vw,640px);margin:0;transform:translateY(-50%)}
-.df-quote p{font-family:var(--st-disp);font-weight:600;font-size:clamp(28px,3vw,42px);line-height:1.32;color:#9a9083}
-.df-quote footer{margin-top:22px;font-family:var(--st-ui);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6b6358}
-.hl{color:#9a9083;background:linear-gradient(transparent 58%,rgba(245,130,31,.5) 58%) no-repeat 0 0 / 0% 100%;transition:background-size .9s cubic-bezier(.3,.6,.2,1),color .4s}
-.hl.seen,html:not(.st-js) .hl{background-size:100% 100%;color:var(--st-ink)}
-
-/* the chain: dominoes */
-.dm-stage{background:#141210}
-.dm-stage .dm-svg{left:auto;right:max(24px,calc(50vw - 640px));width:min(60vw,820px)}
-.dm:not(.dm-1):not(.dm-6) rect{fill:#f3ede3}
-.dm:not(.dm-1):not(.dm-6) path{stroke:var(--st-ink);stroke-width:3}
-.dm:not(.dm-1):not(.dm-6) g{fill:var(--st-ink)}
-.dm{transform-box:fill-box;transform-origin:100% 100%;transition:transform .7s cubic-bezier(.55,0,.8,.3)}
-.dm.seen{transform:rotate(40deg)}
-.dm-6.seen{transform:rotate(84deg)}
-.dm-stage[data-step="7"] .dm{transform:none;transition:transform .8s cubic-bezier(.2,.9,.3,1.2)}
-.dm-stage[data-step="7"] .dm-1{transform:rotate(9deg)}
-.dm-stopper{opacity:0;transform:translateY(-280px);transition:transform .7s cubic-bezier(.3,1.3,.5,1),opacity .3s}
-.dm-stage[data-step="7"] .dm-stopper{opacity:1;transform:none}
-.dm-stopper text{font-family:var(--st-ui);font-size:17px;font-weight:700;fill:var(--st-orange)}
-.dm-l{font-family:var(--st-ui);font-weight:600;font-size:22px;fill:rgba(243,237,227,.88);text-anchor:middle;opacity:0;transition:opacity .4s .35s}
-.dm-l.seen{opacity:1}
-.dm-stage[data-step="7"] .dm-l:not([data-seen="1"]){opacity:.3}
-
-/* around the world */
-.wm-stage{background:#0b1416}
-.wm-stage .wm-map{left:0;right:auto;width:72%}
-.wm-map .wm-land{fill:#2a2520}
-.wm-region{opacity:0;transition:opacity .6s}
-.wm-region.seen{opacity:.5}
-.wm-region.is-current,html:not(.st-js) .wm-region{opacity:1}
-.wm-glow{fill:var(--st-orange);opacity:.2}
-.wm-ring{fill:none;stroke:var(--st-orange);stroke-width:3}
-.wm-region text{font-family:var(--st-disp);font-style:italic;font-weight:600;font-size:30px;fill:#f3ede3;paint-order:stroke;stroke:#0b1416;stroke-width:6px}
-
 @media (max-width:760px){
   .st-paperboat{width:96px;height:67px}
   .gl-book{top:12px;left:16px;right:16px;width:auto;height:min(54vh,440px);transform:none}
@@ -689,11 +648,88 @@ html:not(.st-js) .gl-entry[data-seen="1"]{opacity:1;transform:none}
   .gl-def{font-size:17px;margin-top:12px}
   .gl-ic{width:64px;height:64px}
   .up-practice{grid-template-columns:1fr}
-  .df-quote{top:7%;left:16px;right:16px;width:auto;transform:none}
-  .df-quote p{font-size:23px}
-  .dm-stage .dm-svg,.wm-stage .wm-map{left:0;right:0;width:100%;height:60%}
 }
 @media (prefers-reduced-motion:reduce){
   .pb-bob,.up-ripples,.rv-flow,.rv-boat{animation:none!important}
-  .dm,.dm-stopper,.hl,.gl-entry{transition:none!important}
+  .gl-entry{transition:none!important}
+}
+
+/* ============================================================= 06A · When the Land Breaks: one coast */
+.st-longtail{display:none;position:fixed;left:0;top:0;width:clamp(140px,13vw,200px);height:clamp(58px,5.4vw,83px);z-index:40;pointer-events:none;opacity:0;will-change:transform,opacity}
+.st-js .st-longtail{display:block}
+.st-longtail svg{width:100%;height:100%;overflow:visible}
+.lt-bob{animation:pb-bob 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.cs-stage{background:#2a5b5e}
+/* the coast changes state with the cards: healthy, ponds, storm, empty sea, the road out */
+.cs-stage .cs-mangroves,.cs-stage .cs-fish-many,.cs-stage .cs-lit,.cs-stage .cs-stumps,.cs-stage .cs-ponds,.cs-stage .cs-storm,.cs-stage .cs-leaving,.cs-stage .cs-seedlings,.cs-stage .cs-fish-some{transition:opacity .9s}
+.cs-stage .cs-stumps,.cs-stage .cs-ponds,.cs-stage .cs-storm,.cs-stage .cs-leaving,.cs-stage .cs-seedlings,.cs-stage .cs-fish-some{opacity:0}
+.cs-stage:is([data-step="5"],[data-step="6"],[data-step="7"],[data-step="8"]) :is(.cs-mangroves,.cs-fish-many){opacity:0}
+.cs-stage:is([data-step="5"],[data-step="6"],[data-step="7"],[data-step="8"]) :is(.cs-stumps,.cs-ponds){opacity:1}
+.cs-stage:is([data-step="5"],[data-step="6"]) .cs-fish-some{opacity:.85}
+.cs-stage[data-step="6"] .cs-storm{opacity:1}
+.cs-stage:is([data-step="7"],[data-step="8"]) .cs-lit{opacity:0}
+.cs-stage[data-step="8"] .cs-leaving{opacity:1}
+.cs-restore .cs-mangroves,.cs-restore .cs-fish-many,.cs-restore .cs-ponds{opacity:0}
+.cs-restore .cs-stumps{opacity:.55}
+.cs-restore .cs-seedlings{opacity:1}
+.cs-restore .cs-fish-some{opacity:.85}
+.cs-tag{position:absolute;z-index:3;top:20px;right:max(24px,calc(50vw - 620px));margin:0;padding:8px 16px;border-radius:99px;background:rgba(14,12,11,.75);color:#fff;font-family:var(--st-ui);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:0;transition:opacity .4s}
+.cs-tag span{display:none}
+.cs-stage:is([data-step="4"],[data-step="5"],[data-step="6"],[data-step="7"],[data-step="8"]) .cs-tag{opacity:1}
+.cs-stage[data-step="4"] [data-s="4"],.cs-stage[data-step="5"] [data-s="5"],.cs-stage[data-step="6"] [data-s="6"],.cs-stage[data-step="7"] [data-s="7"],.cs-stage[data-step="8"] [data-s="8"]{display:inline}
+.ec-pull{margin:28px 0 0;padding:22px 26px;border-left:3px solid var(--st-orange);background:#f3ede3;border-radius:0 12px 12px 0}
+.ec-pull p{font-family:var(--st-disp);font-weight:600;font-size:clamp(20px,2vw,24px);line-height:1.4}
+.ec-pull footer{margin-top:12px;font-family:var(--st-ui);font-size:13px;color:#6b6358}
+
+/* ============================================================= 06B · When the Land Breaks: from space */
+.sp-open,.sp-stage,.sp-unseen{background:#0b1416}
+.sp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.sp-open .sp-img{opacity:.75}
+.sp-open::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(5,9,10,.75))}
+.sp-open .st-open-kick,.sp-open .st-cue{z-index:2}
+.sp-frame{position:absolute;inset:0;--wp:clamp(0,calc((var(--p,0) - .36) * 4),1)}
+.sp-2000{opacity:0;transition:opacity 1.1s}
+.sp-2000.seen{opacity:1}
+.sp-2025{clip-path:inset(0 0 0 calc((1 - var(--wp)) * 100%))}
+.sp-line{position:absolute;z-index:2;top:0;bottom:0;left:calc((1 - var(--wp)) * 100%);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 18px rgba(0,0,0,.6);opacity:calc(var(--wp) * (1 - var(--wp)) * 6)}
+.sp-over{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.sp-lab{opacity:0;transition:opacity .6s}
+.sp-lab.seen{opacity:1}
+.sp-lab path{fill:none;stroke:#fff;stroke-width:2.5}
+.sp-lab circle{fill:var(--st-orange);stroke:#fff;stroke-width:3}
+.sp-lab text,.sp-scale text{font-family:var(--st-ui);font-weight:600;font-size:26px;fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.65);stroke-width:5px}
+.sp-zone path{stroke:var(--st-orange);stroke-width:4;stroke-dasharray:14 10;fill:rgba(245,130,31,.08)}
+.sp-zone text{font-family:var(--st-disp);font-style:italic;font-size:40px;text-anchor:middle}
+.sp-scale path{fill:none;stroke:#fff;stroke-width:3}
+.sp-scale text{text-anchor:middle;font-size:22px}
+.sp-lab .sm{display:none}
+.sp-year{top:20px}
+.sp-zoom{background:#0b1416}
+.sp-cap{position:absolute;z-index:3;right:max(24px,calc(50vw - 620px));bottom:18px;margin:0;padding:6px 12px;border-radius:99px;background:rgba(14,12,11,.75);color:#f3ede3;font-family:var(--st-ui);font-size:12px;letter-spacing:.06em}
+.sp-unseen .sp-img{filter:grayscale(1) brightness(.35) blur(2px);transform:scale(1.04)}
+html:not(.st-js) .sp-2025{clip-path:inset(0 0 0 50%)}
+html:not(.st-js) .sp-lab{opacity:1}
+
+/* the page that offers both versions */
+.ch-wrap{max-width:1120px;margin:0 auto;padding:clamp(56px,8vw,96px) var(--pad) var(--sec)}
+.ch-wrap h1{font-family:var(--st-disp);font-weight:800;font-size:clamp(40px,6vw,76px);line-height:.98;letter-spacing:-.02em;max-width:16ch}
+.ch-wrap h1 em{font-style:italic;color:var(--st-orange)}
+.ch-lead{margin-top:20px;max-width:58ch;font-size:clamp(18px,1.8vw,21px);line-height:1.55;color:#403a33}
+.ch-grid{margin-top:clamp(32px,5vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px)}
+.ch-grid .hub-card-art{height:260px}
+
+@media (max-width:760px){
+  .st-longtail{width:120px;height:50px}
+  .cs-tag{top:12px;right:12px;font-size:10.5px}
+  /* on a phone the satellite frame is shown whole, at its own proportions, with bigger labels */
+  .sp-stage .sp-frame{top:17vh;bottom:auto;aspect-ratio:1600 / 960}
+  .sp-lab text,.sp-scale text{font-size:64px;stroke-width:9px}
+  .sp-zone text{font-size:76px}
+  .sp-lab .lg{display:none}
+  .sp-lab .sm{display:inline}
+  .sp-lab path,.sp-scale path{stroke-width:6}
+  .sp-zone path{stroke-width:7}
+  .sp-year{top:14px}
+  .sp-cap{right:12px}
+  .ch-grid{grid-template-columns:1fr}
 }

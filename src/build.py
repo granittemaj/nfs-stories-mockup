@@ -26,6 +26,9 @@ def scene(name):
                '<rect class="m-bus-body" x="-13" y="-7" width="26" height="14" rx="4"/>'
                '<rect class="m-bus-win" x="4" y="-4.5" width="6" height="9" rx="1.5"/></g>')
         s = s.replace('</svg>', bus + '\n</svg>')
+    if name == 'coast2':
+        # the same coast a second time (replanted), with its own anchor for the boat
+        s = open(os.path.join(HERE, 'scenes', 'coast.svg')).read().strip().replace('id="cs-boat-spot"', 'id="cs-boat-spot2"')
     if name == 'europe':
         # The Offer's night map of Europe as a still picture (no route, no stops), written out as
         # an image file so the page does not carry it inline
@@ -80,7 +83,7 @@ def page(path, title, desc, body, extra_js=True, kind='story'):
 
 def story(slug, title, desc):
     src = open(os.path.join(HERE, slug + '.html')).read()
-    body = re.sub(r'<!--scene:([a-z]+)-->', lambda m: scene(m.group(1)), src)
+    body = re.sub(r'<!--scene:([a-z0-9]+)-->', lambda m: scene(m.group(1)), src)
     page(f'{slug}/index.html', title, desc, body)
 
 
@@ -156,9 +159,9 @@ HUB = '''
         <div class="hub-card-art" aria-hidden="true">
           <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#1a130e"/><path d="M0 170h400" stroke="#4a423a" stroke-width="3"/><rect x="60" y="80" width="26" height="90" rx="3" fill="#7fa856" transform="rotate(40 86 170)"/><rect x="120" y="80" width="26" height="90" rx="3" fill="#f3ede3" transform="rotate(40 146 170)"/><rect x="180" y="80" width="26" height="90" rx="3" fill="#f3ede3" transform="rotate(40 206 170)"/><rect x="240" y="80" width="26" height="90" rx="3" fill="#f3ede3"/><rect x="300" y="80" width="26" height="90" rx="3" fill="#C46F49"/></svg>
         </div>
-        <p class="hub-num">06 &#183; Ready to review</p>
+        <p class="hub-num">06 &#183; Two versions to choose from</p>
         <h3>When the Land Breaks</h3>
-        <p>The ecocide article as a chain reaction: a legal definition highlighted phrase by phrase, dominoes that fall from the land to the people, and the regions where it happens.</p>
+        <p>The ecocide article, two ways: one mangrove coast changing over time, or forty years of the Amazon in real satellite images.</p>
         <span class="hub-more">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
@@ -184,10 +187,44 @@ HUB = '''
       <li><b>The paper trail</b><span>Things that pile up as you read: here, a century of laws and treaties.</span></li>
       <li><b>The panorama</b><span>One wide picture that pans sideways as you scroll down: a river walked upstream.</span></li>
       <li><b>The glossary</b><span>A dictionary page that turns with each card, one word at a time.</span></li>
-      <li><b>The highlighter</b><span>A quote whose key phrases are marked as you read them.</span></li>
-      <li><b>The chain reaction</b><span>Dominoes that fall one by one, and the block that stops them.</span></li>
+      <li><b>The time-lapse</b><span>One illustrated place that changes state with each card: the coast, the ponds, the storm.</span></li>
+      <li><b>The satellite wipe</b><span>Real satellite images of one place, years apart, wiping into each other as you scroll.</span></li>
     </ol>
   </section>
+</main>
+'''
+
+COAST_ART = ('<svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#e9d9b4"/>'
+             '<rect y="140" width="400" height="80" fill="#2a5b5e"/><g fill="#3f6a38"><circle cx="230" cy="110" r="30"/><circle cx="290" cy="104" r="34"/><circle cx="350" cy="112" r="30"/></g>'
+             '<g stroke="#4a3527" stroke-width="3" fill="none"><path d="M230 130q-10 20-16 50M290 130q10 20 14 50M350 130q-8 20-12 50"/></g>'
+             '<g transform="translate(40 96)"><rect width="70" height="44" fill="#c9a066"/><path d="M-8 0h86L35-26Z" fill="#C46F49"/></g>'
+             '<path d="M120 136q50 12 100-4l-8 10q-42 10-86 2Z" fill="#6b4a33"/></svg>')
+SPACE_ART = ('<img src="../assets/img/space/madre-de-dios-full_2025.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block">')
+
+CHOOSER = f'''
+<main id="st" class="st-hub">
+  <div class="ch-wrap">
+    <p class="st-kicker">Story 06 &#183; Two versions</p>
+    <h1>When the Land <em>Breaks</em></h1>
+    <p class="ch-lead">The first version explained ecocide with diagrams. These two show it instead: one in an illustrated place, one with real satellite images. Pick the one to keep.</p>
+    <div class="ch-grid">
+      <a class="hub-card" href="../when-the-land-breaks-coast/">
+        <div class="hub-card-art" aria-hidden="true">{COAST_ART}</div>
+        <p class="hub-num">Version A</p>
+        <h3>One coast, over time</h3>
+        <p>A mangrove fishing village that changes as you scroll: the ponds, the storm, the empty sea, the road out, and the fishing boats where some end up. Then the coast replanted.</p>
+        <span class="hub-more">See version A</span>
+      </a>
+      <a class="hub-card" href="../when-the-land-breaks-from-space/">
+        <div class="hub-card-art" aria-hidden="true">{SPACE_ART}</div>
+        <p class="hub-num">Version B</p>
+        <h3>From space</h3>
+        <p>Real NASA satellite images of one corner of Madre de Dios, Peru: 1985, 2000 and 2025, wiping into each other as you scroll, then up close, then what a satellite cannot see.</p>
+        <span class="hub-more">See version B</span>
+      </a>
+    </div>
+    <p style="margin-top:28px"><a class="st-link" href="../">All story mockups</a></p>
+  </div>
 </main>
 '''
 
@@ -196,8 +233,12 @@ if __name__ == '__main__':
           'How a job offer becomes a trap, and how the way out begins. A scroll-driven story mockup for Not For Sale.')
     story('upstream', 'Upstream &#183; Not For Sale stories (mockup)',
           'Social innovation in one river: why Not For Sale works on the causes of trafficking, not only on rescue. A scroll-driven story mockup.')
-    story('when-the-land-breaks', 'When the Land Breaks &#183; Not For Sale stories (mockup)',
-          'How ecocide pushes people toward traffickers, and how to stop the fall upstream. A scroll-driven story mockup for Not For Sale.')
+    story('when-the-land-breaks-coast', 'When the Land Breaks: one coast &#183; Not For Sale stories (mockup)',
+          'One mangrove coast, over time: how ecocide pushes people toward traffickers. Version A of a scroll-driven story mockup.')
+    story('when-the-land-breaks-from-space', 'When the Land Breaks: from space &#183; Not For Sale stories (mockup)',
+          'Forty years of one corner of the Amazon, seen from space: gold mining in Madre de Dios. Version B of a scroll-driven story mockup.')
+    page('when-the-land-breaks/index.html', 'When the Land Breaks: two versions &#183; Not For Sale stories (mockup)',
+         'Two versions of story 06 to choose from.', CHOOSER, extra_js=False, kind='stories')
     story('slavery-changes-shape', 'Slavery Changes Shape &#183; Not For Sale stories (mockup)',
           'From the first civilizations to the scam compounds of today: the history of slavery and the fight against it. A scroll-driven story mockup for Not For Sale.')
     story('a-bowl-of-soup', 'A Bowl of Soup &#183; Not For Sale stories (mockup)',
