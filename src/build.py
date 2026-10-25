@@ -103,14 +103,15 @@ HUB = '''
     </a>
 
     <div class="hub-next">
-      <article class="hub-card">
+      <a class="hub-card" href="the-forest-line/">
         <div class="hub-card-art is-green" aria-hidden="true">
-          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#1f2a1c"/><g fill="#5B7747"><circle cx="40" cy="170" r="50"/><circle cx="110" cy="190" r="44"/><circle cx="300" cy="180" r="60"/><circle cx="380" cy="160" r="54"/></g><g fill="#7d9a63"><circle cx="80" cy="140" r="34"/><circle cx="340" cy="140" r="40"/></g><path d="M160 220l20-60 40-10 30 70Z" fill="#8a5a3c"/><path d="M200 70l60-8 6 4-60 10Z" fill="#f3ede3"/><path d="M226 60l-6 18m20-16 8 16" stroke="#f3ede3" stroke-width="4"/></svg>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#d7c49e"/><g fill="#7fb2a4"><ellipse cx="70" cy="40" rx="40" ry="22"/><ellipse cx="300" cy="30" rx="50" ry="20"/><ellipse cx="190" cy="70" rx="30" ry="16"/></g><g fill="#3f7fc6"><rect x="120" y="30" width="14" height="10"/><rect x="138" y="36" width="12" height="9"/></g><path d="M0 104q60-14 120 0t140 -6 140 6V220H0Z" fill="#1d361b"/><path d="M0 104q60-14 120 0t140 -6 140 6" fill="none" stroke="#F5821F" stroke-width="3" stroke-dasharray="9 7"/><g fill="#3b6b31"><circle cx="40" cy="150" r="22"/><circle cx="100" cy="170" r="24"/><circle cx="170" cy="140" r="20"/><circle cx="240" cy="180" r="26"/><circle cx="320" cy="150" r="24"/><circle cx="380" cy="190" r="22"/></g><g fill="#9dbb66"><circle cx="210" cy="150" r="20"/><circle cx="350" cy="196" r="18"/></g><g transform="translate(250 66) rotate(180) scale(.42)"><rect x="8" y="74" width="184" height="30" rx="10" fill="#f6f1e7"/><rect x="8" y="74" width="24" height="30" rx="10" fill="#F5821F"/><rect x="168" y="74" width="24" height="30" rx="10" fill="#F5821F"/><path d="M100 188c13-3 15-30 14-62l-4-84q-1-14-10-16q-9 2-10 16l-4 84c-1 32 1 59 14 62Z" fill="#fbf8f2"/><path d="M60 28h80q6 0 6 6v6q0 6-6 6H60q-6 0-6-6v-6q0-6 6-6Z" fill="#f6f1e7"/></g></svg>
         </div>
-        <p class="hub-num">02 &#183; Concept</p>
+        <p class="hub-num">02 &#183; Ready to review</p>
         <h3>The Forest Line</h3>
-        <p>A low flight over the Peruvian Amazon, from cleared land to standing forest, with a distance bar like the Kill Zone fly-over. Where the trees stop, and who keeps them standing.</p>
-      </article>
+        <p>A low flight over Madre de Dios, Peru, from the gold-mining pits to the forest communities keep standing, with a zone bar like the Kill Zone fly-over. Then one Brazil nut tree, and the loop that pays for the forest.</p>
+        <span class="hub-more">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
       <article class="hub-card">
         <div class="hub-card-art is-rust" aria-hidden="true">
           <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#2a1b14"/><ellipse cx="200" cy="150" rx="110" ry="30" fill="#C46F49"/><path d="M90 150q110 80 220 0" fill="#C46F49"/><ellipse cx="200" cy="150" rx="96" ry="22" fill="#F5821F"/><path d="M170 110q-10-20 0-40t0-40M200 110q-10-20 0-40t0-40M230 110q-10-20 0-40t0-40" fill="none" stroke="#f3ede3" stroke-opacity=".5" stroke-width="4" stroke-linecap="round"/></svg>
@@ -123,15 +124,18 @@ HUB = '''
   </section>
 
   <section class="hub-wrap hub-blocks">
-    <p class="st-kicker">What The Offer is built from</p>
-    <h2>Six building blocks, ready to become WordPress blocks</h2>
+    <p class="st-kicker">What the stories are built from</p>
+    <h2>Nine building blocks, ready to become WordPress blocks</h2>
     <ol>
-      <li><b>The guide</b><span>One object that travels the whole story and lands on things: Ana&#8217;s phone, like the Reuters drone.</span></li>
+      <li><b>The guide</b><span>One object that travels the whole story and lands on things: Ana&#8217;s phone, the plane over Madre de Dios.</span></li>
       <li><b>Sticky scenes</b><span>An illustration holds still while the text scrolls over it, and the camera moves to what each line is about.</span></li>
-      <li><b>The fly-over map</b><span>A route that draws itself as you scroll, with a distance bar and stops that light up.</span></li>
-      <li><b>The cut-away</b><span>A building opened up, floor by floor, with rings that point at what matters.</span></li>
-      <li><b>Counters</b><span>Numbers that add up as you read: here, a debt that can never be paid off.</span></li>
+      <li><b>The route map</b><span>A route that draws itself as you scroll, with a distance bar and stops that light up.</span></li>
+      <li><b>The fly-over</b><span>One long picture scrolls under the guide, with a zone bar, like the Reuters Kill Zone flight.</span></li>
+      <li><b>Close-up circles</b><span>Zoomed-in details that pop out of the landscape as you pass them.</span></li>
+      <li><b>The cut-away</b><span>A building or a tree opened up, with rings that point at what matters.</span></li>
+      <li><b>Counters</b><span>Numbers that add up as you read: in The Offer, a debt that can never be paid off.</span></li>
       <li><b>Spot the signs</b><span>Numbered markers on a scene, one sign per step, so readers learn what to look for.</span></li>
+      <li><b>The loop</b><span>A diagram a dot travels around, step by step: from forest to bottle and back.</span></li>
     </ol>
   </section>
 </main>
@@ -140,5 +144,7 @@ HUB = '''
 if __name__ == '__main__':
     story('the-offer', 'The Offer &#183; Not For Sale stories (mockup)',
           'How a job offer becomes a trap, and how the way out begins. A scroll-driven story mockup for Not For Sale.')
+    story('the-forest-line', 'The Forest Line &#183; Not For Sale stories (mockup)',
+          'A flight over Madre de Dios, Peru, from the gold mines to the forest people keep standing. A scroll-driven story mockup for Not For Sale.')
     page('index.html', 'Not For Sale stories (mockup)',
          'Concept mockups for scroll-driven visual stories on wearenotforsale.org.', HUB, extra_js=False, kind='stories')

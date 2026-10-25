@@ -3,13 +3,18 @@
    A story is a run of sections. Each section has a sticky stage (the picture) and a column of
    steps (the text) that scroll over it. Steps drive everything through data attributes:
 
-     data-g="x:50;y:40;s:1;r:0;rx:0;o:1;screen:lock;msgs:0;a:#id"   the guide (the phone)
+     data-g="x:50;y:40;s:1;r:0;rx:0;o:1;screen:lock;msgs:0;a:#id"   the guide (.st-guide)
      data-gm="..."      phone values for narrow screens, on top of data-g
      data-cam="x y s"   move the scene's .cam group to centre x,y (SVG units) at scale s
      data-camm="x y s"  the same for narrow screens
      data-ring="n"      switch on the scene's .st-ring[data-on=n]
      data-stop="id"     the map: the bus reaches this stop when the step is centred
      data-ledger="n"    the kitchen ledger: show rows up to n
+     data-t="0.5"       a .st-track diagram: the travelling dot reaches this point (0 to 1)
+
+   Section attributes: data-progress sets --p (0 to 1) on the section as it scrolls past;
+   data-cam0 / data-cam0m give the camera before the first card (default: the whole scene).
+   Elements with data-seen="n" get .seen once a step with data-ring >= n has been reached.
 
    Guide values a step leaves out are carried over from the step before. Positions are in % of
    the stage, or follow an element with a:#id. */
@@ -18,7 +23,7 @@
   var d = document, w = window, root = d.documentElement;
   root.classList.add('st-js');
   var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var phone = d.getElementById('st-phone');
+  var phone = d.querySelector('.st-guide'), screens = !!(phone && phone.querySelector('.scr'));
   var main = d.getElementById('st');
   if (!main) return;
 
@@ -46,13 +51,20 @@
   [].forEach.call(main.querySelectorAll('.st-sc'), function (el) {
     var S = { el: el, stage: el.querySelector('.st-stage'), steps: [], active: -1 };
     S.cam = S.stage && S.stage.querySelector('.cam');
-    S.rings = S.stage ? [].slice.call(S.stage.querySelectorAll('.st-ring')) : [];
+    if (S.cam) {
+      var vb = (S.cam.ownerSVGElement.getAttribute('viewBox') || '0 0 1600 1000').split(/\s+/).map(parseFloat);
+      S.camC = [vb[0] + vb[2] / 2, vb[1] + vb[3] / 2];
+    }
+    S.rings = [].slice.call(el.querySelectorAll('.st-ring'));
+    S.marks = [].slice.call(el.querySelectorAll('[data-seen]'));
     S.spots = S.stage ? [].slice.call(S.stage.querySelectorAll('.st-spot')) : [];
     S.ledger = S.stage && S.stage.querySelector('.st-ledger');
-    S.progress = !!(S.stage && S.stage.classList.contains('st-doorstage'));
+    S.progress = el.hasAttribute('data-progress');
     [].forEach.call(el.querySelectorAll('.st-step'), function (st) { S.steps.push({ el: st, c: 0 }); });
     var map = S.stage && S.stage.querySelector('.st-map');
     if (map) S.map = mapInit(map, S);
+    var track = el.querySelector('.st-track');
+    if (track) S.track = trackInit(track);
     sections.push(S);
   });
 
@@ -172,6 +184,36 @@
     }
   }
 
+  /* ---------------------------------------------------------------- tracks (a dot on a path) */
+  // <svg class="st-track"> holds path.st-track-path, an element .st-track-dot and nodes [data-t].
+  function trackInit(svg) {
+    var path = svg.querySelector('.st-track-path'), L = path.getTotalLength();
+    path.style.strokeDasharray = L; path.style.strokeDashoffset = L;
+    return { svg: svg, path: path, L: L, dot: svg.querySelector('.st-track-dot'), nodes: [].slice.call(svg.querySelectorAll('[data-t]')), t: -1 };
+  }
+  function trackFrame(S, y) {
+    var T = S.track, ks = [];
+    S.steps.forEach(function (st) { var v = st.el.getAttribute('data-t'); if (v !== null) ks.push({ at: st.c - centre(), f: +v }); });
+    var t = 0;
+    if (ks.length) {
+      if (y <= ks[0].at) t = ks[0].f;
+      else if (y >= ks[ks.length - 1].at) t = ks[ks.length - 1].f;
+      else for (var i = 0; i < ks.length - 1; i++) {
+        if (y >= ks[i].at && y < ks[i + 1].at) {
+          var u = clamp(((y - ks[i].at) / (ks[i + 1].at - ks[i].at) - .2) / .6);
+          t = lerp(ks[i].f, ks[i + 1].f, reduce ? (u < .5 ? 0 : 1) : ease(u));
+        }
+      }
+    }
+    if (t === T.t) return;
+    var p = T.path.getPointAtLength(T.L * t);
+    T.path.style.strokeDashoffset = T.L * (1 - t);
+    if (T.dot) T.dot.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ')');
+    T.nodes.forEach(function (nd) { nd.classList.toggle('on', +nd.getAttribute('data-t') <= t + .004); });
+    S.el.style.setProperty('--t', t.toFixed(4));
+    T.t = t;
+  }
+
   /* ---------------------------------------------------------------- steps */
   function centre() { return stTop + (vh - stTop) / 2; }
 
@@ -182,7 +224,7 @@
       if (v) { any = true; if (i < n) c = v; }
     });
     // before the first card, a scene that zooms in starts from the overview
-    if (!c && any) c = narrow && S.el.id === 'home' ? [900, 560, 1] : [800, 500, 1];
+    if (!c && any) c = cam(narrow && S.el.getAttribute('data-cam0m') || S.el.getAttribute('data-cam0')) || [S.camC[0], S.camC[1], 1];
     return c;
   }
 
@@ -191,10 +233,16 @@
     S.steps.forEach(function (st, i) { st.el.classList.toggle('is-active', i === n - 1); });
     if (S.cam) {
       var c = camFor(S, n);
-      if (c) S.cam.style.transform = 'translate(800px,500px) scale(' + c[2] + ') translate(' + (-c[0]) + 'px,' + (-c[1]) + 'px)';
+      if (c) S.cam.style.transform = 'translate(' + S.camC[0] + 'px,' + S.camC[1] + 'px) scale(' + c[2] + ') translate(' + (-c[0]) + 'px,' + (-c[1]) + 'px)';
     }
-    var ring = n ? +(S.steps[n - 1].el.getAttribute('data-ring') || 0) : 0;
+    var ring = n ? +(S.steps[n - 1].el.getAttribute('data-ring') || 0) : 0, reached = 0;
+    for (var q = 0; q < n; q++) reached = Math.max(reached, +(S.steps[q].el.getAttribute('data-ring') || 0));
     S.rings.forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-on') === ring); });
+    S.marks.forEach(function (m) {
+      var k = +m.getAttribute('data-seen');
+      m.classList.toggle('seen', k <= reached);
+      m.classList.toggle('is-current', k === ring);
+    });
     if (S.spots.length) {
       S.spots.forEach(function (sp) {
         var k = +sp.getAttribute('data-n');
@@ -256,7 +304,7 @@
     screen(cur.v.screen, cur.v.msgs);
   }
   function screen(name, msgs) {
-    if (name === shown.screen && msgs === shown.msgs) return;
+    if (!screens || (name === shown.screen && msgs === shown.msgs)) return;
     if (name === 'notify' && shown.screen === 'lock' && !reduce) {
       phone.classList.remove('buzz'); void phone.offsetWidth; phone.classList.add('buzz');
     }
@@ -297,9 +345,13 @@
       if (n !== S.active) { S.active = n; onStep(S, n); }
       if (S.progress) {
         var p = clamp((y + stTop - S.top) / Math.max(1, S.h - (vh - stTop)));
-        S.stage.style.setProperty('--p', p.toFixed(4));
+        S.el.style.setProperty('--p', p.toFixed(4));
+        // --pl: how far through the section the plane line (30% down the screen) is
+        S.el.style.setProperty('--pl', clamp((y + vh * .3 - S.top) / Math.max(1, S.h)).toFixed(4));
       }
-      if (S.map && y + vh > S.top - vh && y < S.top + S.h + vh) mapFrame(S, y);
+      var near = y + vh > S.top - vh && y < S.top + S.h + vh;
+      if (S.map && near) mapFrame(S, y);
+      if (S.track && near) trackFrame(S, y);
     });
     guide(y);
     // chapter rail and reading progress

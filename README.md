@@ -10,6 +10,7 @@ theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 
 - Stories hub: [`index.html`](index.html)
 - Story 01, The Offer: [`the-offer/`](the-offer/)
+- Story 02, The Forest Line: [`the-forest-line/`](the-forest-line/)
 
 ## 01 · The Offer
 
@@ -27,6 +28,22 @@ it travels down through every scene and lands on things.
 | Dignita | Daylight. Not For Sale's restaurant in Amsterdam and the Dignita Academy. The phone rises again: a real job offer, with a contract. |
 | After | The article: a composite note, four figures, the Donate band, sources. |
 
+## 02 · The Forest Line
+
+A flight over Madre de Dios, Peru. A small plane is the guide: it flies down the page over one
+long illustrated landscape (`assets/img/forest-flyover.svg`, drawn by `tools/forest`), with a
+sticky zone bar like the Kill Zone fly-over. Facts come from Not For Sale's
+[Peru page](https://wearenotforsale.org/projects/peru/).
+
+| Chapter | What happens on screen |
+| --- | --- |
+| Above the Amazon | Canopy at dawn, from above. The plane flies in, then the title. |
+| The fly-over | Pasture, then the mining zone: pits, blue-tarp camps, dredges, close-up circles that pop out (mining pit, camp, dredge and mercury). The forest line lights up in orange. Then standing forest: Brazil nut trees, a harvest boat, an AFIMAD community, the Camino Verde seed bank. |
+| One tree | We land. One Brazil nut tree from crown to roots: the bees, a falling pod, the agouti that plants the next tree. |
+| The loop | A nut travels a circle: forest, harvest, river, exporter, REBBL, 2.5% back to Not For Sale. |
+| How much forest | 753 square miles next to New York City, drawn to scale. |
+| After | The article: ecocide and slavery as one system, four figures, Donate, sources. |
+
 ## The building blocks
 
 Everything is driven by data attributes on the text steps, so each block can become a WordPress
@@ -41,6 +58,13 @@ block later. The engine is `assets/js/story.js` (vanilla, no dependencies, about
 | `data-ring="n"` | Pulse the highlight ring `n` in the scene. |
 | `data-stop="vienna"` | The map: the minibus reaches this stop when the step is centred. |
 | `data-ledger="n"` | The kitchen ledger: show rows up to `n`, with counting numbers. |
+| `data-t="0.5"` | A `.st-track` diagram: the travelling dot reaches this point (0 to 1) when the step is centred. |
+| `data-seen="n"` | On any element: it gets `.seen` once a step with `data-ring` of `n` or more has been reached (close-up circles, the forest line). |
+| `data-progress` | On a section: sets `--p` (0 to 1) as it scrolls past, for scroll-linked effects (the door, the zone bar, clouds). |
+
+The guide is whatever element has the class `st-guide`: a phone with screens in The Offer, a
+plane in The Forest Line. A long picture in normal flow, with cards placed along it by `--at`,
+is a fly-over (`.st-fly`).
 
 Text is always real HTML (never baked into pictures), so it stays sharp, translatable and
 readable by screen readers. With reduced motion turned on, movement snaps instead of gliding.
@@ -55,6 +79,8 @@ python3 src/build.py
 - Story text: `src/the-offer.html` (scenes are pulled in from `src/scenes/*.svg`).
 - Styles: `assets/css/story.css`. Engine: `assets/js/story.js`.
 - The map: `cd tools/map && npm install && npm run build` writes `src/scenes/map.svg`.
+- The Forest Line landscapes: `node tools/forest/build-flyover.mjs` (no dependencies) writes
+  `assets/img/forest-flyover.svg`, `assets/img/forest-canopy.svg` and `src/scenes/flyedge.svg`.
 - Local preview: `node tools/serve.js`, then open http://localhost:8774/
 
 Asset URLs carry content hashes, so GitHub Pages never serves stale CSS or JS after a push.
@@ -68,6 +94,9 @@ Asset URLs carry content hashes, so GitHub Pages never serves stale CSS or JS af
   $236 billion, 2024); the Dignita and Netherlands figures come from Not For Sale's own pages.
 - **Editorial choices to confirm:** the route starts in an unnamed town in eastern Romania (the
   map shows where); the wages, debts and the café manager "Marloes" are illustrative.
+- **The Forest Line:** the landscape is one illustrated, compressed flight, not a map. The Brazil
+  nut biology (bees, agouti, pods) is general botany for the Peru team to check. New York City is
+  compared at its total area (472 sq mi), which is how 753 sq mi comes to about 1.6 times.
 - The Donate and "Learn the signs" links go to the live site.
 
 ## Credits

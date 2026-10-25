@@ -1,0 +1,79 @@
+<svg class="st-art" viewBox="0 0 1000 1600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="tr-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9d5cf"/><stop offset=".7" stop-color="#e7ecd7"/><stop offset="1" stop-color="#f1ead2"/></linearGradient>
+  <radialGradient id="tr-sun"><stop offset="0" stop-color="#fff7dd" stop-opacity=".9"/><stop offset="1" stop-color="#fff7dd" stop-opacity="0"/></radialGradient>
+  <linearGradient id="tr-under" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f4f2a"/><stop offset="1" stop-color="#1c2f19"/></linearGradient>
+  <linearGradient id="tr-shaft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f0c8" stop-opacity=".22"/><stop offset="1" stop-color="#f6f0c8" stop-opacity="0"/></linearGradient>
+  <linearGradient id="tr-bark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a69482"/><stop offset=".45" stop-color="#8c7a68"/><stop offset="1" stop-color="#5f5144"/></linearGradient>
+</defs>
+<g class="cam">
+  <rect x="-1200" y="-900" width="3400" height="1700" fill="url(#tr-sky)"/>
+  <circle cx="780" cy="150" r="220" fill="url(#tr-sun)"/>
+  <!-- far and middle canopy -->
+  <path d="M-1200 640q60-60 120-10t120-20 130 10 110-30 120 20 120-10 140 20 110-30 130 10 120-20 110 30 130-20 120 10 140-10 110 20 130-30 120 10 110 20V1000H-1200Z" fill="#9db69a"/>
+  <path d="M-1200 720q80-70 160-10t140-30 150 20 130-40 150 30 140-20 160 30 120-40 150 20 140-20 130 40 150-30 140 10 160-10 130 30V1100H-1200Z" fill="#6b9459"/>
+  <path d="M-1200 800q90-60 170-10t150-20 160 10 140-30 160 20 150-10 170 20 130-30 160 10 150-20 140 30 160-20 150 10V1200H-1200Z" fill="#4c7a41"/>
+  <!-- inside the forest -->
+  <rect x="-1200" y="860" width="3400" height="640" fill="url(#tr-under)"/>
+  <g fill="#1a2c17"><rect x="-260" y="840" width="26" height="640"/><rect x="60" y="860" width="18" height="620"/><rect x="180" y="880" width="14" height="600"/><rect x="820" y="860" width="22" height="620"/><rect x="1080" y="840" width="30" height="640"/><rect x="1320" y="870" width="16" height="610"/><rect x="-560" y="860" width="20" height="620"/></g>
+  <polygon points="620,860 700,860 900,1480 760,1480" fill="url(#tr-shaft)"/>
+  <polygon points="140,860 190,860 300,1480 210,1480" fill="url(#tr-shaft)"/>
+  <g fill="#2f5a2a"><path d="M-80 1480q40-80 90-60-40 10-50 60Z"/><path d="M880 1480q30-110 110-90-60 20-70 90Z"/><path d="M120 1480q-20-90 60-110-30 40-20 110Z"/><path d="M1120 1480q20-90 90-90-50 30-50 90Z"/></g>
+  <g fill="#3f6a38"><ellipse cx="40" cy="1460" rx="70" ry="22"/><ellipse cx="960" cy="1465" rx="90" ry="24"/><ellipse cx="-300" cy="1462" rx="80" ry="22"/><ellipse cx="1260" cy="1462" rx="80" ry="22"/></g>
+
+  <!-- the Brazil nut tree: a straight trunk, then a crown above everything else -->
+  <path d="M352 1490q60-30 106-80l12-990h60l12 990q46 50 106 80Z" fill="url(#tr-bark)"/>
+  <path d="M380 1490q50-14 84-60M620 1490q-50-14-84-60" stroke="#5f5144" stroke-width="6" fill="none"/>
+  <g stroke="#6f604f" stroke-width="3" opacity=".6"><path d="M486 1420V460M512 1400V500M500 1300V700"/></g>
+  <path d="M500 470q-60-60-150-90M500 450q40-70 140-110M500 430q-10-80-20-140M500 460q90-30 170-30" stroke="#7a6858" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <g class="tr-crown">
+    <g fill="#3f6a2f"><circle cx="330" cy="330" r="96"/><circle cx="660" cy="330" r="100"/><circle cx="500" cy="360" r="120"/></g>
+    <g fill="#6f9a4a"><circle cx="360" cy="270" r="96"/><circle cx="620" cy="260" r="104"/><circle cx="490" cy="200" r="110"/><circle cx="280" cy="350" r="70"/><circle cx="720" cy="350" r="74"/><circle cx="500" cy="320" r="110"/></g>
+    <g fill="#86ad55"><circle cx="420" cy="190" r="66"/><circle cx="580" cy="170" r="60"/><circle cx="330" cy="250" r="50"/><circle cx="670" cy="240" r="54"/></g>
+    <g fill="#a9c473" opacity=".7"><circle cx="440" cy="160" r="30"/><circle cx="560" cy="150" r="26"/><circle cx="350" cy="230" r="22"/></g>
+  </g>
+  <!-- flowers and the big bees that can open them -->
+  <g fill="#f2e6b0"><circle cx="700" cy="250" r="7"/><circle cx="716" cy="264" r="6"/><circle cx="694" cy="276" r="6"/><circle cx="740" cy="320" r="7"/><circle cx="726" cy="336" r="6"/><circle cx="752" cy="340" r="5"/><circle cx="672" cy="214" r="6"/></g>
+  <g class="tr-bees">
+    <g transform="translate(772 268) rotate(-20)"><ellipse cx="-6" cy="-9" rx="9" ry="6" fill="#fff" opacity=".7"/><ellipse cx="6" cy="-9" rx="9" ry="6" fill="#fff" opacity=".7"/><ellipse rx="11" ry="7" fill="#2b2418"/><rect x="-3" y="-7" width="5" height="14" fill="#e3b23c"/></g>
+    <g transform="translate(800 312) rotate(14)"><ellipse cx="-6" cy="-9" rx="8" ry="5" fill="#fff" opacity=".7"/><ellipse cx="6" cy="-9" rx="8" ry="5" fill="#fff" opacity=".7"/><ellipse rx="10" ry="6" fill="#2b2418"/><rect x="-3" y="-6" width="5" height="12" fill="#e3b23c"/></g>
+    <g transform="translate(748 222) rotate(-40)"><ellipse cx="-5" cy="-8" rx="7" ry="5" fill="#fff" opacity=".7"/><ellipse cx="5" cy="-8" rx="7" ry="5" fill="#fff" opacity=".7"/><ellipse rx="9" ry="6" fill="#2b2418"/><rect x="-2" y="-6" width="4" height="12" fill="#e3b23c"/></g>
+  </g>
+  <!-- pods in the crown, one falling -->
+  <g fill="#6b4a2e"><circle cx="420" cy="380" r="15"/><circle cx="560" cy="400" r="16"/><circle cx="480" cy="420" r="14"/><circle cx="620" cy="370" r="13"/><circle cx="380" cy="420" r="12"/></g>
+  <g class="tr-fall" transform="translate(566 930)">
+    <path d="M0 -150v100M-14 -120v70M14 -110v60" stroke="#f1ead2" stroke-width="3" stroke-dasharray="6 10" opacity=".55"/>
+    <circle r="22" fill="#6b4a2e"/><circle cx="-6" cy="-7" r="8" fill="#8a6440"/><circle cx="0" cy="-20" r="5" fill="#4a3220"/>
+  </g>
+  <!-- the forest floor -->
+  <path d="M-1200 1480q300-14 600 0t600 0 600 0 1000 0V2600H-1200Z" fill="#4a3526"/>
+  <path d="M-1200 1480q300-14 600 0t600 0 600 0 1000 0v20H-1200Z" fill="#6b4f36"/>
+  <g fill="#3a2a1e" opacity=".7"><path d="M-1200 1560h3400v8H-1200ZM-1200 1640h3400v6H-1200Z"/></g>
+  <g fill="#8a6338"><circle cx="-120" cy="1486" r="4"/><circle cx="140" cy="1488" r="3"/><circle cx="260" cy="1484" r="4"/><circle cx="700" cy="1488" r="3"/><circle cx="900" cy="1485" r="4"/><circle cx="1180" cy="1487" r="3"/></g>
+  <g fill="#6b4a2e"><circle cx="300" cy="1470" r="14"/><circle cx="660" cy="1471" r="15"/></g>
+  <g transform="translate(610 1468)"><circle r="18" fill="#6b4a2e"/><circle r="12" fill="#3a2516"/><g fill="#e8d7b5" stroke="#6b4a2e" stroke-width="1.5"><path d="M0 0l-4-11h8Z"/><path d="M0 0l11-4v8Z"/><path d="M0 0l4 11h-8Z"/><path d="M0 0l-11 4v-8Z"/></g></g>
+  <!-- the agouti, and the nut it buried and forgot -->
+  <g class="tr-agouti" transform="translate(760 1452)">
+    <ellipse cx="0" cy="8" rx="34" ry="20" fill="#a8673a"/><ellipse cx="-8" cy="2" rx="20" ry="10" fill="#bd7c4b"/>
+    <ellipse cx="-34" cy="0" rx="14" ry="11" fill="#a8673a"/><ellipse cx="-30" cy="-12" rx="4" ry="7" fill="#8a5230"/>
+    <circle cx="-40" cy="-2" r="2" fill="#1a120c"/><circle cx="-48" cy="4" r="5" fill="#8a6440"/>
+    <path d="M-20 24v12M20 24v12M8 26v10" stroke="#6b3f22" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(840 1540)"><g fill="#e8d7b5" stroke="#6b4a2e" stroke-width="2"><path d="M0 0l-6-14h12Z"/><path d="M14 4l-2-14 10 6Z"/></g></g>
+  <g transform="translate(900 1480)"><path d="M0 0v-30" stroke="#5f8c40" stroke-width="4"/><path d="M0-24q-18-10-26 0 14 8 26 0ZM0-30q16-12 26-2-14 8-26 2Z" fill="#7fa856"/><path d="M0 0q-6 30 4 56M0 10q10 16 22 20" stroke="#c9b083" stroke-width="2" fill="none"/><g transform="translate(0 52)" fill="#e8d7b5" stroke="#6b4a2e" stroke-width="2"><path d="M0 0l-6-14h12Z"/></g></g>
+  <!-- a harvester, for scale -->
+  <g style="--top:#4F8E92;--legs:#2a2622;--skin:#8b5a3f;--hair:#0f0c0b"><use href="#fig-front" x="230" y="1424" width="20" height="58"/></g>
+  <path d="M250 1464h16l-2 14h-12Z" fill="#c9a066"/>
+  <!-- height -->
+  <g class="tr-ruler" font-family="var(--st-ui)" font-size="20" fill="#141210">
+    <path d="M150 140V1480M138 140h24M138 1480h24M142 810h16" stroke="#141210" stroke-width="2" opacity=".45"/>
+    <text x="170" y="146" opacity=".7">50 m</text>
+    <text x="170" y="1486" opacity=".7" fill="#f1ead2">0</text>
+  </g>
+  <!-- highlights -->
+  <g class="st-ring" data-on="1" transform="translate(500 270)"><circle r="250"/><circle r="250"/></g>
+  <g class="st-ring" data-on="2" transform="translate(740 285)"><circle r="90"/><circle r="90"/></g>
+  <g class="st-ring" data-on="3" transform="translate(566 930)"><circle r="60"/><circle r="60"/></g>
+  <g class="st-ring" data-on="4" transform="translate(790 1475)"><circle r="96"/><circle r="96"/></g>
+</g>
+</svg>
