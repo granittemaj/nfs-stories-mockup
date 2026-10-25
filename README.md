@@ -143,6 +143,12 @@ The guide is whatever element has the class `st-guide`: a phone with screens in 
 plane in The Forest Line. A long picture in normal flow, with cards placed along it by `--at`,
 is a fly-over (`.st-fly`).
 
+Type follows the site's design system only: Playfair Display and Source Serif 4, with the theme's
+own styles for each role (the dark hero title and intro for story titles, `.kicker`, the article
+`.era` label, `.article` paragraphs, h2, h3 and quotes, the stat number and label, captions, and the
+news card). The story after the scroll uses the theme's `.article` class directly. The only other
+font is the phone screen in The Offer, which imitates a phone.
+
 Text is always real HTML (never baked into pictures), so it stays sharp, translatable and
 readable by screen readers. With reduced motion turned on, movement snaps instead of gliding.
 Without JavaScript, the scenes and the text simply stack.

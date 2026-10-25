@@ -20,7 +20,7 @@
 .hub-feature-art .dt{position:absolute;left:14px;bottom:14px;z-index:3;padding:5px 11px;border-radius:30px;background:rgba(243,237,227,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:12px;letter-spacing:.04em;font-weight:600;line-height:1.3}
 .hub-phone{position:absolute;left:50%;top:50%;width:184px;height:380px;margin:-190px 0 0 -92px;border-radius:32px;padding:7px;background:linear-gradient(150deg,#3a3631,#0c0b0a 38%,#1d1b18);box-shadow:0 40px 70px -28px rgba(0,0,0,.8),inset 0 0 0 1.5px rgba(255,255,255,.14);transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) rotate(-6deg) scale(var(--ps,1));transition:transform .5s cubic-bezier(.2,.8,.3,1)}
 .hub-feature:hover .hub-phone{transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) rotate(-2deg) translateY(-6px) scale(var(--ps,1));transition-duration:.25s}
-.hub-phone > div{height:100%;border-radius:26px;overflow:hidden;background:radial-gradient(120% 70% at 28% 18%,#4a3326,#120e0c 62%);font-family:var(--st-ui);color:#fff;text-align:center;padding-top:40px}
+.hub-phone > div{height:100%;border-radius:26px;overflow:hidden;background:radial-gradient(120% 70% at 28% 18%,#4a3326,#120e0c 62%);font-family:var(--st-sys);color:#fff;text-align:center;padding-top:40px}
 .hub-phone .t{font-size:46px;font-weight:300;letter-spacing:-.03em;line-height:1}
 .hub-phone .d{margin-top:6px;font-size:11px;color:rgba(255,255,255,.72)}
 /* Mihai's messages land one after another when the card comes into view */
@@ -36,13 +36,14 @@
 .hf-lab{font-family:var(--st-disp);font-style:italic;font-size:17px;fill:rgba(243,237,227,.62)}
 .hub-feature-text{padding:clamp(24px,3vw,40px) clamp(24px,3vw,40px) clamp(24px,3vw,40px) 8px;display:flex;flex-direction:column;justify-content:center}
 .hub-feature .tag{color:rgba(243,237,227,.82)}
-.hub-feature-text h2{margin:12px 0 16px;font-family:var(--st-disp);font-weight:800;font-size:clamp(46px,5.6vw,84px);line-height:.95;letter-spacing:-.015em;color:#fff}
+/* type as the theme's homepage feature card (.feat h1, .feat .dek) and its orange button */
+.hub-feature-text h2{margin:14px 0 0;font-family:var(--st-disp);font-weight:800;font-size:clamp(26px,3.6vw,50px);line-height:1.05;letter-spacing:-.01em;color:#fff}
 .hub-feature-text h2 em{font-style:italic;color:var(--st-orange)}
-.hub-feature-text p{font-size:18px;line-height:1.55;color:rgba(243,237,227,.86);max-width:30em}
+.hub-feature-text p{margin-top:12px;font-size:clamp(15px,1.6vw,17px);line-height:1.5;color:rgba(255,255,255,.86);max-width:48ch}
 .hub-act{margin-top:26px}
-.hub-go{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 24px;border-radius:40px;background:var(--st-orange);color:#fff;font-family:var(--st-disp);font-style:italic;font-weight:600;font-size:16px}
-.hub-go svg{width:18px;height:18px;transition:transform .25s}
-.hub-feature:hover .hub-go svg{transform:translateX(4px)}
+.hub-act .btn{gap:10px}
+.hub-act .btn svg{width:18px;height:18px;transition:transform .25s}
+.hub-feature:hover .hub-act .btn svg{transform:translateX(4px)}
 
 /* the card pictures move a little while they are on screen (hub.js adds .is-live) */
 .ha-fly{animation:ha-fly 12s linear infinite;animation-delay:-4.5s}
