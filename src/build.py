@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+"""Builds the static mockup: the stories hub (index.html) and each story page.
+
+    python3 src/build.py
+
+Story pages are src/<slug>.html with <!--scene:name--> markers, filled from src/scenes/<name>.svg.
+Both pages get the site shell: the papingu theme's styles.css and app.js (header, footer,
+newsletter, search), with content-hashed asset URLs so GitHub Pages never serves stale CSS/JS."""
+import hashlib, os, re
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.dirname(HERE)
+FADE = open(os.path.join(HERE, 'fade-head.js')).read().strip()
+
+
+def ver(rel):
+    return hashlib.md5(open(os.path.join(OUT, rel), 'rb').read()).hexdigest()[:8]
+
+
+def scene(name):
+    s = open(os.path.join(HERE, 'scenes', name + '.svg')).read().strip()
+    if name == 'map':
+        # the minibus that rides the route
+        bus = ('<g class="m-bus"><circle class="m-bus-halo" r="20"/>'
+               '<rect class="m-bus-body" x="-13" y="-7" width="26" height="14" rx="4"/>'
+               '<rect class="m-bus-win" x="4" y="-4.5" width="6" height="9" rx="1.5"/></g>')
+        s = s.replace('</svg>', bus + '\n</svg>')
+    return s
+
+
+def page(path, title, desc, body, extra_js=True):
+    p = '../' * path.count('/')
+    css = ['assets/css/chrome.css', 'assets/fonts/fonts.css', 'assets/css/styles.css', 'assets/css/story.css']
+    js = ['assets/js/config.js', 'assets/js/app.js'] + (['assets/js/story.js'] if extra_js else [])
+    links = '\n'.join(f'<link rel="stylesheet" href="{p}{c}?v={ver(c)}">' for c in css)
+    scripts = '\n'.join(f'<script src="{p}{j}?v={ver(j)}" defer></script>' for j in js)
+    doc = f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0e0c0b">
+<link rel="icon" href="{p}assets/img/favicon.png">
+<link rel="preload" href="{p}assets/fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>{FADE}</script>
+{links}
+{scripts}
+</head>
+<body data-page="story">
+<div class="wp-site-blocks">
+<header class="wp-block-template-part"><a class="skip-link" href="#st">Skip to content</a><div id="bar"></div><div id="site-header"></div></header>
+{body}
+<footer class="wp-block-template-part"><div id="site-newsletter"></div><div id="site-footer"></div></footer>
+</div>
+<p class="st-mockflag" role="note">Mockup for review<span>. Not the live site.</span></p>
+</body>
+</html>
+'''
+    fp = os.path.join(OUT, path)
+    os.makedirs(os.path.dirname(fp) or OUT, exist_ok=True)
+    open(fp, 'w').write(doc)
+    print('built', path, f'{len(doc) // 1024}KB')
+
+
+def story(slug, title, desc):
+    src = open(os.path.join(HERE, slug + '.html')).read()
+    body = re.sub(r'<!--scene:([a-z]+)-->', lambda m: scene(m.group(1)), src)
+    page(f'{slug}/index.html', title, desc, body)
+
+
+HUB = '''
+<main id="st" class="st-hub">
+  <section class="hub-hero">
+    <div class="hub-wrap">
+      <p class="st-kicker">Not For Sale &#183; Stories</p>
+      <h1>Stories that move <em>as you scroll</em></h1>
+      <p class="hub-lead">Visual stories in the spirit of the best newsroom graphics desks. Each one follows a single thread, a phone, a plane, a bowl of soup, through the places our work happens.</p>
+      <p class="hub-note">Concept mockups for review. Not published.</p>
+    </div>
+  </section>
+
+  <section class="hub-wrap">
+    <a class="hub-feature" href="the-offer/">
+      <div class="hub-feature-art" aria-hidden="true">
+        <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="hubGlow" cx="62%" cy="48%" r="50%"><stop offset="0" stop-color="#F5821F" stop-opacity=".28"/><stop offset="1" stop-color="#F5821F" stop-opacity="0"/></radialGradient></defs>
+          <rect width="600" height="420" fill="#0e0c0b"/><rect width="600" height="420" fill="url(#hubGlow)"/>
+          <path d="M40 330C140 300 200 330 270 290S400 250 470 180 560 110 590 90" fill="none" stroke="#F5821F" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round" opacity=".55"/>
+          <circle cx="40" cy="330" r="6" fill="#F5821F"/><circle cx="590" cy="90" r="6" fill="#fff"/>
+        </svg>
+        <div class="hub-phone"><div><p class="t">23:47</p><div class="n"><b>Mihai</b><span>Ana! My cousin&#8217;s restaurant in Amsterdam needs kitchen staff.</span></div></div></div>
+      </div>
+      <div class="hub-feature-text">
+        <p class="hub-num">01 &#183; Ready to review</p>
+        <p class="st-kicker">Human trafficking &#183; Netherlands</p>
+        <h2>The <em>Offer</em></h2>
+        <p>A job abroad, a minibus, a kitchen with a locked door, and the way out. Follow Ana&#8217;s phone from her mother&#8217;s kitchen table to a restaurant in Amsterdam, and on to Dignita.</p>
+        <span class="hub-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="hub-next">
+      <article class="hub-card">
+        <div class="hub-card-art is-green" aria-hidden="true">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#1f2a1c"/><g fill="#5B7747"><circle cx="40" cy="170" r="50"/><circle cx="110" cy="190" r="44"/><circle cx="300" cy="180" r="60"/><circle cx="380" cy="160" r="54"/></g><g fill="#7d9a63"><circle cx="80" cy="140" r="34"/><circle cx="340" cy="140" r="40"/></g><path d="M160 220l20-60 40-10 30 70Z" fill="#8a5a3c"/><path d="M200 70l60-8 6 4-60 10Z" fill="#f3ede3"/><path d="M226 60l-6 18m20-16 8 16" stroke="#f3ede3" stroke-width="4"/></svg>
+        </div>
+        <p class="hub-num">02 &#183; Concept</p>
+        <h3>The Forest Line</h3>
+        <p>A low flight over the Peruvian Amazon, from cleared land to standing forest, with a distance bar like the Kill Zone fly-over. Where the trees stop, and who keeps them standing.</p>
+      </article>
+      <article class="hub-card">
+        <div class="hub-card-art is-rust" aria-hidden="true">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#2a1b14"/><ellipse cx="200" cy="150" rx="110" ry="30" fill="#C46F49"/><path d="M90 150q110 80 220 0" fill="#C46F49"/><ellipse cx="200" cy="150" rx="96" ry="22" fill="#F5821F"/><path d="M170 110q-10-20 0-40t0-40M200 110q-10-20 0-40t0-40M230 110q-10-20 0-40t0-40" fill="none" stroke="#f3ede3" stroke-opacity=".5" stroke-width="4" stroke-linecap="round"/></svg>
+        </div>
+        <p class="hub-num">03 &#183; Concept</p>
+        <h3>A Bowl of Soup</h3>
+        <p>How a soup programme in an Amsterdam safe house became Dignita. Thirteen years, three kitchens and one recipe, told through a single kitchen table.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="hub-wrap hub-blocks">
+    <p class="st-kicker">What The Offer is built from</p>
+    <h2>Six building blocks, ready to become WordPress blocks</h2>
+    <ol>
+      <li><b>The guide</b><span>One object that travels the whole story and lands on things: Ana&#8217;s phone, like the Reuters drone.</span></li>
+      <li><b>Sticky scenes</b><span>An illustration holds still while the text scrolls over it, and the camera moves to what each line is about.</span></li>
+      <li><b>The fly-over map</b><span>A route that draws itself as you scroll, with a distance bar and stops that light up.</span></li>
+      <li><b>The cut-away</b><span>A building opened up, floor by floor, with rings that point at what matters.</span></li>
+      <li><b>Counters</b><span>Numbers that add up as you read: here, a debt that can never be paid off.</span></li>
+      <li><b>Spot the signs</b><span>Numbered markers on a scene, one sign per step, so readers learn what to look for.</span></li>
+    </ol>
+  </section>
+</main>
+'''
+
+if __name__ == '__main__':
+    story('the-offer', 'The Offer &#183; Not For Sale stories (mockup)',
+          'How a job offer becomes a trap, and how the way out begins. A scroll-driven story mockup for Not For Sale.')
+    page('index.html', 'Not For Sale stories (mockup)',
+         'Concept mockups for scroll-driven visual stories on wearenotforsale.org.', HUB, extra_js=False)

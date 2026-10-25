@@ -1,0 +1,74 @@
+<svg class="st-art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="str-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2a30"/><stop offset=".62" stop-color="#4b4a4a"/><stop offset="1" stop-color="#C46F49"/></linearGradient>
+  <linearGradient id="str-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22393c"/><stop offset="1" stop-color="#0f1a1c"/></linearGradient>
+</defs>
+<g class="cam">
+  <rect width="1600" height="840" fill="url(#str-sky)"/>
+  <!-- row of canal houses -->
+  <g fill="#211a16">
+    <path d="M0 800V330h60v-30h40v-30h40v30h40v30h40v470Z"/>
+    <path d="M220 800V300q30-10 44-46 8-24 36-24h52q28 0 36 24 14 36 44 46v500Z"/>
+    <path d="M1000 800V280h40v-30h40v-30h40v-30h60v30h40v30h40v30h40v500Z"/>
+    <path d="M1340 800V320q26-10 40-40 8-20 30-20h60q22 0 30 20 14 30 40 40v480Z"/><rect x="1540" y="300" width="60" height="500"/>
+  </g>
+  <!-- the restaurant's house, now from the street -->
+  <path d="M520 800V196q60 0 84-38l14-24q8-14 26-14h152q18 0 26 14l14 24q24 38 84 38v604Z" fill="#2b201a"/>
+  <rect x="784" y="132" width="32" height="16" fill="#1a1310"/><path d="M800 148v26" stroke="#1a1310" stroke-width="4"/>
+  <!-- upstairs windows: curtains drawn, day and night -->
+  <g>
+    <rect x="574" y="250" width="86" height="120" fill="#141110"/><rect x="680" y="250" width="86" height="120" fill="#141110"/><rect x="786" y="250" width="86" height="120" fill="#141110"/>
+    <g fill="#5a3b2e"><rect x="578" y="254" width="78" height="112"/><rect x="684" y="254" width="78" height="112"/><rect x="790" y="254" width="78" height="112"/></g>
+    <g fill="#ffb466" opacity=".55"><rect x="616" y="254" width="3" height="112"/><rect x="722" y="254" width="3" height="112"/><rect x="828" y="254" width="3" height="112"/></g>
+    <rect x="574" y="410" width="86" height="120" fill="#141110"/><rect x="680" y="410" width="86" height="120" fill="#141110"/><rect x="786" y="410" width="86" height="120" fill="#141110"/>
+    <g fill="#5a3b2e"><rect x="578" y="414" width="78" height="112"/><rect x="684" y="414" width="78" height="112"/><rect x="790" y="414" width="78" height="112"/></g>
+  </g>
+  <!-- the restaurant: warm, full, normal -->
+  <rect x="540" y="572" width="380" height="44" fill="#141210"/>
+  <text x="730" y="602" text-anchor="middle" font-family="var(--st-disp)" font-style="italic" font-size="24" fill="#ffd2a1">Restaurant</text>
+  <rect x="546" y="626" width="368" height="174" fill="#ffb466" opacity=".88"/>
+  <rect x="546" y="626" width="368" height="174" fill="url(#st-warm)"/>
+  <path d="M668 626v174M792 626v174" stroke="#2b201a" stroke-width="8"/>
+  <g style="--top:#3d2c22;--skin:#3d2c22;--hair:#3d2c22" opacity=".45">
+    <use href="#fig-seat" x="570" y="690" width="90" height="95"/><use href="#fig-seat" x="-790" y="690" width="90" height="95" transform="scale(-1 1)"/><use href="#fig-seat" x="820" y="692" width="88" height="92"/>
+  </g>
+  <!-- terrace -->
+  <rect x="300" y="752" width="190" height="8" rx="3" fill="#3a2a21"/><rect x="391" y="760" width="8" height="40" fill="#1a1411"/>
+  <g style="--top:#4f8e92;--skin:#c79a7a;--hair:#2c2420"><use href="#fig-seat" x="-470" y="642" width="104" height="110" transform="scale(-1 1)"/></g>
+  <ellipse cx="452" cy="750" rx="13" ry="4" fill="#e8dfd0"/>
+  <rect x="452" y="732" width="10" height="16" rx="2" fill="#e8dfd0" opacity=".85"/>
+  <!-- the side alley and the kitchen door -->
+  <rect x="920" y="560" width="80" height="240" fill="#100d0c"/>
+  <rect x="932" y="640" width="58" height="160" fill="#c6e2de" opacity=".9"/>
+  <ellipse cx="960" cy="700" rx="110" ry="140" fill="url(#st-cold)"/>
+  <g style="--top:#141210;--legs:#0c0a09;--skin:#c49373;--hair:#2a2420"><use href="#fig-front" x="936" y="610" width="64" height="186"/></g>
+  <rect x="946" y="680" width="10" height="16" rx="2" fill="#F5821F"/>
+  <g style="--top:#F5821F;--legs:#1a1715;--skin:#b98263;--hair:#0f0c0b">
+    <use href="#fig-front" x="1010" y="616" width="64" height="184"/>
+  </g>
+  <rect x="1012" y="690" width="60" height="40" rx="3" fill="#6b5a4c"/><path d="M1012 704h60M1032 690v40M1052 690v40" stroke="#4a3f37" stroke-width="3"/>
+  <!-- the clock on the neighbour's gable says it is late -->
+  <g transform="translate(1140 330)"><circle r="30" fill="#e8dfd0" opacity=".85"/><path d="M0 0V-18M0 0-16-6" stroke="#141210" stroke-width="3.5" stroke-linecap="round"/></g>
+
+  <!-- quay, bikes, the canal -->
+  <rect y="800" width="1600" height="40" fill="#2e2925"/>
+  <use href="#bike" x="120" y="732" width="120" height="70"/><use href="#bike" x="210" y="734" width="114" height="66"/><use href="#bike" x="1240" y="732" width="120" height="70"/>
+  <g fill="#141110"><rect x="520" y="784" width="12" height="18" rx="4"/><rect x="1110" y="784" width="12" height="18" rx="4"/></g>
+  <rect y="840" width="1600" height="160" fill="url(#str-water)"/>
+  <g stroke-linecap="round" stroke-width="4">
+    <path d="M560 870h120M600 900h80M760 880h90M590 930h50" stroke="#ffb466" stroke-opacity=".35"/>
+    <path d="M940 872h40M930 906h30" stroke="#c6e2de" stroke-opacity=".3"/>
+    <path d="M80 880h90M220 920h60M1250 890h120M1400 940h70" stroke="#fff" stroke-opacity=".08"/>
+  </g>
+  <rect width="1600" height="1000" fill="url(#st-vignette)" opacity=".7"/>
+
+  <!-- numbered signs (the cards carry the text; these only point) -->
+  <g class="st-spots">
+    <g class="st-spot" data-n="1" transform="translate(951 688)"><circle class="r" r="26"/><circle class="d" r="15"/><text y="5.5">1</text></g>
+    <g class="st-spot" data-n="2" transform="translate(722 312)"><circle class="r" r="26"/><circle class="d" r="15"/><text y="5.5">2</text></g>
+    <g class="st-spot" data-n="3" transform="translate(1042 668)"><circle class="r" r="26"/><circle class="d" r="15"/><text y="5.5">3</text></g>
+    <g class="st-spot" data-n="4" transform="translate(996 600)"><circle class="r" r="26"/><circle class="d" r="15"/><text y="5.5">4</text></g>
+    <g class="st-spot" data-n="5" transform="translate(430 668)"><circle class="r" r="26"/><circle class="d" r="15"/><text y="5.5">5</text></g>
+  </g>
+</g>
+</svg>

@@ -1,0 +1,102 @@
+<svg class="st-art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="home-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1215"/><stop offset="1" stop-color="#1f2c30"/></linearGradient>
+  <clipPath id="home-pane"><rect x="578" y="168" width="324" height="364"/></clipPath>
+  <pattern id="home-paper" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M0 7h14" stroke="#fff" stroke-opacity=".025" stroke-width="7"/></pattern>
+</defs>
+<g class="cam">
+  <!-- room -->
+  <rect width="1600" height="1000" fill="#1d1916"/>
+  <rect width="1600" height="640" fill="url(#home-paper)"/>
+  <rect y="640" width="1600" height="360" fill="#181411"/>
+  <rect y="636" width="1600" height="8" fill="#2a231e"/>
+  <rect y="955" width="1600" height="45" fill="#120f0d"/>
+
+  <!-- window onto the town: flats, and the shoe factory that closed -->
+  <rect x="548" y="140" width="384" height="420" rx="6" fill="#2b2420"/>
+  <rect x="578" y="168" width="324" height="364" fill="url(#home-sky)"/>
+  <g clip-path="url(#home-pane)">
+    <circle cx="846" cy="224" r="18" fill="#e9e2d3" opacity=".85"/>
+    <circle cx="846" cy="224" r="60" fill="#e9e2d3" opacity=".05"/>
+    <g fill="#0a0e10">
+      <rect x="572" y="404" width="78" height="140"/><rect x="652" y="372" width="56" height="170"/>
+      <path d="M716 532V452l36-22v22l36-22v22l36-22v22l36-22v102Z"/>
+      <rect x="868" y="330" width="14" height="110"/>
+    </g>
+    <g class="home-factory-sign"><rect x="742" y="470" width="110" height="22" fill="#141a1c"/><text x="797" y="486" text-anchor="middle" font-family="var(--st-sans)" font-size="11" letter-spacing="2" fill="#4f8e92" opacity=".7">CLOSED</text></g>
+    <g fill="#ffb466">
+      <rect x="586" y="420" width="7" height="9" opacity=".85"/><rect x="606" y="446" width="7" height="9" opacity=".5"/><rect x="626" y="420" width="7" height="9" opacity=".7"/>
+      <rect x="586" y="472" width="7" height="9" opacity=".35"/><rect x="666" y="390" width="7" height="9" opacity=".8"/><rect x="684" y="418" width="7" height="9" opacity=".45"/>
+      <rect x="666" y="470" width="7" height="9" opacity=".75"/><rect x="684" y="500" width="7" height="9" opacity=".6"/>
+    </g>
+  </g>
+  <rect x="738" y="168" width="4" height="364" fill="#2b2420"/><rect x="578" y="348" width="324" height="4" fill="#2b2420"/>
+  <rect x="534" y="548" width="412" height="16" rx="3" fill="#3a312a"/>
+  <rect x="604" y="512" width="30" height="36" rx="3" fill="#a85d3e"/>
+  <g fill="#5b7747"><ellipse cx="610" cy="500" rx="9" ry="20" transform="rotate(-25 610 500)"/><ellipse cx="626" cy="496" rx="9" ry="22" transform="rotate(18 626 496)"/><ellipse cx="619" cy="490" rx="7" ry="18"/></g>
+  <path d="M506 128h52v460q-22 10-52 0Z" fill="#33251f"/>
+  <path d="M922 128h52v460q-22 10-52 0Z" fill="#33251f"/>
+  <rect x="490" y="120" width="500" height="12" rx="4" fill="#2b2420"/>
+
+  <!-- clock: a quarter to midnight, like the phone -->
+  <g transform="translate(1360 250)">
+    <circle r="46" fill="#2b2420"/><circle r="38" fill="#e8dfd0" opacity=".9"/>
+    <path d="M0 0V-26M0 0 13-8" stroke="#141210" stroke-width="4" stroke-linecap="round"/>
+    <circle r="3" fill="#C46F49"/>
+  </g>
+
+  <!-- the empty chair, with her mother's work coat: she cleans offices at night -->
+  <g>
+    <path d="M300 470h20l10 230h-20Z" fill="#2a211b"/>
+    <path d="M282 470q30-14 60 0l-4 20h-52Z" fill="#2f251e"/>
+    <path d="M276 482q34-18 72 0l8 150q-20 40-44 36-30-2-44-30Z" fill="#2c3d3f"/>
+    <path d="M300 500l8 120M330 500l-6 120" stroke="#22302f" stroke-width="5"/>
+    <rect x="318" y="560" width="22" height="28" rx="3" fill="#e8dfd0" opacity=".7"/>
+    <path d="M329 500v60" stroke="#C46F49" stroke-width="2"/>
+  </g>
+
+  <!-- lamp and its light -->
+  <path d="M1000 0v214" stroke="#0c0a09" stroke-width="3"/>
+  <polygon points="940,256 1060,256 1340,780 660,780" fill="url(#st-cone)"/>
+  <path d="M948 256h104l-18-44h-68Z" fill="#C46F49"/>
+  <path d="M948 256h104l-4-8h-96Z" fill="#a85d3e"/>
+  <ellipse cx="1000" cy="258" rx="26" ry="7" fill="#ffe2bd"/>
+  <ellipse cx="1000" cy="300" rx="120" ry="60" fill="url(#st-warm)"/>
+
+  <!-- Ana, behind the table -->
+  <g style="--top:#F5821F;--skin:#b98263;--bun:#0f0c0b">
+    <path d="M1236 520h18l8 190h-18Z" fill="#241c17"/>
+    <path d="M1222 520q22-10 46 0v14h-46Z" fill="#2f251e"/>
+    <use href="#fig-seat" x="1030" y="430" width="250" height="262"/>
+  </g>
+
+  <!-- table -->
+  <ellipse cx="1000" cy="716" rx="380" ry="46" fill="#ffb466" opacity=".12"/>
+  <polygon points="540,690 1300,690 1340,726 500,726" fill="#4a3a2f"/>
+  <polygon points="700,690 1220,690 1250,726 660,726" fill="#ffb466" opacity=".14"/>
+  <rect x="500" y="726" width="840" height="24" fill="#2f251e"/>
+  <rect x="540" y="750" width="26" height="210" fill="#241c17"/><rect x="1276" y="750" width="26" height="210" fill="#241c17"/>
+
+  <!-- on the table: bills, a mug -->
+  <g class="home-bills">
+    <rect x="646" y="684" width="120" height="18" rx="2" fill="#cfc5b4" transform="rotate(-4 706 693)"/>
+    <rect x="652" y="680" width="120" height="18" rx="2" fill="#e8dfd0" transform="rotate(3 712 689)"/>
+    <rect x="662" y="676" width="116" height="16" rx="2" fill="#f2ebdf"/>
+    <rect x="700" y="679" width="56" height="10" rx="2" fill="none" stroke="#C46F49" stroke-width="2" transform="rotate(-6 728 684)"/>
+  </g>
+  <g>
+    <rect x="852" y="652" width="40" height="44" rx="7" fill="#4f8e92"/>
+    <path d="M892 662q18 2 16 14t-16 10" fill="none" stroke="#4f8e92" stroke-width="6"/>
+    <path class="st-steam" d="M864 640q-8-14 0-26t0-26M880 640q-8-14 0-26t0-26" fill="none" stroke="#e8dfd0" stroke-opacity=".28" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g style="--top:#F5821F;--skin:#b98263"><use href="#fig-forearm" x="990" y="690" width="150" height="34"/></g>
+  <rect id="home-phone" x="940" y="688" width="44" height="20" fill="none"/>
+
+  <rect width="1600" height="1000" fill="url(#st-vignette)"/>
+
+  <!-- highlights -->
+  <g class="st-ring" data-on="1" transform="translate(797 470)"><circle r="70"/><circle r="70"/></g>
+  <g class="st-ring" data-on="2" transform="translate(712 688)"><circle r="78"/><circle r="78"/></g>
+  <g class="st-ring" data-on="3" transform="translate(962 698)"><circle r="58"/><circle r="58"/></g>
+</g>
+</svg>

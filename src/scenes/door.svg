@@ -1,0 +1,33 @@
+<svg class="st-art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+  <radialGradient id="door-out" cx="50%" cy="62%" r="70%"><stop offset="0" stop-color="#fff6e8"/><stop offset=".45" stop-color="#ffd4a0"/><stop offset="1" stop-color="#F5821F"/></radialGradient>
+  <linearGradient id="door-spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd4a0" stop-opacity=".8"/><stop offset="1" stop-color="#ffd4a0" stop-opacity="0"/></linearGradient>
+  <linearGradient id="door-ray" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd4a0" stop-opacity="0"/><stop offset=".5" stop-color="#ffd4a0" stop-opacity=".5"/><stop offset="1" stop-color="#ffd4a0" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1600" height="1000" fill="#15110f"/>
+<rect y="880" width="1600" height="120" fill="#0f0c0b"/>
+<!-- the way out -->
+<rect x="620" y="180" width="360" height="704" fill="#2a211b"/>
+<rect x="650" y="210" width="300" height="672" fill="url(#door-out)"/>
+<g class="door-world">
+  <path d="M650 700q80-30 150-20t150 10v192H650Z" fill="#e8b27a" opacity=".55"/>
+  <circle cx="800" cy="560" r="70" fill="#fff6e8"/>
+</g>
+<g class="door-ana" style="--top:#0f0c0b;--legs:#0f0c0b;--skin:#0f0c0b;--hair:#0f0c0b">
+  <use href="#fig-ana-back" x="740" y="520" width="120" height="342"/>
+</g>
+<g class="door-leaf">
+  <rect x="650" y="210" width="300" height="672" fill="#2e241e"/>
+  <rect x="682" y="246" width="236" height="270" rx="4" fill="#3a2e26"/>
+  <rect x="682" y="560" width="236" height="286" rx="4" fill="#3a2e26"/>
+  <rect x="906" y="536" width="22" height="10" rx="4" fill="#C46F49"/>
+</g>
+<g class="door-light">
+  <polygon points="650,882 950,882 1360,1000 240,1000" fill="url(#door-spill)"/>
+  <polygon points="650,210 650,882 0,1000 0,0" fill="url(#door-ray)" opacity=".18"/>
+  <polygon points="950,210 950,882 1600,1000 1600,0" fill="url(#door-ray)" opacity=".18"/>
+</g>
+<rect class="door-warm" width="1600" height="1000" fill="#F5821F"/>
+<rect width="1600" height="1000" fill="url(#st-vignette)"/>
+<rect class="door-white" width="1600" height="1000" fill="#FCFAF6"/>
+</svg>

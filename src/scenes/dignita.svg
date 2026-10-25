@@ -1,0 +1,73 @@
+<svg class="st-art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="dg-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3ece8"/><stop offset="1" stop-color="#f4f1e6"/></linearGradient>
+  <clipPath id="dg-panes"><rect x="190" y="140" width="1220" height="410"/></clipPath>
+  <linearGradient id="dg-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<g class="cam">
+  <rect width="1600" height="1000" fill="#F3EDE3"/>
+  <text x="800" y="104" text-anchor="middle" font-family="var(--st-disp)" font-style="italic" font-weight="600" font-size="48" fill="#141210">Eat well, do good</text>
+
+  <!-- garden windows -->
+  <rect x="180" y="130" width="1240" height="430" rx="4" fill="#2e2925"/>
+  <rect x="190" y="140" width="1220" height="410" fill="url(#dg-sky)"/>
+  <g clip-path="url(#dg-panes)">
+    <rect x="190" y="470" width="1220" height="80" fill="#a9bf8c"/>
+    <g fill="#5b7747"><circle cx="260" cy="380" r="110"/><circle cx="420" cy="420" r="80"/><circle cx="1080" cy="390" r="120"/><circle cx="1300" cy="360" r="140"/></g>
+    <g fill="#7d9a63"><circle cx="330" cy="330" r="90"/><circle cx="640" cy="440" r="70"/><circle cx="980" cy="430" r="80"/><circle cx="1200" cy="300" r="90"/></g>
+    <g fill="#a3b88a"><circle cx="560" cy="400" r="60"/><circle cx="780" cy="420" r="66"/><circle cx="900" cy="360" r="70"/></g>
+    <g fill="#3d4a32"><rect x="254" y="440" width="12" height="60"/><rect x="1294" y="440" width="14" height="60"/><rect x="776" y="460" width="10" height="40"/></g>
+    <rect x="620" y="480" width="120" height="10" rx="3" fill="#6b5a4c"/><rect x="630" y="490" width="6" height="26" fill="#6b5a4c"/><rect x="724" y="490" width="6" height="26" fill="#6b5a4c"/>
+  </g>
+  <path d="M494 140v410M800 140v410M1106 140v410" stroke="#2e2925" stroke-width="8"/>
+  <rect x="170" y="552" width="1260" height="16" rx="3" fill="#e2d6c3"/>
+  <g fill="#C46F49"><rect x="230" y="520" width="34" height="34" rx="4"/><rect x="1330" y="520" width="34" height="34" rx="4"/></g>
+  <g fill="#5b7747"><ellipse cx="240" cy="506" rx="10" ry="20" transform="rotate(-20 240 506)"/><ellipse cx="256" cy="502" rx="10" ry="22" transform="rotate(16 256 502)"/><ellipse cx="1340" cy="506" rx="10" ry="20" transform="rotate(-20 1340 506)"/><ellipse cx="1356" cy="502" rx="10" ry="22" transform="rotate(16 1356 502)"/></g>
+
+  <!-- sunlight -->
+  <polygon points="190,140 494,140 760,1000 330,1000" fill="url(#dg-beam)" opacity=".5"/>
+  <polygon points="800,140 1106,140 1340,1000 960,1000" fill="url(#dg-beam)" opacity=".45"/>
+
+  <!-- lamps -->
+  <path d="M120 0v170M1480 0v170" stroke="#141210" stroke-width="2"/>
+  <path d="M96 196h48l-10-26h-28ZM1456 196h48l-10-26h-28Z" fill="#F5821F"/>
+
+  <!-- behind the counter: a trainer and two trainees, Ana at the coffee machine -->
+  <g style="--top:#5b7747;--skin:#8b5a3f;--hair:#0f0c0b;--apron:#e8dfd0"><use href="#fig-bust" x="448" y="520" width="120" height="171"/></g>
+  <g style="--top:#4f8e92;--skin:#e2b99a;--hair:#6b4a33;--apron:#C46F49"><use href="#fig-bust" x="1084" y="526" width="116" height="166"/></g>
+  <g style="--top:#F5821F;--skin:#b98263;--hair:#0f0c0b;--apron:#141210"><use href="#fig-bust" x="902" y="518" width="122" height="174"/></g>
+  <circle cx="963" cy="532" r="14" fill="#0f0c0b"/>
+
+  <!-- counter -->
+  <rect x="360" y="680" width="880" height="22" rx="4" fill="#c9a27e"/>
+  <rect x="380" y="702" width="840" height="300" fill="#4f8e92"/>
+  <g stroke="#3f7a7e" stroke-width="4"><path d="M440 710v290M520 710v290M600 710v290M680 710v290M760 710v290M840 710v290M920 710v290M1000 710v290M1080 710v290M1160 710v290"/></g>
+  <!-- coffee machine -->
+  <rect x="740" y="590" width="150" height="92" rx="8" fill="#e2ddd3"/>
+  <rect x="740" y="590" width="150" height="14" rx="6" fill="#F5821F"/>
+  <g fill="#141210"><rect x="764" y="630" width="26" height="14" rx="3"/><rect x="830" y="630" width="26" height="14" rx="3"/><rect x="772" y="644" width="10" height="10"/><rect x="838" y="644" width="10" height="10"/></g>
+  <g fill="#fff"><rect x="766" y="660" width="20" height="18" rx="3"/><rect x="832" y="660" width="20" height="18" rx="3"/></g>
+  <path class="st-steam" d="M776 650q-6-10 0-20t0-20M842 650q-6-10 0-20t0-20" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="3" stroke-linecap="round"/>
+  <!-- cake stand, cups, a plate being finished -->
+  <rect x="566" y="640" width="110" height="8" rx="4" fill="#e8dfd0"/><rect x="616" y="648" width="10" height="34" fill="#e8dfd0"/>
+  <g fill="#c98a4b"><circle cx="590" cy="628" r="13"/><circle cx="620" cy="626" r="14"/><circle cx="652" cy="628" r="13"/></g>
+  <g fill="#F5821F"><circle cx="604" cy="612" r="9"/><circle cx="636" cy="612" r="9"/></g>
+  <g fill="#fff"><rect x="1150" y="652" width="24" height="28" rx="4"/><rect x="1150" y="644" width="24" height="10" rx="3"/><rect x="1180" y="652" width="24" height="28" rx="4"/></g>
+  <ellipse cx="1100" cy="676" rx="44" ry="8" fill="#fff"/><g fill="#5b7747"><circle cx="1086" cy="670" r="7"/><circle cx="1100" cy="668" r="6"/></g><circle cx="1114" cy="670" r="7" fill="#C46F49"/>
+
+  <!-- guests -->
+  <rect x="60" y="850" width="300" height="12" rx="4" fill="#c9a27e"/><rect x="200" y="862" width="12" height="138" fill="#8b6e52"/>
+  <g style="--top:#C46F49;--skin:#c79a7a;--hair:#6b4a33"><use href="#fig-seat" x="-180" y="740" width="110" height="116" transform="scale(-1 1)"/></g>
+  <g style="--top:#141210;--skin:#8b5a3f;--hair:#0f0c0b"><use href="#fig-seat" x="250" y="740" width="110" height="116"/></g>
+  <g fill="#fff"><ellipse cx="160" cy="848" rx="18" ry="4"/><ellipse cx="236" cy="848" rx="18" ry="4"/></g>
+  <rect x="1260" y="850" width="300" height="12" rx="4" fill="#c9a27e"/><rect x="1404" y="862" width="12" height="138" fill="#8b6e52"/>
+  <g style="--top:#5b7747;--skin:#e2b99a;--hair:#2c2420"><use href="#fig-seat" x="1440" y="740" width="110" height="116"/></g>
+  <rect x="1320" y="836" width="44" height="12" rx="2" fill="#F5821F"/>
+
+  <!-- highlights -->
+  <g class="st-ring is-light" data-on="1" transform="translate(800 92)"><circle r="190"/><circle r="190"/></g>
+  <g class="st-ring is-light" data-on="2" transform="translate(508 600)"><circle r="96"/><circle r="96"/></g>
+  <g class="st-ring is-light" data-on="3" transform="translate(620 640)"><circle r="90"/><circle r="90"/></g>
+  <g class="st-ring is-light" data-on="4" transform="translate(900 610)"><circle r="130"/><circle r="130"/></g>
+</g>
+</svg>

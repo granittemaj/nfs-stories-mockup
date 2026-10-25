@@ -1,0 +1,117 @@
+<svg class="st-art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+  <pattern id="cut-tiles" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0v28" fill="none" stroke="#fff" stroke-opacity=".05" stroke-width="2"/></pattern>
+  <pattern id="cut-earth" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v22" stroke="#fff" stroke-opacity=".03" stroke-width="6"/></pattern>
+  <linearGradient id="cut-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1013"/><stop offset="1" stop-color="#18252a"/></linearGradient>
+</defs>
+<g class="cam">
+  <rect width="1600" height="620" fill="url(#cut-sky)"/>
+  <g fill="#e9e2d3"><circle cx="210" cy="90" r="1.6"/><circle cx="420" cy="150" r="1.2"/><circle cx="1180" cy="70" r="1.8"/><circle cx="1410" cy="160" r="1.3"/><circle cx="1290" cy="120" r="1"/><circle cx="96" cy="210" r="1.2"/></g>
+  <rect y="610" width="1600" height="390" fill="#110e0c"/>
+  <rect y="610" width="1600" height="390" fill="url(#cut-earth)"/>
+
+  <!-- the street: far houses, neighbours, bikes, a lamp -->
+  <g fill="#141110">
+    <path d="M0 600V300h70v-30h40v-30h40v30h40v30h40v300Z"/>
+    <path d="M1360 600V280q40-60 80-60h40q40 0 80 60v320Z"/><rect x="1540" y="320" width="60" height="280"/>
+  </g>
+  <g fill="#1b1512">
+    <path d="M300 600V250h30v-30h30v-30h30v-30h60v30h30v30h30v30h30v350Z"/>
+    <path d="M1040 600V230q30-10 50-50 10-30 40-30h60q30 0 40 30 20 40 50 50v370Z"/>
+  </g>
+  <g fill="#0d1012">
+    <rect x="340" y="280" width="36" height="54"/><rect x="420" y="280" width="36" height="54"/><rect x="500" y="280" width="36" height="54"/>
+    <rect x="340" y="380" width="36" height="54"/><rect x="420" y="380" width="36" height="54"/><rect x="500" y="380" width="36" height="54"/>
+    <rect x="340" y="480" width="36" height="54"/><rect x="500" y="480" width="36" height="54"/>
+    <rect x="1080" y="260" width="36" height="54"/><rect x="1160" y="260" width="36" height="54"/><rect x="1240" y="260" width="36" height="54"/>
+    <rect x="1080" y="360" width="36" height="54"/><rect x="1160" y="360" width="36" height="54"/><rect x="1240" y="360" width="36" height="54"/>
+    <rect x="1080" y="470" width="36" height="54"/><rect x="1240" y="470" width="36" height="54"/>
+  </g>
+  <g fill="#ffb466"><rect x="420" y="380" width="36" height="54" opacity=".5"/><rect x="340" y="480" width="36" height="54" opacity=".3"/><rect x="1160" y="260" width="36" height="54" opacity=".42"/><rect x="1240" y="470" width="36" height="54" opacity=".55"/><rect x="40" y="380" width="26" height="40" opacity=".25"/><rect x="1430" y="330" width="26" height="40" opacity=".3"/></g>
+  <rect y="600" width="1600" height="18" fill="#2a2522"/>
+  <use href="#bike" x="390" y="532" width="120" height="70" style="--bike:#090807"/>
+  <use href="#bike" x="1240" y="532" width="120" height="70" style="--bike:#090807"/>
+  <rect x="1116" y="420" width="8" height="182" fill="#0a0908"/>
+  <path d="M1104 420h32l-6-16h-20Z" fill="#0a0908"/>
+  <ellipse cx="1120" cy="430" rx="70" ry="50" fill="url(#st-warm)"/>
+
+  <!-- the house, cut open -->
+  <path d="M552 178V148q74 0 102-44l16-28q8-16 30-16h200q22 0 30 16l16 28q28 44 102 44v30Z" fill="#3a2a22"/>
+  <rect x="772" y="96" width="56" height="44" fill="#0d1113"/><path d="M800 96v44M772 118h56" stroke="#3a2a22" stroke-width="4"/>
+  <rect x="786" y="60" width="28" height="14" fill="#241a15"/><path d="M800 74v22m-6 0h12" stroke="#241a15" stroke-width="3"/>
+
+  <rect x="552" y="170" width="496" height="706" fill="#3a2a22"/>
+
+  <!-- top floor: six beds, one bulb, a bolted door -->
+  <rect x="572" y="186" width="456" height="172" fill="#221c19"/>
+  <path d="M800 186v24" stroke="#0c0a09" stroke-width="2"/>
+  <circle cx="800" cy="214" r="7" fill="#ffe2bd"/>
+  <ellipse cx="800" cy="236" rx="190" ry="110" fill="url(#st-warm)" opacity=".55"/>
+  <g>
+    <rect x="590" y="236" width="8" height="120" fill="#4a3f37"/><rect x="718" y="236" width="8" height="120" fill="#4a3f37"/>
+    <rect x="594" y="268" width="128" height="16" rx="3" fill="#6b5a4c"/><rect x="636" y="262" width="86" height="12" rx="3" fill="#C46F49"/>
+    <rect x="594" y="326" width="128" height="16" rx="3" fill="#6b5a4c"/><rect x="600" y="320" width="70" height="12" rx="3" fill="#4f8e92"/>
+    <rect x="740" y="236" width="8" height="120" fill="#4a3f37"/><rect x="868" y="236" width="8" height="120" fill="#4a3f37"/>
+    <rect x="744" y="268" width="128" height="16" rx="3" fill="#6b5a4c"/><rect x="744" y="262" width="66" height="12" rx="3" fill="#5b7747"/>
+    <rect x="744" y="326" width="128" height="16" rx="3" fill="#6b5a4c"/><rect x="796" y="320" width="76" height="12" rx="3" fill="#C46F49"/>
+    <rect x="598" y="344" width="120" height="12" rx="3" fill="#57493e"/><rect x="748" y="344" width="120" height="12" rx="3" fill="#57493e"/>
+  </g>
+  <rect x="918" y="226" width="78" height="132" fill="#2e2622"/>
+  <rect x="924" y="232" width="66" height="126" fill="#3d322b"/>
+  <rect x="930" y="282" width="40" height="10" rx="2" fill="#0c0a09"/><rect x="964" y="276" width="14" height="22" rx="3" fill="#0c0a09"/>
+  <g class="cut-lock" transform="translate(958 312)"><path d="M-9 0v-8a9 9 0 0 1 18 0v8" fill="none" stroke="#C46F49" stroke-width="4"/><rect x="-13" y="-1" width="26" height="22" rx="4" fill="#C46F49"/></g>
+  <rect x="552" y="358" width="496" height="16" fill="#2a1f1a"/>
+
+  <!-- ground floor: the restaurant everyone sees -->
+  <rect x="572" y="374" width="456" height="226" fill="#3b2a1f"/>
+  <rect x="572" y="520" width="456" height="80" fill="#33241b"/>
+  <g>
+    <path d="M660 374v34M800 374v34M940 374v34" stroke="#0c0a09" stroke-width="2"/>
+    <path d="M644 420h32l-6-12h-20ZM784 420h32l-6-12h-20ZM924 420h32l-6-12h-20Z" fill="#C46F49"/>
+    <ellipse cx="660" cy="450" rx="80" ry="60" fill="url(#st-warm)"/><ellipse cx="800" cy="450" rx="80" ry="60" fill="url(#st-warm)"/><ellipse cx="940" cy="450" rx="80" ry="60" fill="url(#st-warm)"/>
+  </g>
+  <g fill="#5a4232"><rect x="590" y="436" width="40" height="5"/><rect x="590" y="404" width="40" height="5"/></g>
+  <g fill="#5b7747"><ellipse cx="600" cy="398" rx="8" ry="12"/><ellipse cx="614" cy="396" rx="7" ry="14"/><ellipse cx="606" cy="430" rx="9" ry="10"/></g>
+  <!-- diners -->
+  <g style="--top:#4f8e92;--skin:#c79a7a;--hair:#2c2420"><use href="#fig-seat" x="676" y="440" width="96" height="101"/></g>
+  <g style="--top:#5b7747;--skin:#8b5a3f;--hair:#0f0c0b"><use href="#fig-seat" x="-708" y="436" width="96" height="105" transform="scale(-1 1)"/></g>
+  <g style="--top:#C46F49;--skin:#e2b99a;--hair:#6b4a33"><use href="#fig-seat" x="-860" y="440" width="96" height="101" transform="scale(-1 1)"/></g>
+  <rect x="606" y="538" width="120" height="8" rx="2" fill="#6b4f3c"/><rect x="662" y="546" width="8" height="54" fill="#2a1d16"/>
+  <rect x="756" y="538" width="110" height="8" rx="2" fill="#6b4f3c"/><rect x="806" y="546" width="8" height="54" fill="#2a1d16"/>
+  <g fill="#e8dfd0"><ellipse cx="640" cy="536" rx="14" ry="3"/><ellipse cx="694" cy="536" rx="14" ry="3"/><ellipse cx="790" cy="536" rx="14" ry="3"/><ellipse cx="836" cy="536" rx="14" ry="3"/></g>
+  <!-- bar and the manager with his book -->
+  <rect x="884" y="392" width="128" height="6" fill="#5a4232"/><rect x="884" y="430" width="128" height="6" fill="#5a4232"/>
+  <g fill="#4f8e92"><rect x="892" y="372" width="8" height="20" rx="2"/><rect x="906" y="376" width="8" height="16" rx="2" fill="#5b7747"/><rect x="920" y="370" width="8" height="22" rx="2" fill="#C46F49"/><rect x="980" y="410" width="8" height="20" rx="2"/><rect x="996" y="414" width="8" height="16" rx="2" fill="#e8dfd0"/></g>
+  <g style="--top:#141210;--legs:#0c0a09;--skin:#c49373;--hair:#2a2420">
+    <use href="#fig-front" x="924" y="404" width="68" height="196"/>
+  </g>
+  <rect x="932" y="496" width="22" height="28" rx="2" fill="#e8dfd0" transform="rotate(-8 943 510)"/>
+  <rect id="cut-pocket" x="960" y="500" width="14" height="20" fill="none"/>
+  <rect x="992" y="500" width="30" height="100" fill="#2a1d16"/><rect x="988" y="494" width="40" height="8" fill="#5a4232"/>
+  <rect x="552" y="600" width="496" height="18" fill="#2a1f1a"/>
+
+  <!-- basement: the kitchen nobody sees -->
+  <rect x="572" y="618" width="456" height="242" fill="#1b2627"/>
+  <rect x="572" y="618" width="456" height="242" fill="url(#cut-tiles)"/>
+  <rect x="696" y="630" width="208" height="8" rx="4" fill="#e6f4f1"/>
+  <ellipse cx="800" cy="660" rx="260" ry="120" fill="url(#st-cold)"/>
+  <g fill="#3a4547"><rect x="590" y="664" width="110" height="5"/><rect x="900" y="664" width="110" height="5"/></g>
+  <g fill="#566264"><circle cx="612" cy="684" r="12"/><circle cx="644" cy="680" r="9"/><rect x="664" y="672" width="16" height="22" rx="3"/><circle cx="930" cy="684" r="11"/><rect x="956" y="674" width="22" height="18" rx="3"/></g>
+  <rect x="590" y="770" width="130" height="90" fill="#2c3537"/><rect x="590" y="764" width="130" height="10" fill="#47534f"/>
+  <rect x="604" y="742" width="40" height="24" rx="3" fill="#6d7877"/><rect x="660" y="746" width="46" height="20" rx="3" fill="#6d7877"/>
+  <path class="st-steam" d="M618 736q-8-14 0-26t0-26M682 740q-8-14 0-26t0-26" fill="none" stroke="#e6f4f1" stroke-opacity=".22" stroke-width="4" stroke-linecap="round"/>
+  <rect x="742" y="800" width="120" height="60" fill="#2c3537"/><rect x="738" y="794" width="128" height="8" fill="#56605e"/>
+  <rect x="890" y="780" width="120" height="80" fill="#2c3537"/><rect x="886" y="774" width="128" height="8" fill="#56605e"/><rect x="908" y="782" width="84" height="14" rx="4" fill="#0f1617"/>
+  <g style="--top:#3e4a4c;--legs:#151c1d;--skin:#9b6a50;--hair:#0f0c0b"><use href="#fig-back" x="616" y="660" width="70" height="200"/></g>
+  <g style="--top:#4a4d47;--legs:#151c1d;--skin:#d1a283;--hair:#3a2a1f"><use href="#fig-back" x="770" y="664" width="68" height="196"/></g>
+  <g style="--top:#F5821F;--legs:#151c1d;--skin:#b98263;--hair:#0f0c0b"><use href="#fig-ana-back" x="916" y="664" width="68" height="196"/></g>
+  <rect x="552" y="860" width="496" height="16" fill="#2a1f1a"/>
+  <g stroke="#2a1f1a" stroke-width="10"><path d="M600 876v124M680 876v124M760 876v124M840 876v124M920 876v124M1000 876v124"/></g>
+
+  <!-- highlights -->
+  <g class="st-ring" data-on="1" transform="translate(800 740)"><circle r="150"/><circle r="150"/></g>
+  <g class="st-ring" data-on="2" transform="translate(800 280)"><circle r="140"/><circle r="140"/></g>
+  <g class="st-ring" data-on="3" transform="translate(950 500)"><circle r="70"/><circle r="70"/></g>
+  <g class="st-ring" data-on="4" transform="translate(950 500)"><circle r="70"/><circle r="70"/></g>
+</g>
+</svg>
