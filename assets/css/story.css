@@ -8,10 +8,10 @@
   --st-top:0px;--st-stageh:calc(100vh - var(--st-top));
 }
 @supports (height:100svh){:root{--st-stageh:calc(100svh - var(--st-top))}}
-/* The site header scrolls away with the page, as on a Reuters graphic, so every scene gets the
-   whole screen (--st-top is where stages stick). The theme makes every <header> sticky
+/* On story pages the site header scrolls away with the page, as on a Reuters graphic, so every
+   scene gets the whole screen (--st-top is where stages stick). On the hub it stays, as on the site. The theme makes every <header> sticky
    (header:not(.posthead)), so story markup must not use <header> elements. */
-.wp-site-blocks > header.wp-block-template-part,#hdr{position:relative}
+body[data-page="story"] .wp-site-blocks > header.wp-block-template-part,body[data-page="story"] #hdr{position:relative}
 .st-sprite{position:absolute;width:0;height:0;overflow:hidden}
 .st-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 

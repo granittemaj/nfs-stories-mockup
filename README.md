@@ -18,7 +18,8 @@ theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 
 ## The hub
 
-`src/hub.html`, styled by `assets/css/hub.css`, with a small `assets/js/hub.js`. The lead story's
+Written to be published as it is (no review notes, no mockup flag), with the site header sticky as
+on the rest of the site; on the story pages it scrolls away. `src/hub.html`, styled by `assets/css/hub.css`, with a small `assets/js/hub.js`. The lead story's
 picture plays when it comes into view: the route draws itself, the minibus rides it, and Mihai's
 messages land on Ana's phone (which tilts toward the pointer). The five other cards have small
 pictures that move while they are on screen: the plane over the forest line, the steam off the

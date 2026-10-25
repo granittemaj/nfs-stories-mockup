@@ -3,7 +3,7 @@
 .hub-wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
 .hub-hero{padding:clamp(56px,8vw,104px) 0 clamp(36px,5vw,56px)}
 .hub-hero h1{font-family:var(--st-disp);font-weight:800;font-size:clamp(44px,7vw,96px);line-height:.96;letter-spacing:-.02em;max-width:13ch}
-.hub-hero h1 em{font-style:italic;color:var(--st-orange)}
+.hub-hero h1 em{font-style:italic;color:var(--st-orange);white-space:nowrap}
 .hub-lead{margin-top:24px;max-width:56ch;font-size:clamp(18px,1.8vw,21px);line-height:1.55;color:#403a33}
 .hub-note{margin-top:14px;font-family:var(--st-ui);font-size:13px;color:#6b6358}
 .hub-feature{display:grid;grid-template-columns:1.15fr 1fr;border-radius:18px;overflow:hidden;background:var(--st-night);color:var(--st-cream);text-decoration:none;box-shadow:0 30px 60px -36px rgba(20,18,16,.6);transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s}
@@ -54,13 +54,6 @@ a.hub-card:hover .hub-card-art svg{transform:scale(1.04)}
 .hub-card.is-wide h3{font-size:clamp(30px,3vw,38px)}
 a.hub-card:hover h3{text-decoration:underline;text-decoration-color:var(--st-orange);text-decoration-thickness:2px;text-underline-offset:6px}
 .hub-card > p:not(.hub-num){margin:10px 24px 0;font-size:16.5px;line-height:1.55;color:#403a33}
-.hub-blocks{margin-top:clamp(56px,8vw,96px)}
-.hub-blocks h2{font-family:var(--st-disp);font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.04;max-width:20ch}
-.hub-blocks ol{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px);counter-reset:blk}
-.hub-blocks li{counter-increment:blk;padding-top:16px;border-top:2px solid var(--st-ink);display:flex;flex-direction:column;gap:6px}
-.hub-blocks li::before{content:counter(blk,decimal-leading-zero);font-family:var(--st-ui);font-size:12px;letter-spacing:.14em;color:var(--st-orange);font-weight:700}
-.hub-blocks b{font-family:var(--st-disp);font-weight:700;font-size:22px}
-.hub-blocks span{font-size:16.5px;line-height:1.5;color:#403a33}
 
 /* the card pictures move a little while they are on screen (hub.js adds .is-live) */
 .ha-fly{animation:ha-fly 12s linear infinite;animation-delay:-4.5s}
@@ -101,8 +94,7 @@ a.hub-card:hover h3{text-decoration:underline;text-decoration-color:var(--st-ora
   .hub-feature{grid-template-columns:1fr}
   .hub-feature-art{min-height:440px}
   .hf-lab{font-size:26px}
-  .hub-blocks ol{grid-template-columns:1fr}
-}
+  }
 @media (max-width:640px){
   .hub-next{grid-template-columns:1fr}
   .hub-card:last-child{grid-column:auto}

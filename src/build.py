@@ -72,7 +72,7 @@ def page(path, title, desc, body, kind='story'):
 {body}
 <footer class="wp-block-template-part"><div id="site-newsletter"></div><div id="site-footer"></div></footer>
 </div>
-<p class="st-mockflag" role="note">Mockup for review<span>. Not the live site.</span></p>
+{'' if hub else '<p class="st-mockflag" role="note">Mockup for review<span>. Not the live site.</span></p>'}
 </body>
 </html>
 '''
@@ -113,5 +113,6 @@ if __name__ == '__main__':
           'How a soup program in an Amsterdam safe house grew into Dignita. A scroll-driven story mockup for Not For Sale.')
     story('the-forest-line', 'The Forest Line &#183; Not For Sale stories (mockup)',
           'A flight over Madre de Dios, Peru, from the gold mines to the forest people keep standing. A scroll-driven story mockup for Not For Sale.')
-    page('index.html', 'Not For Sale stories (mockup)', 'Concept mockups for scroll-driven visual stories on wearenotforsale.org.',
+    page('index.html', 'Stories | Not For Sale', 'Visual stories from Not For Sale: each one follows one thing through the places '
+         'where our work happens, to show how exploitation begins and how we stop it.',
          open(os.path.join(HERE, 'hub.html')).read(), kind='stories')
