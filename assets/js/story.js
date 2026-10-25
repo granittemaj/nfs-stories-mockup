@@ -11,6 +11,8 @@
      data-stop="id"     the map: the bus reaches this stop when the step is centred
      data-ledger="n"    the kitchen ledger: show rows up to n
      data-t="0.5"       a .st-track diagram: the travelling dot reaches this point (0 to 1)
+     data-year="2015"   a .st-year counter in the stage counts to this year (or shows the text)
+     data-units="n"     a .st-units chart (canvas, one square per person) shows layer n
 
    Section attributes: data-progress sets --p (0 to 1) on the section as it scrolls past;
    data-cam0 / data-cam0m give the camera before the first card (default: the whole scene).
@@ -65,6 +67,9 @@
     if (map) S.map = mapInit(map, S);
     var track = el.querySelector('.st-track');
     if (track) S.track = trackInit(track);
+    S.year = S.stage && S.stage.querySelector('.st-year');
+    var units = S.stage && S.stage.querySelector('.st-units');
+    if (units) S.units = unitsInit(units);
     sections.push(S);
   });
 
@@ -262,7 +267,17 @@
         if (b && !on) b.textContent = '€0';
       });
     }
-    keepUntil = Date.now() + 1300; // let the camera finish while anchored things follow it
+    if (S.year) {
+      var yr = null;
+      for (var q2 = 0; q2 < Math.max(n, 1); q2++) { var yv = S.steps[q2] && S.steps[q2].el.getAttribute('data-year'); if (yv) yr = yv; }
+      if (yr) yearTo(S.year, yr);
+    }
+    if (S.units) {
+      var lv = 0;
+      for (var q3 = 0; q3 < n; q3++) { var uv = +(S.steps[q3].el.getAttribute('data-units') || 0); if (uv) lv = uv; }
+      unitsSet(S.units, lv);
+    }
+    keepUntil = Date.now() + 1600; // let the camera finish while anchored things follow it
     kick();
   }
 
@@ -273,6 +288,74 @@
       t0 = t0 || ts;
       var u = Math.min(1, (ts - t0) / 750);
       el.textContent = '€' + fmt(to * (1 - Math.pow(1 - u, 3)));
+      if (u < 1) w.requestAnimationFrame(f);
+    })(performance.now());
+  }
+
+  // a year that counts up (or down) to the next one, or a word such as "Today"
+  function yearTo(el, to) {
+    var from = parseInt(el.textContent, 10), target = parseInt(to, 10);
+    if (isNaN(target) || isNaN(from) || reduce) { el.textContent = to; return; }
+    var t0 = null;
+    (function f(ts) {
+      t0 = t0 || ts;
+      var u = Math.min(1, (ts - t0) / 700);
+      el.textContent = Math.round(from + (target - from) * (1 - Math.pow(1 - u, 3)));
+      if (u < 1) w.requestAnimationFrame(f);
+    })(performance.now());
+  }
+
+  /* ---------------------------------------------------------------- unit charts */
+  // <canvas class="st-units" data-total="4561" data-groups="3507:#hex|1054:#hex" data-hi="263:#hex"
+  // data-base="#hex">: layer 1 shows every square in the base colour, then each group colours in,
+  // then the highlight. Squares change in reading order, so a new layer sweeps across the grid.
+  function unitsInit(cv) {
+    var g = (cv.getAttribute('data-groups') || '').split('|').map(function (x) { var p = x.split(':'); return { n: +p[0], c: p[1] }; });
+    var h = (cv.getAttribute('data-hi') || '').split(':');
+    var U = { cv: cv, ctx: cv.getContext('2d'), total: +cv.getAttribute('data-total'), groups: g, hi: { n: +h[0] || 0, c: h[1] }, base: cv.getAttribute('data-base') || '#444', level: 0, cur: [], anim: 0 };
+    for (var i = 0; i < U.total; i++) U.cur.push(null);
+    return U;
+  }
+  function unitsTarget(U, level) {
+    var out = [], i, k = 0;
+    for (i = 0; i < U.total; i++) out.push(level >= 1 ? U.base : null);
+    U.groups.forEach(function (g, gi) { for (i = 0; i < g.n && k < U.total; i++, k++) if (level >= gi + 2) out[k] = g.c; });
+    if (level >= U.groups.length + 2) for (i = 0; i < U.hi.n; i++) out[i] = U.hi.c;
+    return out;
+  }
+  function unitsLayout(U) {
+    var r = U.cv.getBoundingClientRect(), dpr = Math.min(2, w.devicePixelRatio || 1);
+    if (!r.width || !r.height) return;
+    U.cv.width = Math.round(r.width * dpr); U.cv.height = Math.round(r.height * dpr);
+    U.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var cell = Math.floor(Math.sqrt(r.width * r.height / U.total));
+    while (cell > 2 && Math.floor(r.width / cell) * Math.floor(r.height / cell) < U.total) cell--;
+    U.cell = cell; U.cols = Math.floor(r.width / cell);
+    U.gx = (r.width - U.cols * cell) / 2; U.gy = (r.height - Math.ceil(U.total / U.cols) * cell) / 2;
+    unitsDraw(U);
+  }
+  function unitsDraw(U) {
+    var c = U.ctx, s = U.cell, gap = Math.max(1, s * .22), r = U.cv.getBoundingClientRect();
+    c.clearRect(0, 0, r.width, r.height);
+    for (var i = 0; i < U.total; i++) {
+      if (!U.cur[i]) continue;
+      c.fillStyle = U.cur[i];
+      c.fillRect(U.gx + (i % U.cols) * s, U.gy + Math.floor(i / U.cols) * s, s - gap, s - gap);
+    }
+  }
+  function unitsSet(U, level) {
+    if (level === U.level && U.cell) return;
+    U.level = level;
+    var target = unitsTarget(U, level), changed = [];
+    for (var i = 0; i < U.total; i++) if (target[i] !== U.cur[i]) changed.push(i);
+    var id = ++U.anim, t0 = null;
+    if (reduce || !changed.length) { U.cur = target; if (U.cell) unitsDraw(U); return; }
+    (function f(ts) {
+      if (id !== U.anim) return;
+      t0 = t0 || ts;
+      var u = Math.min(1, (ts - t0) / 1100), upto = Math.floor(changed.length * u);
+      for (var j = 0; j < upto; j++) U.cur[changed[j]] = target[changed[j]];
+      if (U.cell) unitsDraw(U);
       if (u < 1) w.requestAnimationFrame(f);
     })(performance.now());
   }
@@ -333,6 +416,7 @@
       k.forEach(function (K) { var q = K.el.getBoundingClientRect(); K.at = q.top + y + q.height / 2 - centre(); K.anchor = null; });
     });
     if (phone) { pw = phone.offsetWidth; ph = phone.offsetHeight; }
+    sections.forEach(function (S) { if (S.units) unitsLayout(S.units); });
     kick();
   }
 

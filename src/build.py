@@ -18,13 +18,26 @@ def ver(rel):
 
 
 def scene(name):
-    s = open(os.path.join(HERE, 'scenes', name + '.svg')).read().strip()
+    path = os.path.join(HERE, 'scenes', name + '.svg')
+    s = open(path).read().strip() if os.path.exists(path) else ''
     if name == 'map':
         # the minibus that rides the route
         bus = ('<g class="m-bus"><circle class="m-bus-halo" r="20"/>'
                '<rect class="m-bus-body" x="-13" y="-7" width="26" height="14" rx="4"/>'
                '<rect class="m-bus-win" x="4" y="-4.5" width="6" height="9" rx="1.5"/></g>')
         s = s.replace('</svg>', bus + '\n</svg>')
+    if name == 'europe':
+        # The Offer's night map of Europe as a still picture (no route, no stops), written out as
+        # an image file so the page does not carry it inline
+        m = open(os.path.join(HERE, 'scenes', 'map.svg')).read().strip()
+        m = re.sub(r'<path class="m-route[^"]*"[^>]*/>', '', m)
+        m = m[:m.find('<g class="m-stops">')] + m[m.rfind('</svg>'):]
+        css = ('<style>.m-sea{fill:#091013}.m-land{fill:#221e1a}.m-borders{fill:none;stroke:#4a423a;stroke-width:1.2}'
+               '.m-lights path{fill:none;stroke:#ffc27a;stroke-linecap:round}.m-l0{opacity:.32}.m-l1{opacity:.55}.m-l2{opacity:.85}</style>')
+        m = m.replace('<svg class="st-map"', '<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100"', 1)
+        m = m.replace('<defs>', '<defs>' + css, 1)
+        open(os.path.join(OUT, 'assets', 'img', 'europe-night.svg'), 'w').write(m)
+        s = '<img class="st-art e-map" src="../assets/img/europe-night.svg" alt="" width="1600" height="1100" loading="lazy" decoding="async">'
     return s
 
 
@@ -77,7 +90,7 @@ HUB = '''
     <div class="hub-wrap">
       <p class="st-kicker">Not For Sale &#183; Stories</p>
       <h1>Stories that move <em>as you scroll</em></h1>
-      <p class="hub-lead">Visual stories in the spirit of the best newsroom graphics desks. Each one follows a single thread, a phone, a plane, a bowl of soup, through the places our work happens.</p>
+      <p class="hub-lead">Visual stories in the spirit of the best newsroom graphics desks. Each one follows a single thread (a phone, a plane, a bowl of soup) through the places our work happens.</p>
       <p class="hub-note">Concept mockups for review. Not published.</p>
     </div>
   </section>
@@ -112,20 +125,21 @@ HUB = '''
         <p>A low flight over Madre de Dios, Peru, from the gold-mining pits to the forest communities keep standing, with a zone bar like the Kill Zone fly-over. Then one Brazil nut tree, and the loop that pays for the forest.</p>
         <span class="hub-more">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <article class="hub-card">
+      <a class="hub-card" href="a-bowl-of-soup/">
         <div class="hub-card-art is-rust" aria-hidden="true">
-          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#2a1b14"/><ellipse cx="200" cy="150" rx="110" ry="30" fill="#C46F49"/><path d="M90 150q110 80 220 0" fill="#C46F49"/><ellipse cx="200" cy="150" rx="96" ry="22" fill="#F5821F"/><path d="M170 110q-10-20 0-40t0-40M200 110q-10-20 0-40t0-40M230 110q-10-20 0-40t0-40" fill="none" stroke="#f3ede3" stroke-opacity=".5" stroke-width="4" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#3b2a1e"/><path d="M0 0h400v220H0Z" fill="url(#hubWood)" opacity=".5"/><defs><pattern id="hubWood" width="40" height="220" patternUnits="userSpaceOnUse"><rect width="22" height="220" fill="#35261b"/></pattern></defs><circle cx="200" cy="112" r="78" fill="#f6f1e7"/><circle cx="200" cy="112" r="78" fill="none" stroke="#F5821F" stroke-width="5"/><circle cx="200" cy="112" r="60" fill="#e2772f"/><path d="M172 104q18-18 38-4t30 2" stroke="#fbf3e4" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M226 140l46 40" stroke="#efe8dc" stroke-width="9" stroke-linecap="round"/><path d="M180 30q-8-14 0-26M200 26q-8-14 0-26M220 30q-8-14 0-26" stroke="#f3ede3" stroke-opacity=".45" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
         </div>
-        <p class="hub-num">03 &#183; Concept</p>
+        <p class="hub-num">03 &#183; Ready to review</p>
         <h3>A Bowl of Soup</h3>
-        <p>How a soup programme in an Amsterdam safe house became Dignita. Thirteen years, three kitchens and one recipe, told through a single kitchen table.</p>
-      </article>
+        <p>How a soup programme in an Amsterdam safe house became Dignita: a year that counts across a real map of Amsterdam, a recipe card, 4,561 squares for 4,561 people, and a wipe from 2012 to today.</p>
+        <span class="hub-more">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
   </section>
 
   <section class="hub-wrap hub-blocks">
     <p class="st-kicker">What the stories are built from</p>
-    <h2>Nine building blocks, ready to become WordPress blocks</h2>
+    <h2>Twelve building blocks, ready to become WordPress blocks</h2>
     <ol>
       <li><b>The guide</b><span>One object that travels the whole story and lands on things: Ana&#8217;s phone, the plane over Madre de Dios.</span></li>
       <li><b>Sticky scenes</b><span>An illustration holds still while the text scrolls over it, and the camera moves to what each line is about.</span></li>
@@ -136,6 +150,9 @@ HUB = '''
       <li><b>Counters</b><span>Numbers that add up as you read: in The Offer, a debt that can never be paid off.</span></li>
       <li><b>Spot the signs</b><span>Numbered markers on a scene, one sign per step, so readers learn what to look for.</span></li>
       <li><b>The loop</b><span>A diagram a dot travels around, step by step: from forest to bottle and back.</span></li>
+      <li><b>The year counter</b><span>A date that counts up as the story moves through time, over a real map.</span></li>
+      <li><b>One square, one person</b><span>A unit chart that colours itself in, group by group, as you read.</span></li>
+      <li><b>Then and now</b><span>Two pictures of the same place; scrolling wipes from one year to the other.</span></li>
     </ol>
   </section>
 </main>
@@ -144,6 +161,8 @@ HUB = '''
 if __name__ == '__main__':
     story('the-offer', 'The Offer &#183; Not For Sale stories (mockup)',
           'How a job offer becomes a trap, and how the way out begins. A scroll-driven story mockup for Not For Sale.')
+    story('a-bowl-of-soup', 'A Bowl of Soup &#183; Not For Sale stories (mockup)',
+          'How a soup programme in an Amsterdam safe house grew into Dignita. A scroll-driven story mockup for Not For Sale.')
     story('the-forest-line', 'The Forest Line &#183; Not For Sale stories (mockup)',
           'A flight over Madre de Dios, Peru, from the gold mines to the forest people keep standing. A scroll-driven story mockup for Not For Sale.')
     page('index.html', 'Not For Sale stories (mockup)',

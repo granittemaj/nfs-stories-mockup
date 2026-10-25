@@ -1,0 +1,181 @@
+<!--scene:sprite-->
+<div class="st-progress" aria-hidden="true"><i></i></div>
+<nav class="st-rail" aria-label="Chapters"><ol></ol></nav>
+
+<!-- The guide: a bowl of soup, seen from above. It lands on a counter, then travels Amsterdam. -->
+<div class="st-bowl st-guide" aria-hidden="true">
+  <svg viewBox="0 0 200 200">
+    <defs><radialGradient id="bw-soup" cx="45%" cy="40%" r="65%"><stop offset="0" stop-color="#f29a4e"/><stop offset=".7" stop-color="#e2772f"/><stop offset="1" stop-color="#c25f22"/></radialGradient></defs>
+    <ellipse cx="108" cy="112" rx="92" ry="90" fill="#000" opacity=".22"/>
+    <path d="M150 150l42 36" stroke="#d9d1c3" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="100" cy="100" r="90" fill="#f6f1e7"/>
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#F5821F" stroke-width="6"/>
+    <circle cx="100" cy="100" r="72" fill="#e7dfd1"/>
+    <circle cx="100" cy="100" r="68" fill="url(#bw-soup)"/>
+    <path d="M70 92q20-22 44-6t36 2" stroke="#fbf3e4" stroke-width="7" fill="none" stroke-linecap="round" opacity=".85"/>
+    <path d="M78 120q16 10 34 2" stroke="#fbf3e4" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/>
+    <g fill="#5b7747"><circle cx="86" cy="76" r="3.5"/><circle cx="120" cy="114" r="3"/><circle cx="104" cy="130" r="3.5"/><circle cx="132" cy="88" r="2.5"/></g>
+    <g fill="#d9b06a"><rect x="62" y="108" width="9" height="9" rx="2" transform="rotate(12 66 112)"/><rect x="128" y="126" width="8" height="8" rx="2"/></g>
+    <path d="M118 128l46 40" stroke="#efe8dc" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="114" cy="124" rx="13" ry="9" fill="#efe8dc" transform="rotate(40 114 124)"/>
+  </svg>
+  <i class="bw-steam s1"></i><i class="bw-steam s2"></i><i class="bw-steam s3"></i>
+</div>
+
+<main id="st" class="st st-soup">
+
+<!-- 1 · A pot of soup -->
+<section class="st-sc st-dark" id="soup" data-chapter="A pot of soup">
+  <div class="st-stage bw-open">
+    <p class="st-open-kick">A Not For Sale story</p>
+    <p class="st-cue"><span>Scroll</span><i></i></p>
+  </div>
+  <div class="st-steps" data-side="left">
+    <div class="st-step is-blank" data-g="x:50;y:52;s:1.2;r:0;rx:0;o:1" data-gm="x:50;y:46;s:1"></div>
+    <div class="st-step" data-g="r:-6"><div class="st-card"><p>Some ideas start very small.</p></div></div>
+    <div class="st-step" data-g="r:4;s:1.3" data-gm="s:1.05"><div class="st-card"><p>This one started with a pot of soup.</p></div></div>
+    <div class="st-step st-title-step" data-g="x:76;y:50;s:1.4;r:0" data-gm="x:50;y:18;s:.7">
+      <div class="st-title">
+        <p class="st-kicker">A Not For Sale story</p>
+        <h1>A Bowl of <em>Soup</em></h1>
+        <p class="st-dek">How a soup programme in an Amsterdam safe house grew into Dignita, a restaurant that trains survivors of trafficking for real jobs.</p>
+        <p class="st-meta">About 6 minutes &#183; October 2026</p>
+        <p class="st-warn">The kitchens are illustrated and no real person is shown. The facts and figures come from Not For Sale&#8217;s work in the Netherlands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · Home Soup -->
+<section class="st-sc st-dark" id="home-soup" data-chapter="Home Soup">
+  <div class="st-stage"><!--scene:soupkitchen--></div>
+  <div class="st-steps" data-side="left">
+    <div class="st-step" data-cam="1180 330 1.6" data-camm="1180 360 1.4" data-ring="1" data-g="a:#soup-spot;s:.42;rx:62;r:0"><div class="st-card"><p class="st-when">2012, Amsterdam</p><p>Not For Sale&#8217;s work in the Netherlands began in the Red Light District.</p></div></div>
+    <div class="st-step" data-cam="420 520 1.5" data-camm="420 540 1.4" data-ring="2"><div class="st-card"><p>There, social worker Toos Heemskerk-Schep and Not For Sale started Home Soup, in the kitchen of a safe house.</p></div></div>
+    <div class="st-step" data-cam="1180 560 1.5" data-camm="1230 560 1.5" data-ring="3"><div class="st-card"><p>Survivors made soup and sold it. They came away with a certificate, a skill and an income.</p></div></div>
+    <div class="st-step" data-cam="800 500 1" data-camm="900 520 1" data-g="o:1"><div class="st-card st-big"><p>Survivors of trafficking do not need saving. They need opportunity.</p><p class="st-src">The idea behind Home Soup, in Not For Sale&#8217;s words</p></div></div>
+  </div>
+</section>
+
+<!-- 3 · Across Amsterdam: a year counter and a real map -->
+<section class="st-sc st-light" id="amsterdam" data-chapter="Across Amsterdam" data-cam0="760 640 1" data-cam0m="660 640 .85">
+  <div class="st-stage a-stage">
+    <!--scene:amsterdam-->
+    <p class="st-year" aria-hidden="true">2012</p>
+    <p class="a-credit">Map data &#169; OpenStreetMap contributors</p>
+  </div>
+  <div class="st-steps" data-side="left">
+    <div class="st-step" data-year="2012" data-ring="1" data-cam="871 626 1.5" data-camm="871 626 1.3" data-g="a:#pin-2012;s:.3;rx:0;r:0;o:1" data-gm="a:#pin-2012;s:.3;rx:0;r:0;o:1"><div class="st-card"><p class="st-when">2012</p><p>It began here. The safe house itself is not on the map.</p></div></div>
+    <div class="st-step" data-year="2015" data-ring="2" data-cam="420 960 1.4" data-camm="400 980 1.3" data-g="a:#pin-2015" data-gm="a:#pin-2015"><div class="st-card"><p class="st-when">2015</p><p>The soup becomes a restaurant. Dignita opens in the Vondelpark: a brunch place that has to win its guests like any other.</p></div></div>
+    <div class="st-step" data-year="2017" data-ring="3" data-cam="978 821 1.5" data-camm="978 821 1.3" data-g="a:#pin-2017" data-gm="a:#pin-2017"><div class="st-card"><p class="st-when">2017</p><p>A second Dignita opens in the Hoftuin, a garden in the east of the city centre.</p></div></div>
+    <div class="st-step" data-year="2020" data-ring="4" data-cam="480 300 1.4" data-camm="480 320 1.3" data-g="a:#pin-2020" data-gm="a:#pin-2020"><div class="st-card"><p class="st-when">2020</p><p>A third, in Westerpark.</p></div></div>
+    <div class="st-step" data-year="Today" data-ring="5" data-cam="760 640 1" data-camm="660 640 .85" data-g="a:#pin-2017;s:.36" data-gm="a:#pin-2017;s:.36"><div class="st-card"><p class="st-when">Today</p><p>Dignita runs from the Hoftuin, on the Nieuwe Herengracht, open every day. The Vondelpark and Westerpark restaurants have closed.</p></div></div>
+  </div>
+</section>
+
+<!-- 4 · The recipe -->
+<section class="st-sc st-light" id="recipe" data-chapter="The recipe">
+  <div class="st-stage">
+    <!--scene:dignita-->
+    <aside class="st-ledger st-recipe" aria-hidden="true">
+      <p class="st-ledger-h">The recipe</p>
+      <p class="rc-sub">Dignita, Amsterdam</p>
+      <ol>
+        <li data-row="1"><b>A real restaurant</b><span>It has to win its guests</span></li>
+        <li data-row="2"><b>Accredited training</b><span>The Dignita Academy, with ROC van Amsterdam</span></li>
+        <li data-row="3"><b>Four tracks</b><span>Kitchen, barista, beauty, administration</span></li>
+        <li data-row="4"><b>Real work from day one</b><span>What trainees make is on the menu</span></li>
+        <li data-row="5"><b>All profits back in</b><span>For the next group of trainees</span></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="st-steps" data-side="left">
+    <div class="st-step" data-cam="800 500 1" data-ledger="1" data-g="o:0" data-gm="o:0"><div class="st-card"><p>What made it work? Dignita is a real restaurant. It has to win its guests like any other brunch place.</p></div></div>
+    <div class="st-step" data-cam="560 600 1.5" data-camm="560 600 1.6" data-ring="2" data-ledger="2"><div class="st-card"><p>Its Academy, built with ROC van Amsterdam, gives survivors government-accredited training on the job.</p></div></div>
+    <div class="st-step" data-cam="900 610 1.5" data-camm="930 620 1.6" data-ring="4" data-ledger="3"><div class="st-card"><p>Trainees choose a track: the kitchen, the coffee bar, nail styling and beauty, or administration through FAIR Finances, set up in 2021.</p></div></div>
+    <div class="st-step" data-cam="640 640 1.6" data-camm="640 640 1.7" data-ring="3" data-ledger="4"><div class="st-card"><p>What they make is served to paying guests from the first day.</p></div></div>
+    <div class="st-step" data-cam="800 300 1.1" data-camm="800 300 1" data-ring="1" data-ledger="5"><div class="st-card"><p>And every euro of profit goes back into training the next group.</p></div></div>
+  </div>
+</section>
+
+<!-- 5 · 4,561 people: one square each -->
+<section class="st-sc st-dark" id="people" data-chapter="4,561 people">
+  <div class="st-stage un-stage">
+    <canvas class="st-units" data-total="4561" data-groups="3507:#4F8E92|1054:#d7c49e" data-hi="263:#F5821F" data-base="#3a342e" aria-hidden="true"></canvas>
+    <ul class="un-legend" aria-hidden="true">
+      <li data-seen="2"><i style="background:#4F8E92"></i><b>3,507</b> served directly</li>
+      <li data-seen="3"><i style="background:#d7c49e"></i><b>1,054</b> outreach and prevention</li>
+      <li data-seen="4"><i style="background:#F5821F"></i><b>263</b> Dignita Academy graduates</li>
+    </ul>
+  </div>
+  <div class="st-steps" data-side="left">
+    <div class="st-step" data-units="1" data-ring="1"><div class="st-card"><p>Since 2012, Not For Sale has supported 4,561 people in the Netherlands. Each square here is one person.</p></div></div>
+    <div class="st-step" data-units="2" data-ring="2"><div class="st-card"><p>3,507 of them are survivors and people at risk, served directly.</p></div></div>
+    <div class="st-step" data-units="3" data-ring="3"><div class="st-card"><p>1,054 more were reached through outreach and prevention.</p></div></div>
+    <div class="st-step" data-units="4" data-ring="4"><div class="st-card st-fact"><p class="st-fact-big">263</p><p>have completed the Dignita Academy.</p><p class="st-src">Source: Not For Sale</p></div></div>
+  </div>
+</section>
+
+<!-- 6 · Then and now: a wipe from the safe-house kitchen to the restaurant -->
+<section class="st-sc st-dark st-tall" id="then-now" data-chapter="Then and now" data-progress>
+  <div class="st-stage wp-stage">
+    <div class="wp-a"><!--scene:soupkitchen--></div>
+    <div class="wp-b"><!--scene:dignita--></div>
+    <i class="wp-line" aria-hidden="true"></i>
+    <p class="wp-tag wp-tag-a" aria-hidden="true">2012</p>
+    <p class="wp-tag wp-tag-b" aria-hidden="true">Today</p>
+  </div>
+  <div class="st-steps" data-side="left">
+    <div class="st-step"><div class="st-card"><p class="st-when">2012</p><p>One pot, in the kitchen of a safe house.</p></div></div>
+    <div class="st-step"><div class="st-card"><p class="st-when">Today</p><p>A restaurant open every day, an academy, and 263 graduates.</p></div></div>
+    <div class="st-step is-blank" data-g="a:#eu-from;s:.24;rx:0;r:0;o:0" data-gm="a:#eu-from;s:.2;rx:0;r:0;o:0"></div>
+  </div>
+</section>
+
+<!-- 7 · What's next -->
+<section class="st-sc st-dark" id="next" data-chapter="What&#8217;s next">
+  <div class="st-stage eu-stage">
+    <!--scene:europe-->
+    <svg class="st-art eu-over" viewBox="0 0 1600 1100" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+      <g class="eu-region" data-seen="1"><circle cx="1240" cy="720" r="190"/><text x="1240" y="830">Eastern Europe</text></g>
+      <path class="eu-arc" data-seen="2" d="M429 415Q860 300 1200 690"/>
+      <g class="eu-ams"><circle cx="429" cy="415" r="9"/><text x="414" y="396">Amsterdam</text></g>
+      <rect id="eu-from" x="428" y="414" width="2" height="2" fill="none"/>
+      <rect id="eu-to" x="1199" y="689" width="2" height="2" fill="none"/>
+    </svg>
+  </div>
+  <div class="st-steps" data-side="left">
+    <div class="st-step" data-ring="1" data-g="o:1"><div class="st-card"><p>Many of the survivors Not For Sale serves in Amsterdam come from Eastern Europe.</p></div></div>
+    <div class="st-step" data-ring="2" data-g="a:#eu-to;s:.3" data-gm="a:#eu-to;s:.26"><div class="st-card"><p>So the recipe may travel back. Not For Sale is exploring a Dignita in Eastern Europe.</p><p><a class="st-link" href="../the-offer/">Read The Offer: one of those journeys, told through a phone</a></p></div></div>
+    <div class="st-step is-blank" data-g="o:0" data-gm="o:0"></div>
+  </div>
+</section>
+
+<!-- After the scroll: the article -->
+<article class="st-after">
+  <div class="st-col">
+    <p class="st-kicker">About this story</p>
+    <h2>Opportunity, not rescue</h2>
+    <p>Dignita is not a charity kitchen. It is a restaurant that has to earn its guests, and that is the point: trainees learn inside a real business, and the business pays for their training. All profits return to Stichting Dignita to fund the next group of trainees.</p>
+    <p>Visit Dignita Hoftuin at Nieuwe Herengracht 18a, Amsterdam. It is open every day from 09:30 to 16:30, as listed on Not For Sale&#8217;s site.</p>
+  </div>
+  <div class="st-figs">
+    <div><b>2012</b><span>Home Soup begins in a safe house</span><small>Not For Sale</small></div>
+    <div><b>4,561</b><span>people supported in the Netherlands</span><small>Not For Sale</small></div>
+    <div><b>263</b><span>Dignita Academy graduates</span><small>Not For Sale</small></div>
+    <div><b>100%</b><span>of profits back into training</span><small>Not For Sale</small></div>
+  </div>
+  <div class="wrap"><div class="ctaband"><h2>No one is for sale.<br>Help us prove it.</h2><div class="btns"><a class="btn btn-light" href="https://wearenotforsale.org/donate/">Donate</a><a class="btn btn-light" href="https://wearenotforsale.org/partners/dignita/">About Dignita</a></div></div></div>
+  <div class="st-col st-notes">
+    <h3>Sources and notes</h3>
+    <ul>
+      <li>Home Soup, Dignita&#8217;s three restaurants, the Academy, FAIR Finances and the profits: Not For Sale&#8217;s <a href="https://wearenotforsale.org/partners/dignita/">Dignita</a> page.</li>
+      <li>The start in the Red Light District and the figures for the Netherlands: Not For Sale&#8217;s <a href="https://wearenotforsale.org/projects/netherlands/">Netherlands</a> page.</li>
+      <li>Toos Heemskerk-Schep is named as on Not For Sale&#8217;s site. The kitchens and the people in them are illustrated.</li>
+      <li>Map data &#169; OpenStreetMap contributors (ODbL). Pins are approximate; the safe house is deliberately not shown.</li>
+    </ul>
+    <p class="st-mock">Concept mockup for review. Not published, and not the live site. Illustrations are drawn in code as placeholders for commissioned art.</p>
+    <p><a class="st-link" href="../">All story mockups</a></p>
+  </div>
+</article>
+</main>

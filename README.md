@@ -11,6 +11,7 @@ theme's `styles.css`, `app.js` (header, footer, newsletter, search) and fonts.
 - Stories hub: [`index.html`](index.html)
 - Story 01, The Offer: [`the-offer/`](the-offer/)
 - Story 02, The Forest Line: [`the-forest-line/`](the-forest-line/)
+- Story 03, A Bowl of Soup: [`a-bowl-of-soup/`](a-bowl-of-soup/)
 
 ## 01 · The Offer
 
@@ -44,6 +45,24 @@ sticky zone bar like the Kill Zone fly-over. Facts come from Not For Sale's
 | How much forest | 753 square miles next to New York City, drawn to scale. |
 | After | The article: ecocide and slavery as one system, four figures, Donate, sources. |
 
+## 03 · A Bowl of Soup
+
+How Home Soup, a soup programme in an Amsterdam safe house (2012), grew into Dignita. A bowl of
+soup is the guide: it lands on a kitchen counter, then travels a real map of Amsterdam
+(OpenStreetMap water and parks, built by `tools/amsterdam`). Facts come from Not For Sale's
+[Dignita](https://wearenotforsale.org/partners/dignita/) and
+[Netherlands](https://wearenotforsale.org/projects/netherlands/) pages.
+
+| Chapter | What happens on screen |
+| --- | --- |
+| A pot of soup | A bowl steams on a wooden table, then the title. |
+| Home Soup | The safe-house kitchen in 2012: the window, the pot, the jars and the certificate. |
+| Across Amsterdam | A year counts up (2012, 2015, 2017, 2020, Today) while the bowl moves from pin to pin: the Red Light District, Vondelpark, Hoftuin, Westerpark. Closed sites fade. |
+| The recipe | Dignita's kitchen with a recipe card that ticks itself off: real restaurant, accredited training, four tracks, real work, profits back in. |
+| 4,561 people | One square per person, coloured in by group: served directly, outreach, Academy graduates. |
+| Then and now | Scrolling wipes from the 2012 kitchen to the restaurant today. |
+| What's next | The night map of Europe: the recipe may travel back east. Links to The Offer. |
+
 ## The building blocks
 
 Everything is driven by data attributes on the text steps, so each block can become a WordPress
@@ -60,6 +79,8 @@ block later. The engine is `assets/js/story.js` (vanilla, no dependencies, about
 | `data-ledger="n"` | The kitchen ledger: show rows up to `n`, with counting numbers. |
 | `data-t="0.5"` | A `.st-track` diagram: the travelling dot reaches this point (0 to 1) when the step is centred. |
 | `data-seen="n"` | On any element: it gets `.seen` once a step with `data-ring` of `n` or more has been reached (close-up circles, the forest line). |
+| `data-year="2015"` | A `.st-year` counter in the stage counts to this year, or shows a word such as "Today". |
+| `data-units="n"` | A `.st-units` canvas (one square per person) shows layer `n`: all squares, then each group, then the highlight. |
 | `data-progress` | On a section: sets `--p` (0 to 1) as it scrolls past, for scroll-linked effects (the door, the zone bar, clouds). |
 
 The guide is whatever element has the class `st-guide`: a phone with screens in The Offer, a
@@ -79,6 +100,8 @@ python3 src/build.py
 - Story text: `src/the-offer.html` (scenes are pulled in from `src/scenes/*.svg`).
 - Styles: `assets/css/story.css`. Engine: `assets/js/story.js`.
 - The map: `cd tools/map && npm install && npm run build` writes `src/scenes/map.svg`.
+- The Amsterdam map: `cd tools/amsterdam`, fetch `osm.json` with the curl line at the top of
+  `build-amsterdam.py` (the query is in `query.overpass`), then `python3 build-amsterdam.py`.
 - The Forest Line landscapes: `node tools/forest/build-flyover.mjs` (no dependencies) writes
   `assets/img/forest-flyover.svg`, `assets/img/forest-canopy.svg` and `src/scenes/flyedge.svg`.
 - Local preview: `node tools/serve.js`, then open http://localhost:8774/
@@ -97,9 +120,13 @@ Asset URLs carry content hashes, so GitHub Pages never serves stale CSS or JS af
 - **The Forest Line:** the landscape is one illustrated, compressed flight, not a map. The Brazil
   nut biology (bees, agouti, pods) is general botany for the Peru team to check. New York City is
   compared at its total area (472 sq mi), which is how 753 sq mi comes to about 1.6 times.
-- The Donate and "Learn the signs" links go to the live site.
+- **A Bowl of Soup:** Toos Heemskerk-Schep is named as on Not For Sale's site; ask before
+  publishing. The opening hours (09:30 to 16:30) are as listed on the Dignita page. Map pins are
+  approximate, and the safe house is deliberately not shown.
+- Donate and the other calls to action link to the live site.
 
 ## Credits
 
-Map data: Natural Earth (public domain), via world-atlas. Fonts: Playfair Display and
+Map data: Natural Earth (public domain), via world-atlas; Amsterdam from OpenStreetMap
+(© OpenStreetMap contributors, ODbL). Fonts: Playfair Display and
 Source Serif 4 (SIL Open Font License). Theme code, logo and copy: Not For Sale.
