@@ -114,6 +114,11 @@ road out). Then the fishing boats where some end up (`sea.svg`), and the same co
 small fishing boat is the guide. Two earlier versions (a diagram explainer, and NASA satellite
 images of Madre de Dios) were dropped; their old addresses redirect here.
 
+## Briefing a new story
+
+[AUTHORING.md](AUTHORING.md) is the prompt to use when asking for a new story, with the four
+things a brief has to supply, how to hand over real photographs, and how stories link out.
+
 ## The building blocks
 
 Everything is driven by data attributes on the text steps, so each block can become a WordPress
